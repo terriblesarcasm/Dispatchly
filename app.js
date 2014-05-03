@@ -89,7 +89,7 @@ app.get("/home", ensureAuthenticated, function(req, res){
 	User.findById(req.session.passport.user, function(err, user) {
 		if (err) { console.log(err); }
 		else {
-			res.render('/views/app.html', { user: user });
+			res.sendfile('./views/app.html', { user: user });
 		}
 	})
 });
