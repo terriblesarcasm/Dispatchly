@@ -19,10 +19,10 @@
 	<!-- Custom JS -->
   </head>
   <body ng-init="sidebarIsActive=false">
-    <div class="container" id="canvas">
+    <div class="container" id="canvas" ng-class="{active: sidebarIsActive}">
       <nav class="navbar navbar-default", role="navigation", ng-controller="HeaderController">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle pull-left" ng-click="isCollapsed = !isCollapsed">
+          <button type="button" class="navbar-toggle pull-left" ng-click="sidebarIsActive = !sidebarIsActive">
             <span class="sr-only"> Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
