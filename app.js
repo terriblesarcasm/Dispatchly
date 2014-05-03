@@ -42,8 +42,48 @@ app.get(/^(.+)$/, function(req, res){
 	res.sendfile( __dirname + req.params[0]);
 });
 
+app.get("/auth/facebook", authnOrAuthzFacebook);
+
+app.get("/auth/facebook/callback", passport.authenticate('facebook', { failureRedirect: '/' }),
+  function(req, res) {
+    res.redirect('/home');
+});
+
+app.get('/authz/facebook/callback', 
+  passport.authorize('facebook-authz', { failureRedirect: '/' }),
+  function(req, res) {
+    var user = req.user;
+    var account = req.account;
+
+    // Associate the Twitter account with the logged-in user.
+    account.userId = user.id;
+    account.save(function(err) {
+      if (err) { return self.error(err); }
+      res.redirect('/home');
+    });
+  });
+
+
+app.get("/home", ensureAuthenticated, function(req, res){
+	User.findById(req.session.passport.user, function(err, user) {
+		if (err) { console.log(err); }
+		else {
+			res.render('/views/app.html', { user: user });
+		}
+	})
+});
+
 /* node port config */
 var port = process.env.PORT || 5000;
 	app.listen(port, function() {
 	console.log("MEAN stack is running on port " + port);
 });
+
+function authnOrAuthzFacebook(req, res, next) {
+  if (!req.isAuthenticated()) {
+    passport.authenticate('facebook', { scope: ['email', 'read_stream'], successRedirect: '/home',
+                                        failureRedirect: '/login' })(req, res, next);
+  } else {
+    passport.authorize('facebook-authz')(req, res, next);
+  }
+}

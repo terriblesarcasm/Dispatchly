@@ -4,7 +4,7 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
     function ($routeProvider, $locationProvider) {
         $routeProvider.
 		when('/', {
-			templateUrl: '/public/partials/main.temp',
+			templateUrl: '/public/partials/home.temp',
 			controller: 'MainCtrl'
 		}).
 		otherwise({
