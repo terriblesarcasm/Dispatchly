@@ -6,8 +6,7 @@ var User = mongoose.model('User', {
   phonenumber: String,
   emailaddress: String,
   created: Date,
-  groups: [],
-  accounts: []
+  groups: []
 });
 
 module.exports = User;
