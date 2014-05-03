@@ -16,6 +16,10 @@ body{
   padding: 0px;
 }
 
+.button-spacing {
+  margin-top: 10px;  
+}
+
 .socialimages {
   padding-bottom: 10px;
   max-width: 300px;
