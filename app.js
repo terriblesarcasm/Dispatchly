@@ -4,10 +4,11 @@ var twilio = require("twilio");
 var auth = require('./authentication.js');
 var _ = require('underscore');
 var client = new twilio.RestClient('AC645f23a47956757b6ee240ba83acc40d', 'da6895bd80208b87f5eeb94fa776961b');
-var app = express();
 var mongoose = require('mongoose');
 var passport = require('passport');
 
+
+var app = express();
 
 app.configure(function() {
   app.use(express.static('public'));
