@@ -70,7 +70,7 @@ app.get("/home", ensureAuthenticated, function(req, res){
 
 function authnOrAuthzFacebook(req, res, next) {
   if (!req.isAuthenticated()) {
-    passport.authenticate('facebook', { scope: ['email', 'read_stream'], successRedirect: '/home',
+    passport.authenticate('facebook', { scope: ['email'], successRedirect: '/home',
                                         failureRedirect: '/login' })(req, res, next);
   } else {
     passport.authorize('facebook-authz')(req, res, next);
