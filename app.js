@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 
 /* initialize all DB models */
 var User = require('./user.js');
+var Group = require('./group.js');
 
 /* bitly credentials / requirements */
 var BitlyAPI = require("node-bitlyapi");
