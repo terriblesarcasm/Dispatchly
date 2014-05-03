@@ -31,3 +31,29 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 		});
 	}
 })
+
+	
+/*Firebase, AngularFire */
+.controller("FirebaseController", ["$scope", "$firebase",
+  function($scope, $firebase) {
+  	var URL = "https://testing-node.firebaseio.com/";
+    $scope.items = $firebase(new Firebase(URL));
+
+	/* write data to Firebase */	
+    $scope.addMessage = function(message) {
+    	$scope.items.$add({mes: message});
+    	$scope.message = '';
+    }
+
+    /* do stuff when after the initial data is loaded */
+	$scope.items.$on("loaded", function() {
+	  console.log("Initial data received!");
+	    /* check to see if remote data has changed */
+	    $scope.items.$on("change", function() {
+			console.log("A remote change was applied locally!");
+		});
+	});    
+
+
+  }
+]);
