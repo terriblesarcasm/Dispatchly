@@ -7,6 +7,10 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 			templateUrl: '/public/partials/home.temp',
 			controller: 'MainCtrl'
 		}).
+		when('/create-group', {
+			templateUrl: '/public/partials/create-group.temp',
+			controller: 'CreateGroupCtrl'
+		}).
 		otherwise({
 			redirectTo: '/'
 		});
@@ -30,6 +34,11 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 			}	
 		});
 	}
+})
+
+
+.controller('CreateGroupCtrl', function ($scope, $window, $location, $q, $http) {
+
 })
 
 	
