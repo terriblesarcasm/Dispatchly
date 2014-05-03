@@ -1,25 +1,12 @@
 <div class="container" ng-init="sidebarIsActive = false">
 
     <div id="content" class="col-xs-12 col-sm-9">
-			<h3>Content</h3>
-			<p>Jelly beans candy.</p>
+		<h3 class="text-success">Create a group</h3>
 
-			<h3 class="text-success">We are Bootstrapped</h3>
+		<input ng-model="group.name">
+		<input ng-model="group.password">
+		<button type='button' ng-click='createGroup(group)'>Create</button>
 
-			<h3>Firebase</h3>
-			<div ng-controller="FirebaseController">
-				<input ng-model="message"><button type='button' ng-click='addMessage(message)'>Add message</button>
-				<br>
-				<p ng-repeat="item in items">{{item.mes}}</p>
-			</div> <!-- /firebase -->
-
-
-			<h3>Bitly</h3>
-			<input ng-model="test.longUrl"><button type='button' ng-click='call(test.longUrl)'>Call api</button>
-			<br>
-			{{ test }}
-		</div> <!-- /content -->
-	</div> <!-- canvas -->
-
+	</div> <!-- /content -->
 
 </div> <!-- /container -->
