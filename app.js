@@ -54,7 +54,7 @@ app.get("/", function(req, res) {
 
 /* TESTING : create-group.temp */
 app.get("/create-group", function(req, res) {
-	res.sendfile('./public/partials/create-group.temp');
+	res.sendfile('./public/partials/create-group.html');
 });
 
 /* bitly API request */
