@@ -3,7 +3,7 @@
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	  <div class="container">
 	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	      <button type="button" class="navbar-toggle" ng-click="sidebarIsActive = !sidebarIsActive">
 	        <span class="sr-only">Toggle navigation</span>
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
@@ -22,10 +22,10 @@
 	</div> <!-- /navbar -->
 
 	<div ng-class="{active: sidebarIsActive}" id="canvas">
-	<div class="col-xs-12">
-		<button class="btn btn-primary btn-xs visible-xs" id="slide" ng-click="sidebarIsActive = !sidebarIsActive">Sidebar</button>
-	</div>
-	
+		<div class="col-xs-12">
+			<button class="btn btn-primary btn-xs visible-xs" id="slide" ng-click="sidebarIsActive = !sidebarIsActive">Sidebar</button>
+		</div>
+		
 		<div id="sidebar" class="col-xs-5 col-sm-3">
 			<ul class="nav nav-pills nav-stacked">
 		  <li class="active"><a href="#">Home</a></li>
@@ -35,28 +35,26 @@
 		</div>
 
       
-      <div id="content" class="col-xs-12 col-sm-9">
-		<h3>Content</h3>
-		<p>Jelly beans candy .</p>
+    <div id="content" class="col-xs-12 col-sm-9">
+			<h3>Content</h3>
+			<p>Jelly beans candy.</p>
 
-		<h3 class="text-success">We are Bootstrapped</h3>
+			<h3 class="text-success">We are Bootstrapped</h3>
 
-		<h3>Firebase</h3>
-		<div ng-controller="FirebaseController">
-			<input ng-model="message"><button type='button' ng-click='addMessage(message)'>Add message</button>
+			<h3>Firebase</h3>
+			<div ng-controller="FirebaseController">
+				<input ng-model="message"><button type='button' ng-click='addMessage(message)'>Add message</button>
+				<br>
+				<p ng-repeat="item in items">{{item.mes}}</p>
+			</div> <!-- /firebase -->
+
+
+			<h3>Bitly</h3>
+			<input ng-model="test.longUrl"><button type='button' ng-click='call(test.longUrl)'>Call api</button>
 			<br>
-			<p ng-repeat="item in items">{{item.mes}}</p>
-		</div>
-
-
-		<h3>Bitly</h3>
-		<input ng-model="test.longUrl"><button type='button' ng-click='call(test.longUrl)'>Call api</button>
-		<br>
-		{{ test }}
-
-
-	</div>
-</div>
+			{{ test }}
+		</div> <!-- /content -->
+	</div> <!-- canvas -->
 
 
 </div> <!-- /container -->
