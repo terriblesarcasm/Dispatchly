@@ -83,8 +83,7 @@ app.get("/db/create-group", function(req, res) {
 			done(null, group);
 		}
 	});
-}
-
+});
 
 /* bitly API request */
 app.get("/api/bitly", function(req, res) {
