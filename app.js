@@ -4,6 +4,10 @@ var twilio = require("twilio");
 var _ = require('underscore');
 var client = new twilio.RestClient('AC645f23a47956757b6ee240ba83acc40d', 'da6895bd80208b87f5eeb94fa776961b');
 var app = express();
+var mongoose = require('mongoose');
+
+/* initialize all DB models */
+var User = require('./user.js');
 
 /* bitly credentials / requirements */
 var BitlyAPI = require("node-bitlyapi");
