@@ -69,7 +69,6 @@ app.get("/db/create-group", function(req, res) {
 
 	// Group model
 	var group = new Group({
-		//oauthID: profile.id
 		group_id: req.query.group.name,
 		password: req.query.group.password,
 	});
@@ -80,7 +79,7 @@ app.get("/db/create-group", function(req, res) {
 			console.log(err);
 		} else {
 			console.log("saving group ...");
-			done(null, group);
+			//done(null, group);
 		}
 	});
 });
