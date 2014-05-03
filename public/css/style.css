@@ -16,6 +16,9 @@
   padding-bottom: 10px;
 }
 
+.navbar-brand {
+  text-align: center;  
+}
 
 /* Sidebar CSS */
 #canvas {
