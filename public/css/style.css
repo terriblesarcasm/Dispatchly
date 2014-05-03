@@ -1,8 +1,16 @@
 /* Sidebar CSS */
-html,
-body {
-  padding-top: 50px;
+
+/* Desktop media query */
+@media(min-width: 768px){
+  html,
+  body {
+    padding-top: 30px;
+  }
 }
+
+/* Mobile media query */
+
+
 #canvas {
   transition: -webkit-transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
