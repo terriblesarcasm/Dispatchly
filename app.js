@@ -65,12 +65,12 @@ app.get("/create-group", function(req, res) {
 /* TESTING : create-group.temp */
 
 /* Create group API */
-app.get("/db/create-group", function(req, res) {
+app.get("/db/create-group", function(req, res, next) {
 
 	// Group model
 	var group = new Group({
-		group_id: req.query.group.name,
-		password: req.query.group.password,
+		group_id: req.query.name,
+		password: req.query.password,
 	});
 
 	// Save group to the DB
@@ -79,7 +79,7 @@ app.get("/db/create-group", function(req, res) {
 			console.log(err);
 		} else {
 			console.log("saving group ...");
-			//done(null, group);
+			done(null, group);
 		}
 	});
 });
