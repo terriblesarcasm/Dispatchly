@@ -8,6 +8,10 @@
   }
 }
 
+.container{
+  padding: 0px;
+}
+
 #canvas {
   transition: -webkit-transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
