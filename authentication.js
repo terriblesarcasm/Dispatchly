@@ -1,4 +1,4 @@
-var passport = require('passport')
+var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var User = require('./user.js');
