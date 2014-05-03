@@ -78,7 +78,7 @@ app.get("/db/create-group", function(req, res, next) {
 		if(err) {
 			console.log(err);
 		} else {
-			console.log("saving group ...");
+			console.log("saved group to DB");
 			//done(null, group);
 		}
 	});
