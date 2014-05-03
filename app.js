@@ -8,9 +8,11 @@ var app = express();
 var mongoose = require('mongoose');
 var passport = require('passport');
 
+
 /* initialize all DB models */
 var User = require('./user.js');
 var Group = require('./group.js');
+mongoose.connect('mongodb://localhost/dispatchly');
 
 /* bitly credentials / requirements */
 var BitlyAPI = require("node-bitlyapi");
