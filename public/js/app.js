@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase', 'ui.bootstrap.collapsewide'])
+var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 
 .config(['$routeProvider', '$locationProvider', 
     function ($routeProvider, $locationProvider) {
