@@ -4,6 +4,8 @@ var Group = mongoose.model('Group', {
   //oauthID: Number,
   group_id: String,
   password: String,
+  address: String,
+  zipcode: Number,
   alertcodes: [],
   users: []
 });
