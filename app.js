@@ -21,7 +21,7 @@ var Bitly = new BitlyAPI({
 /* serves main page */
 /* all other requests should fall below this */
 app.get("/", function(req, res) {
-	res.sendfile('views/index.html');
+	res.sendfile('./views/index.html');
 });
 
 /* bitly API request */
