@@ -88,3 +88,8 @@ function authnOrAuthzFacebook(req, res, next) {
     passport.authorize('facebook-authz')(req, res, next);
   }
 }
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/');
+}
