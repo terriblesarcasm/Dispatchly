@@ -16,7 +16,6 @@ app.get(/^(.+)$/, function(req, res){
 	res.sendfile( __dirname + req.params[0]);
 });
 
-
 /* node port config */
 var port = process.env.PORT || 5000;
 	app.listen(port, function() {
