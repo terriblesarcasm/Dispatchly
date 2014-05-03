@@ -19,18 +19,19 @@
   </div>
 </div>
 
+<div class="container">
+	<h3 class="text-success">We are Bootstrapped</h3>
 
-<h3 class="text-success">We are Bootstrapped</h3>
+	<h3>Firebase</h3>
+	<div ng-controller="FirebaseController">
+		<input ng-model="message"><button type='button' ng-click='addMessage(message)'>Add message</button>
+		<br>
+		<p ng-repeat="item in items">{{item.mes}}</p>
+	</div>
 
-<h3>Firebase</h3>
-<div ng-controller="FirebaseController">
-	<input ng-model="message"><button type='button' ng-click='addMessage(message)'>Add message</button>
+
+	<h3>Bitly</h3>
+	<input ng-model="test.longUrl"><button type='button' ng-click='call(test.longUrl)'>Call api</button>
 	<br>
-	<p ng-repeat="item in items">{{item.mes}}</p>
+	{{ test }}
 </div>
-
-
-<h3>Bitly</h3>
-<input ng-model="test.longUrl"><button type='button' ng-click='call(test.longUrl)'>Call api</button>
-<br>
-{{ test }}
