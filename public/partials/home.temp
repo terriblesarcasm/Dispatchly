@@ -2,7 +2,7 @@
 
     <div class="navbar-home">
 		<p class="navbar-home-brand">Dispatch Systems</p>
-		<button type="button" class="navbar-toggle" ng-click="sidebarIsActive = !sidebarIsActive">
+		<button type="button" ng-click="sidebarIsActive = !sidebarIsActive">
 		<span class="sr-only">Toggle navigation</span>
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
