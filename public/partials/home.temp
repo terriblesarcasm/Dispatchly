@@ -1,7 +1,13 @@
-<div class="container">
+<div class="container" ng-init="sidebarIsActive = false">
 
     <div class="navbar-home">
-      <p class="navbar-home-brand">Dispatch Systems</p>
+		<p class="navbar-home-brand">Dispatch Systems</p>
+		<button type="button" class="navbar-toggle" ng-click="sidebarIsActive = !sidebarIsActive">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</button>
     </div> <!-- /navbar-home -->
 
 	<div ng-class="{active: sidebarIsActive}" id="canvas">
