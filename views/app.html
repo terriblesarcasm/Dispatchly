@@ -19,7 +19,30 @@
 	<!-- Custom JS -->
   </head>
   <body ng-init="sidebarIsActive=false">
-    <div ng-view style="height:100%;">
+    <div class="container" id="canvas">
+      <nav class="navbar navbar-default", role="navigation", ng-controller="HeaderController">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle pull-left" ng-click="isCollapsed = !isCollapsed">
+            <span class="sr-only"> Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+    <div id="sidebar">
+      <ul class="nav-stacked">
+        <li class="active">Home</li>
+        <li>Home</li>
+        <li>Home</li>
+      </ul>
+    </div>
+
+        
+
+          <!-- This is for the side bar links, forms -->
+    <div ng-view style="height:100%;" id="content">
     </div>
   </body>
 </html>
