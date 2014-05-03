@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User', {
   //oauthID: Number,
-  username: String,
+  name: String,
   nickname: String,
   phonenumber: String,
   emailaddress: String,

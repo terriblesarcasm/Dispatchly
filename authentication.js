@@ -18,6 +18,7 @@ module.exports = passport.use(new FacebookStrategy({
 	}
 ));
 
+
 //authorize Facebook
 passport.use('facebook-authz', new FacebookStrategy({
 		clientID: config.facebook.clientID,
@@ -48,7 +49,8 @@ function authentication(accessToken, refreshToken, profile, done, provider) {
 			var user = new User({
 				//oauthID: profile.id
 				name: profile.displayName,
-				created: Date.now()
+				created: Date.now(),
+				groups: []
 			});
 
 			//add the facebook account object to the user
