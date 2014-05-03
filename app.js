@@ -53,9 +53,38 @@ app.get("/", function(req, res) {
 });
 
 /* TESTING : create-group.temp */
+/* TESTING : create-group.temp */
+/* TESTING : create-group.temp */
+/* TESTING : create-group.temp */
 app.get("/create-group", function(req, res) {
 	res.sendfile('./public/partials/create-group.html');
 });
+/* TESTING : create-group.temp */
+/* TESTING : create-group.temp */
+/* TESTING : create-group.temp */
+/* TESTING : create-group.temp */
+
+/* Create group API */
+app.get("/db/create-group", function(req, res) {
+
+	// Group model
+	var group = new Group({
+		//oauthID: profile.id
+		group_id: req.query.group.name,
+		password: req.query.group.password,
+	});
+
+	// Save group to the DB
+	group.save(function(err) {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log("saving group ...");
+			done(null, group);
+		}
+	});
+}
+
 
 /* bitly API request */
 app.get("/api/bitly", function(req, res) {
