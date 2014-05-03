@@ -20,6 +20,20 @@ app.configure(function() {
   app.use(app.router);
 });
 
+
+// seralize and deseralize
+passport.serializeUser(function(user, done) {
+    //console.log('serializeUser: ' + user._id)
+    done(null, user._id);
+});
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user){
+        //console.log(user);
+        if(!err) done(null, user);
+        else done(err, null);
+    })
+});
+
 /* initialize all DB models */
 var User = require('./user.js');
 var Group = require('./group.js');
