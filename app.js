@@ -107,8 +107,8 @@ app.get('/authz/twitter/callback',
   });
 
 
-
-app.get("/home", ensureAuthenticated, function(req, res){
+// testing
+app.get("/home", function(req, res){
 	User.findById(req.session.passport.user, function(err, user) {
 		if (err) { console.log(err); }
 		else {
@@ -116,6 +116,17 @@ app.get("/home", ensureAuthenticated, function(req, res){
 		}
 	})
 });
+
+
+// secure
+// app.get("/home", ensureAuthenticated, function(req, res){
+// 	User.findById(req.session.passport.user, function(err, user) {
+// 		if (err) { console.log(err); }
+// 		else {
+// 			res.sendfile('./views/app.html', { user: user });
+// 		}
+// 	})
+// });
 
 function authnOrAuthzFacebook(req, res, next) {
   if (!req.isAuthenticated()) {
