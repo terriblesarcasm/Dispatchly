@@ -9,5 +9,4 @@ var User = mongoose.model('User', {
   accounts: []
 });
 
-
 module.exports = User;
