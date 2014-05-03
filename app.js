@@ -110,6 +110,15 @@ function authnOrAuthzFacebook(req, res, next) {
   }
 }
 
+function authnOrAuthzTwitter(req, res, next) {
+  if (!req.isAuthenticated()) {
+    passport.authenticate('twitter', { scope: ['email'], successRedirect: '/home',
+                                        failureRedirect: '/login' })(req, res, next);
+  } else {
+    passport.authorize('twitter-authz')(req, res, next);
+  }
+}
+
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/');
