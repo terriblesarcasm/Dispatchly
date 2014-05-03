@@ -37,12 +37,6 @@ app.get("/api/bitly", function(req, res) {
 	});
 });
 
-/* serves all the static files */
-app.get(/^(.+)$/, function(req, res){
-	console.log('static file request : ' + req.params);
-	res.sendfile( __dirname + req.params[0]);
-});
-
 app.get("/auth/facebook", authnOrAuthzFacebook);
 
 app.get("/auth/facebook/callback", passport.authenticate('facebook', { failureRedirect: '/' }),
@@ -74,12 +68,6 @@ app.get("/home", ensureAuthenticated, function(req, res){
 	})
 });
 
-/* node port config */
-var port = process.env.PORT || 5000;
-	app.listen(port, function() {
-	console.log("MEAN stack is running on port " + port);
-});
-
 function authnOrAuthzFacebook(req, res, next) {
   if (!req.isAuthenticated()) {
     passport.authenticate('facebook', { scope: ['email', 'read_stream'], successRedirect: '/home',
@@ -93,3 +81,19 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/');
 }
+
+
+
+
+/* serves all the static files */
+app.get(/^(.+)$/, function(req, res){
+	console.log('static file request : ' + req.params);
+	res.sendfile( __dirname + req.params[0]);
+});
+
+
+/* node port config */
+var port = process.env.PORT || 5000;
+	app.listen(port, function() {
+	console.log("MEAN stack is running on port " + port);
+});
