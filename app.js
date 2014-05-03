@@ -9,6 +9,16 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 
 
+app.configure(function() {
+  app.use(express.static('public'));
+  app.use(express.cookieParser());
+  app.use(express.bodyParser());
+  app.use(express.session({ secret: 'keyboard cat' }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(app.router);
+});
+
 /* initialize all DB models */
 var User = require('./user.js');
 var Group = require('./group.js');
@@ -59,7 +69,6 @@ app.get('/authz/facebook/callback',
       res.redirect('/home');
     });
   });
-
 
 app.get("/home", ensureAuthenticated, function(req, res){
 	User.findById(req.session.passport.user, function(err, user) {
