@@ -69,8 +69,8 @@ app.get("/db/create-group", function(req, res, next) {
 
 	// Group model
 	var group = new Group({
-		group_id: req.query.name,
-		password: req.query.password,
+		group_id: req.query.group.name,
+		password: req.query.group.password,
 	});
 
 	// Save group to the DB
