@@ -66,10 +66,17 @@ app.get("/api/bitly", function(req, res) {
 
 app.get("/auth/facebook", authnOrAuthzFacebook);
 
+app.get("/auth/twitter", authnOrAuthzTwitter);
+
 app.get("/auth/facebook/callback", passport.authenticate('facebook', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/home');
 });
+
+app.get("/auth/twitter/callback", passport.authenticate('twitter', { failureRedirect: '/' }),
+	function(req, res) {
+		res.redirect('/home');
+	});
 
 app.get('/authz/facebook/callback', 
   passport.authorize('facebook-authz', { failureRedirect: '/' }),

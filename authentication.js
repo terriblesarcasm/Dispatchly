@@ -32,6 +32,30 @@ passport.use('facebook-authz', new FacebookStrategy({
 ));
 
 
+passport.use(new TwitterStrategy({
+   consumerKey: config.twitter.consumerKey,
+   consumerSecret: config.twitter.consumerSecret,
+   callbackURL: config.twitter.callbackURL
+ },
+ function(accessToken, refreshToken, profile, done) {
+    authentication(accessToken, refreshToken, profile, done, 'twitter.com');
+  }
+));
+
+
+//authorize twitter
+
+passport.use('twitter-authz', new TwitterStrategy({
+  consumerKey: config.twitter.consumerKey,
+  consumerSecret: config.twitter.consumerSecret,
+  callbackURL: config.twitter.callbackauthzURL,
+  passReqToCallback: true
+  },
+  function(req, accessToken, refreshToken, profile, done) {
+    authorization(req, accessToken, refreshToken, profile, done, 'twitter.com');
+  }
+));
+
 
 //authenticate your account, means the user is not already logged in
 function authentication(accessToken, refreshToken, profile, done, provider) {
