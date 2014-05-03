@@ -52,6 +52,11 @@ app.get("/", function(req, res) {
 	res.sendfile('./views/index.html');
 });
 
+/* TESTING : create-group.temp */
+app.get("/create-group", function(req, res) {
+	res.sendfile('./public/partials/create-group.temp');
+});
+
 /* bitly API request */
 app.get("/api/bitly", function(req, res) {
 	Bitly.authenticate("spamr", "i001254m", function(err, access_token) {

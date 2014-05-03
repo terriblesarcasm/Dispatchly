@@ -38,7 +38,7 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 
 
 .controller('CreateGroupCtrl', function ($scope, $window, $location, $q, $http) {
-
+	
 })
 
 	
