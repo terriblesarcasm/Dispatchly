@@ -92,6 +92,22 @@ app.get('/authz/facebook/callback',
     });
   });
 
+app.get('/authz/twitter/callback', 
+  passport.authorize('twitter-authz', { failureRedirect: '/' }),
+  function(req, res) {
+    var user = req.user;
+    var account = req.account;
+
+    // Associate the Twitter account with the logged-in user.
+    account.userId = user.id;
+    account.save(function(err) {
+      if (err) { return self.error(err); }
+      res.redirect('/home');
+    });
+  });
+
+
+
 app.get("/home", ensureAuthenticated, function(req, res){
 	User.findById(req.session.passport.user, function(err, user) {
 		if (err) { console.log(err); }
