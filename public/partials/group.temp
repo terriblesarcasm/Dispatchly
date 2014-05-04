@@ -9,5 +9,7 @@
 		</table>
 		<a ui-sref="groupChat/{group:group.name}"><button type='button' class='btn btn-primary' ng-click='startChat(group.name)'>Group Chat</button></a>
 
+		<a ui-sref="sendAlert/{group:group.name}"><button type='button' class='btn btn-primary'>Send Alert </button></a>
+
 	</center>
 </div>
