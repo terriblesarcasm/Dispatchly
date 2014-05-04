@@ -10,7 +10,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.6/angular.js"></script>
   <script src='/public/js/app.js'></script>
 	<!-- Angular Route & Angular UI Bootstrap -->
-  <script src="/public/js/angular-route.min.js"></script>
+  <script src="/public/js/angular-ui-router.min.js"></script>
   <script src="/public/js/ui-bootstrap-0.10.0.min.js"></script>
   <script src="/public/js/ui-utils.min.js"></script>
   <!-- Firebase : Firebase, AngularFire & Simple Login -->
@@ -35,9 +35,9 @@
         <!-- This is for the nav links, forms, and other content that will be toggled -->
         <div class="collapse navbar-collapse" collapse="isCollapsed">
           <ul class="nav navbar-nav">
-            <li ng-class="{ active: isActive('/')}"><a ng-href="/" ng-click="isCollapsed=true">Groups</a></li>
-            <li ng-class="{ active: isActive('/create-group')}"><a ng-href="create-group" ng-click="isCollapsed=true">Create Group</a></li>
-            <li ng-class="{ active: isActive('/randomlinks')}"><a ng-href="randomlinks" ng-click="isCollapsed=true">Test Random Link</a></li>
+            <li ng-class="{ active: isActive('/')}"><a ui-sref="home" ng-click="isCollapsed=true">Groups</a></li>
+            <li ng-class="{ active: isActive('/create-group')}"><a ui-sref="createGroup" ng-click="isCollapsed=true">Create Group</a></li>
+            <li ng-class="{ active: isActive('/randomlinks')}"><a ui-sref="joinGroup" ng-click="isCollapsed=true">Test Random Link</a></li>
           </ul>
           <div class='input-group navbar-right' ng-if="user.groups">
             <select ng-model="user.groups" ngOptions="group in user.groups"> </select>
@@ -45,7 +45,7 @@
         </div>
       </nav>
     </div>
-    <div ng-view>
+    <div ui-view>
     </div>
   </body>
 </html>

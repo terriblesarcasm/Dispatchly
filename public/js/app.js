@@ -1,23 +1,24 @@
-var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
+var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase'])
 
-.config(['$routeProvider', '$locationProvider', 
-    function ($routeProvider, $locationProvider) {
-        $routeProvider.
-		when('/', {
-			templateUrl: 'public/partials/home.temp',
-			controller: 'MainCtrl'
-		}).
-		when('/create-group', {
-			templateUrl: 'public/partials/create-group.temp',
-			controller: 'CreateGroupCtrl'
-		}).
-		when('/join-group', {
-			templateUrl: 'public/partials/join-group.temp',
-			controller: 'JoinGroupCtrl'
-		}).
-		otherwise({
-			redirectTo: '/'
-		});
+.config(function ($stateProvider, $urlRouterProvider) {
+	$urlRouterProvider.otherwise("/");
+
+	$stateProvider
+	.state('home', {
+		url: "/",
+		templateUrl: "public/partials/home.temp",
+		controller: "MainCtrl"
+	})
+	.state('createGroup', {
+		url: "/createGroup",
+		templateUrl: "public/partials/create-group.temp",
+		controller: "CreateGroupCtrl"
+	})
+	.state('joinGroup', {
+		url: "/joinGroup",
+		templateUrl: "public/partials/join-group.temp",
+		controller: "JoinGroupCtrl"
+	});
 }])
 
 .controller('HeaderController', function ($scope, $window, $location) {
