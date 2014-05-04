@@ -4,15 +4,15 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
     function ($routeProvider, $locationProvider) {
         $routeProvider.
 		when('/', {
-			templateUrl: '/public/partials/home.temp',
+			templateUrl: 'public/partials/home.temp',
 			controller: 'MainCtrl'
 		}).
 		when('/create-group', {
-			templateUrl: '/public/partials/create-group.temp',
+			templateUrl: 'public/partials/create-group.temp',
 			controller: 'CreateGroupCtrl'
 		}).
 		when('/join-group', {
-			templateUrl: '/public/partials/join-group.temp',
+			templateUrl: 'public/partials/join-group.temp',
 			controller: 'JoinGroupCtrl'
 		}).
 		otherwise({
