@@ -7,7 +7,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
         setuser: function() {
             return $http.get('/get/user').then(function(response) {
             	console.log("response from /get/user is: "+response);
-                user = response;
+                user = response.data;
                 return user;
             });
         },
