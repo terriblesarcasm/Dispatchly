@@ -67,18 +67,6 @@ app.get("/create-group", function(req, res) {
 /* Create group API */
 app.get("/db/create-group", function(req, res, next) {
 
-
-	Group.findOne({group_id: req.query.name}, function (err, groupData) {
-		if (err) return console.error(err);
-		if (groupData) { 
-			console.log('group already exists ' + groupData);
-		}
-		else {
-			console.log('there was an error ' + groupData);
-		}
-	})
-
-
 	// Group model
 	var group = new Group({
 		group_id: req.query.name,
@@ -100,6 +88,7 @@ app.get("/db/create-group", function(req, res, next) {
 			//done(null, group);
 		}
 	});
+
 
 });
 
