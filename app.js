@@ -69,10 +69,10 @@ app.get("/db/create-group", function(req, res, next) {
 
 	// Group model
 	var group = new Group({
-		group_id: req.query.group.name,
-		password: req.query.group.password,
-		address: req.query.group.address,
-		zipcode: req.query.group.zipcode
+		group_id: req.query.name,
+		password: req.query.password,
+		address: req.query.address,
+		zipcode: req.query.zipcode
 	});
 
 	// Save group to the DB
