@@ -1,5 +1,11 @@
 var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.utils'])
 
+.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+})
+
 .factory('User', function ($http){
 	var user = {};
 
