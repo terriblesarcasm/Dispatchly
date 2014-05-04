@@ -59,7 +59,22 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 			}
 		})
 		.error(function(error){
-			//console.log('error: ' + error);
+			console.log('error: ' + error);
+		});
+	}	
+})
+
+
+.controller('JoinGroupCtrl', function ($scope, $window, $location, $q, $http) {
+	$scope.createGroup = function (group) {
+		$http.get('/db/join-group?group_id=' + group.group_id + '&password=' + group.password).success(function(response) {
+			if (response == '"11000"') {
+				$scope.errormsg = 'Invalid username/password';
+				$scope.error = {flag:true}; 
+			}
+		})
+		.error(function(error){
+			console.log('error: ' + error);
 		});
 	}	
 })
