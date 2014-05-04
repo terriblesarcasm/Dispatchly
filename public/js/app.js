@@ -121,7 +121,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 .controller("FirebaseController", ["$scope", "$firebase", "User",
   function($scope, $firebase, User) {
 	// Get username from factory
-	$scope.user = User.geuUser();	
+	$scope.user = User.getuser();	
 	console.log($scope.user);
   	
   	var URL = "https://dispatchninja.firebaseIO.com/";
