@@ -97,6 +97,11 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	};	
 })
 
+
+.controller('PhoneCtrl', function ($scope, $window, $location, $q, $http) {
+
+})
+
 	
 /*Firebase, AngularFire */
 .controller("FirebaseController", ["$scope", "$firebase",
