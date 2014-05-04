@@ -87,8 +87,11 @@ app.get("/db/create-group", function(req, res, next) {
 		} else {
 			console.log("saved group to DB");
 			res.send(true);
-			//done(null, group);
+
+			// Save group to user
+
 		}
+
 	});
 });
 
@@ -107,7 +110,6 @@ app.get("/db/join-group", function(req, res, next) {
 			// Add group to user
 			var user = req.user;
 			user.groups.push(groupData.group_id);
-			console.log(groupData.group_id);			
 
 			// Save changes to the DB
 			group.save(function(err) {
@@ -132,6 +134,7 @@ app.get("/db/join-group", function(req, res, next) {
 		}
 		else {
 			console.log('invalid username/password');
+			res.send('invalid');
 		}
 	});
 

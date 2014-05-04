@@ -68,7 +68,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase'])
 .controller('JoinGroupCtrl', function ($scope, $window, $location, $q, $http) {
 	$scope.joinGroup = function (group) {
 		$http.get('/db/join-group?group_id=' + group.group_id + '&password=' + group.password).success(function(response) {
-			if (response == '"11000"') {
+			if (response == 'invalid') {
 				$scope.errormsg = 'Invalid username/password';
 				$scope.error = {flag:true}; 
 			}
