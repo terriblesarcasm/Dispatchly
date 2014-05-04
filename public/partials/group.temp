@@ -1,6 +1,6 @@
 <div class="container">
 	<center>
-		<h3>FUCKING TITLE</h3>
+		<h3>{{group.name}}</h3>
 		<table class="table">
 			<tbody>
 			<tr class="active"><td>Joe</td></tr>
