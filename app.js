@@ -71,11 +71,10 @@ app.get("/db/create-group", function(req, res, next) {
 	Group.findOne({group_id: req.query.name}, function (err, groupData) {
 		if (err) return console.error(err);
 		if (groupData) { 
-			res.send('groupexists');
-			console.log('group already exists');
+			console.log('group already exists ' + groupData);
 		}
 		else {
-			res.send('invalid username/password');
+			console.log('there was an error ' + groupData);
 		}
 	})
 
