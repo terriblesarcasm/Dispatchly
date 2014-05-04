@@ -127,7 +127,7 @@ app.get("/get/user", function(req, res, next) {
 });
 
 app.get("/db/add-alert", function(req, res, next) {
-	Group.findOne({req.query.group_id}, function(err, groupData) {
+	Group.findOne({group_id: req.query.group_id}, function(err, groupData) {
 		if (err) return console.error(err);
 		if (groupData) { 
 			console.log('there is a match: ' + groupData);
