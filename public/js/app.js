@@ -41,7 +41,8 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 	$scope.createGroup = function (group) {
 		$http.get('/db/create-group?name=' + group.name + '&password=' + group.password + '&address=' + group.address + '&zipcode=' + group.zipcode).success(function(response) {
 			console.log('response: ' + response);
-			if (response == "11000") {
+			if (response === "11000") {
+				console.log('the conditional statement is true');
 				$scope.errormsg = 'Group name already exists';
 				console.log($scope.errormsg);
 			}
