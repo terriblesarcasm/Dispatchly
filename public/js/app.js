@@ -18,7 +18,7 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 		otherwise({
 			redirectTo: '/home'
 		});
-		$locationProvider.html5Mode(true);
+		//$locationProvider.html5Mode(true);
 }])
 
 .controller('HeaderController', function ($scope, $window, $location) {
