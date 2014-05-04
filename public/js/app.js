@@ -5,7 +5,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 	var getUserPrivate = function() {
 			$http.get('/get/user').success(function(response) {
-				console.log(" response: "+response);
+				console.log(" response: "+response.name);
 				user = response;
 				return user;
 			});
