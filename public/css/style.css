@@ -38,38 +38,3 @@ body{
   text-align: center;
 }
 
-/* Sidebar CSS */
-#canvas {
-  transition: -webkit-transform 0.5s ease-in-out;
-  transition: transform 0.5s ease-in-out;
-}
-#slide:before {
-  content: '';
-}
-#slide:after {
-  content: ' >';
-}
-
-@media (max-width: 768px) {
-  #sidebar {
-    position: absolute;
-    -webkit-transform: translate3d(-100%, 0, 0);
-    -moz-transform: translate3d(-100%, 0, 0);
-    -ms-transform: translate3d(-100%, 0, 0);
-    -o-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
-  }
-  #canvas.active {
-    -webkit-transform: translate3d(50%, 0, 0);
-    -moz-transform: translate3d(50%, 0, 0);
-    -ms-transform: translate3d(50%, 0, 0);
-    -o-transform: translate3d(50%, 0, 0);
-    transform: translate3d(50%, 0, 0);
-  }
-  #canvas.active #slide:after {
-    content: ' ';
-  }
-  #canvas.active #slide:before {
-    content: '< ';
-  }
-}
