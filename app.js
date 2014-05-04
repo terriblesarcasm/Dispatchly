@@ -86,10 +86,20 @@ app.get("/db/create-group", function(req, res, next) {
 			res.send(new String(err.code));
 		} else {
 			console.log("saved group to DB");
-			res.send(true);
 
 			// Save group to user
-
+			var user = req.user;
+			user.groups.push(req.query.name);
+			
+			user.save(function(err) {
+				if(err) {
+					console.log(err);
+					res.send(new String(err.code));
+				} else {
+					console.log("saved group to user");
+					res.send(true);
+				}
+			});			
 		}
 
 	});
