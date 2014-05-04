@@ -115,7 +115,7 @@ app.get("/db/add-phone-number", function(req, res, next) {
 			console.log(err);
 			res.send(new String(err.code));
 		} else {
-			console.log("saved phone number to user");
+			console.log("saved phone number to user: " + req.query.phonenumber);
 			res.send(true);
 		}
 	});	
