@@ -19,7 +19,7 @@
 				Groups <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu">
-				<li ng-repeat="group in user.groups"><a ui-sref="group({group})">{{group}}</a></li>
+				<li ng-repeat="group in user.groups"><a ui-sref="group({group: group})">{{group}}</a></li>
 			</ul>
 		</div>
 
