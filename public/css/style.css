@@ -12,6 +12,10 @@ body{
   padding: 0px;
 }
 
+.form-control {
+  max-width: 500px;
+}
+
 .container {
   padding: 0px;
 }
