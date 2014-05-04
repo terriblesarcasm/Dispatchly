@@ -17,28 +17,12 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
     }
 })
 
-.factory('Phone', function (User, $http) {
-	
-		var setPhonePrivate = function(phone) {
-			return $http.get('/db/add-phone-number?phonenumber=' + phone).success(function(response) {
-			if (response == 'invalid') {
-				$scope.errormsg = 'Invalid group name/password';
-				$scope.error = {flag:true}; 
-			}
-		})
-		.error(function(error){
-			console.log('error: ' + error);
-		})
-		.then(function() {
-			var user = User.getUser();
-
-			return user;
-		});
-	}
-
+.factory('Phone', function ($http) {
 	return {
-		setPhone: setPhonePrivate
-	};
+		setPhone: function(phone) {
+			return $http.get('/db/add-phone-number?phonenumber=' + phone)
+		}
+	}
 })
 
 .config(function ($stateProvider, $urlRouterProvider) {
@@ -80,10 +64,13 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		$scope.user = response;
 	});	
 
-	console.log("mainctrl scope.user: " + $scope.user);
-
-	$scope.setPhone = Phone.setPhone().then(function(user) {
-		$scope.user = user;
+	$scope.setPhone = Phone.setPhone(phone).then(function(response) {
+		if (response == 'invalid') {
+			$scope.errormsg = 'Invalid group name/password';
+			$scope.error = {flag:true}; 		
+		} else {
+			console.log('in else');
+		}
 	});
 
 	$scope.call = function (longUrl) {
@@ -134,7 +121,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 .controller("FirebaseController", ["$scope", "$firebase", "User",
   function($scope, $firebase, User) {
 	// Get username from factory
-	$scope.user = User.getUser();	
+	$scope.user = User.geuUser();	
 	console.log($scope.user);
   	
   	var URL = "https://dispatchninja.firebaseIO.com/";
