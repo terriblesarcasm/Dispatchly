@@ -1,18 +1,13 @@
 <div class="container">
 
-	<h3 class="text-success">We are Bootstrapped</h3>
-
-	<h3>Firebase</h3>
-	<div ng-controller="FirebaseController">
-		<input ng-model="message"><button type='button' ng-click='addMessage(message)'>Add message</button>
-		<br>
-		<p ng-repeat="item in items">{{item.mes}}</p>
-	</div> <!-- /firebase -->
-
-
-	<h3>Bitly</h3>
-	<input ng-model="test.longUrl"><button type='button' ng-click='call(test.longUrl)'>Call api</button>
-	<br>
-	{{ test }}
+	<div id="content" class="col-xs-12 col-sm-9">
+		<h3>Join a group</h3>
+		<h4 class="text-danger"><strong>{{errormsg}}</strong></h4>
+		<div ng-class="{'has-error': error.flag}">
+			<input class="form-control"  ng-model="group.group_id" placeholder="Group name" autocomplete="off" autocapitalize="off"><br>
+			<input class="form-control" ng-model="group.password" placeholder="Group password" autocomplete="off" autocapitalize="off"><br>
+		</div>
+		<button type='button' class="btn btn-primary button-spacing" ng-click='joinGroup(group)'>Join</button>
+	</div> <!-- /content -->
 
 </div> <!-- /container -->
