@@ -106,7 +106,8 @@ app.get("/db/join-group", function(req, res, next) {
 
 			// Add group to user
 			var user = req.user;
-			user.groups.push(groupData.group_id);			
+			user.groups.push(groupData.group_id);
+			console.log(groupData.group_id);			
 
 			// Save changes to the DB
 			group.save(function(err) {
