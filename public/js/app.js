@@ -1,5 +1,20 @@
 var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase'])
 
+.factory('User', function ($http){
+	var user = {};
+
+	var getUserPrivate = function() {
+			$http.get('/get/user').success(function(response) {
+				user = response;
+				return user;
+			});
+		}
+
+	return {
+		getUser: getUserPrivate
+	};
+})
+
 .config(function ($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise("/");
 
@@ -29,12 +44,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase'])
 	$scope.isCollapsed = true;
 })
 
-.controller('MainCtrl', function ($scope, $window, $location, $q, $http) {
-	$scope.test = {
-		name: 'test',
-		shorturl: '',
-		longUrl: ''
-	};
+.controller('MainCtrl', function ($scope, $window, $location, $q, $http, User) {
+	$scope.user = User.getUser;	
 
 	$scope.call = function (longUrl) {
 		

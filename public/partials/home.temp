@@ -8,6 +8,7 @@
 		<input class="form-control" ng-model="group.password" placeholder="Group password" autocomplete="off" autocapitalize="off"><br>
 		<input class="form-control" ng-model="group.address" placeholder="Group address" autocomplete="off" autocapitalize="off"><br>
 		<input class="form-control" ng-model="group.zipcode" placeholder="Group zip code" autocomplete="off" autocapitalize="off"><br>
-		<center><button type='button' class="btn btn-primary button-spacing" ng-click='createGroup(group)'>Create</button></center>
+		<div ng-include="phone.temp" ng-if="!user.phonenumber"></div>
+		<center><button type='button' class="btn btn-primary button-spacing" ng-click='createGroup(group)' ng-if="user.phonenumber">Create</button></center>
 
 </div> <!-- /container -->
