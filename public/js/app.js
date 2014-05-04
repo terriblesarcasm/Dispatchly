@@ -3,7 +3,7 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 .config(['$routeProvider', '$locationProvider', 
     function ($routeProvider, $locationProvider) {
         $routeProvider.
-		when('/home', {
+		when('/', {
 			templateUrl: '/public/partials/home.temp',
 			controller: 'MainCtrl'
 		}).
@@ -16,9 +16,8 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 			controller: 'JoinGroupCtrl'
 		}).
 		otherwise({
-			redirectTo: '/home'
+			redirectTo: '/'
 		});
-		//$locationProvider.html5Mode(true);
 }])
 
 .controller('HeaderController', function ($scope, $window, $location) {
