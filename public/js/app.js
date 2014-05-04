@@ -69,11 +69,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 				$scope.errormsg = 'Invalid group name/password';
 				$scope.error = {flag:true}; 		
 			} else {
-				console.log('in else');
+				$location.path("/");
 			}
-		}).then(function() {
-			$location.path("/");
-		});
+		})
 	}
 
 	$scope.call = function (longUrl) {
