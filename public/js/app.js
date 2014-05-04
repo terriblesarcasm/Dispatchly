@@ -74,7 +74,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		controller: "AlertCtrl"
 	})
 	.state('confirmAlert', {
-		url: "/confirmAlert/{code}",
+		url: "/confirmAlert/{group}/{code}",
 		templateUrl: "public/partials/confirm-alert.temp",
 		controller: "ConfirmAlertCtrl"
 	});
@@ -148,11 +148,29 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 
-.controller('AlertCtrl', function ($scope, $window, $location, $q, $http) {
-
+.controller('AlertCtrl', function ($scope, $window, $location, $q, $http, $stateParams) {
+	$scope.group_id=
 })
 
-.controller('ConfirmAlertCtrl', function ($scope, $window, $location, $q, $http) {
+.controller('ConfirmAlertCtrl', function ($scope, $window, $location, $q, $http, $stateParams, User) {
+	console.log('logging the alert code: ' + $stateParams.code);
+	$scope.code = $stateParams.code;
+
+	$scope.sendAlert = function () {
+		var longUrl = "http://dispatch.systems:5000/alert-response.temp?code="+$scope.code+"&group_id="+$scope.group_id;
+		$http.get('/api/bitly?name=' + longUrl).success(function(response) {
+			console.log(response);
+
+			$scope.test = {
+				name: 'url',
+				shorturl: response.data.url
+			};	
+			return response.data.url;
+		}).then(function(shorturl) {
+			var user = User.getuser();
+			$http.get('/api/twilio?phone='+user.phonenumber+'&from=+16466817834&'+)
+		});
+	}
 
 })
 
