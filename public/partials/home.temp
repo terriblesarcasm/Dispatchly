@@ -11,16 +11,16 @@
 		</div>
 
 		<div ng-if="user.phonenumber">
-			<center><button type='button' class="btn btn-primary button-spacing" ng-click='joinGroup(group)'>Join a Group</button></center>
+			<div class="btn-group" id="groupdropdown">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Groups <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li id="dropdowns" ng-repeat="group in user.groups"><a ui-sref="group({group: group})">{{group}}</a></li>
+				</ul>
+			</div>
 		</div>
 
-		<div class="btn-group" id="groupdropdown">
-			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-				Groups <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li id="dropdowns" ng-repeat="group in user.groups"><a ui-sref="group({group: group})">{{group}}</a></li>
-			</ul>
-		</div>
+		
 
 </div> <!-- /container -->
