@@ -7,6 +7,10 @@
 				Alert Codes<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu">
+				<li id="dropdowns">House Fire <i class="icon-large icon-fire"></i></li>
+				<li id="dropdowns">House Fire (B)</li>
+				<li id="dropdowns">Car Fire (A)</li>
+				<li id="dropdowns">Car Fire (B)</li>
 				<li id="dropdowns" ng-repeat="group in user.groups"><a ui-sref="group({group: group})">{{group}}</a></li>
 			</ul>
 		</div>
