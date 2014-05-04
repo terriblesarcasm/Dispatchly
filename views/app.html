@@ -19,29 +19,40 @@
 	<!-- Custom JS -->
   </head>
   <body ng-init="sidebarIsActive=false">
-    <div class="container" id="canvas" ng-class="{active: sidebarIsActive}">
-      <nav class="navbar navbar-default", role="navigation", ng-controller="HeaderController">
+    <div class="container">
+      <nav class="navbar navbar-default" role="navigation" ng-controller="HeaderController">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle pull-left" ng-click="sidebarIsActive = !sidebarIsActive">
-            <span class="sr-only"> Toggle navigation</span>
+          <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <a class="navbar-brand">Axihub</a>
+        </div>
+
+        // This is for the nav links, forms, and other content that will be toggled
+        <div class="collapse navbar-collapse" collapse="isCollapsed">
+          <ul class="nav navbar-nav">
+            <li ng-class="{ active: isActive('/app')}"><a ng-href="/app" ng-click="isCollapsed=true">Feed</a></li>
+            <li ng-class="{ active: isActive('/account')}"><a ng-href="/account", ng-click="isCollapsed=true">Account</a></li>
+          </ul>
+          <div class='input-group navbar-right'>
+            <div class='input-group-btn'>
+              <button type="button" class="search-btn btn btn-default dropdown-toggle" data-toggle="dropdown"> {{ search.display }} <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li ng-repeat="choice in dropdown">
+                  <a ng-click="search.param=choice.param; search.display=choice.display; search.placeholder=choice.placeholder"> {{choice.display}}</a>
+                </li>
+              </ul>
+            </div>
+            <form class='navbar-form'>
+              <input ng-model='search.term[search.param]' ng-change='setSearch(search)' placeholder='{{search.placeholder}}' name='anim' type="search" class="form-control search-input">
+            </form>
+          </div>
         </div>
       </nav>
     </div>
-    <div id="sidebar">
-      <ul class="nav-stacked">
-        <li class="active">Home</li>
-        <li>Home</li>
-        <li>Home</li>
-      </ul>
-    </div>
-
-        
-
-          <!-- This is for the side bar links, forms -->
     <div ng-view style="height:100%;" id="content">
     </div>
   </body>
