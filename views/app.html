@@ -42,6 +42,11 @@
           </ul>
           <div class='input-group navbar-right' ng-if="user.groups">
             <select ng-model="user.groups" ng-options="$index for group in user.groups"> </select>
+
+            <select ng-model="user.groups">
+              <option ng-repeat="group in groups" value="{{group}}">{{group}}</option>
+            </select>
+
           </div>
         </div>
       </nav>
