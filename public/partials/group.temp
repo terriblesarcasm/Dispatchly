@@ -7,5 +7,7 @@
 			<tr class="danger"><td>Steve</td></tr>
 			</tbody>
 		</table>
+		<a ui-sref="/group-chat/{group:group.name}"><button type='button' class='btn btn-primary' ng-click='startChat(group.name)'>Group Chat</button></a>
+
 	</center>
 </div>
