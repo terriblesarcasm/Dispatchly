@@ -26,8 +26,8 @@ h3 {
   width:67%;
 }
 
-.chatbutton {
-  width: 33% !important;
+.btn.btn-primary.chatbutton {
+  width: 33%;
 }
 
 .btn.btn-primary {
