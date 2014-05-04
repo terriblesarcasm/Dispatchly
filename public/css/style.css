@@ -14,13 +14,14 @@ body{
 
 #groupdropdown { 
   margin: 0 auto;
-  width: 250px;
+  max-width: 500px !important;
+  width: 95% !important;
 }
 
 #dropdowns { 
   text-align: center;
-  max-width: 300px;
-  width: 250px;
+  max-width: 500px !important;
+  width: 95% !important;
 }
 
 h3 {
