@@ -49,7 +49,12 @@ var Bitly = new BitlyAPI({
 /* serves main page */
 /* all other requests should fall below this */
 app.get("/", ensureAuthenticated, function(req, res) {
-	res.sendfile('./views/app.html');
+	User.findById(req.session.passport.user, function(err, user) {
+    if(err) { 
+      console.log(err); 
+    } else {
+      res.sendfile('./views/app.html', { user: user});
+    }
 });
 
 // app.get("/#/", ensureAuthenticated, function(req, res) {
