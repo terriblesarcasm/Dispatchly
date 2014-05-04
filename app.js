@@ -150,7 +150,7 @@ app.get("/db/add-alert", function(req, res, next) {
 			console.log('invalid group');
 			res.send('invalid');
 		}
-	}
+	})
 });
 
 /* Join group API */
