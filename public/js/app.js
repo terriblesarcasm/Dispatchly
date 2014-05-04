@@ -160,7 +160,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 .controller('GroupCtrl', function ($scope, $window, $location, $q, $http, $stateParams, Group) {
 	console.log('logging the state param: ' + $stateParams.group);
 	$scope.group = {name: $stateParams.group};
-	group.setGroup($stateParams.group);
+	Group.setGroup($stateParams.group);
 })
 
 	
