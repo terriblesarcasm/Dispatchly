@@ -1,0 +1,11 @@
+<div class="container">
+	<center>
+		<h3>FUCKING TITLE</h3>
+		<table class="table">
+			<tbody>
+			<tr class="active">Joe</tr>
+			<tr class="danger">Steve</tr>
+			</tbody>
+		</table>
+	</center>
+</div>

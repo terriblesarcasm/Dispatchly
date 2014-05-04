@@ -50,6 +50,11 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		url: "/groupChat",
 		templateUrl: "public/partials/group-chat.temp",
 		controller: "FirebaseController"
+	})
+	.state('group', {
+		url: "/group/{group}",
+		templateUrl: "public/partials/group.temp",
+		controller: "GroupCtrl"
 	});
 })
 
@@ -135,6 +140,11 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			console.log('error: ' + error);
 		});
 	};	
+})
+
+
+.controller('GroupCtrl', function ($scope, $window, $location, $q, $http, $stateParams) {
+	console.log('logging the state param: ' + $stateParams.group);
 })
 
 	
