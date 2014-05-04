@@ -93,8 +93,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		$http.get('/db/create-group?name=' + group.name + '&password=' + group.password + '&address=' + group.address + '&zipcode=' + group.zipcode).success(function(response) {
 			if (response == '"11000"') {
 				$scope.errormsg = 'Group name already exists';
-				$scope.error = {flag:true};
-				
+				$scope.error = {flag:true};				
+			}
+			else {
 				// TODO: redirect back to homepage 
 				$scope.$apply(function() { 
 					$location.path("/");
