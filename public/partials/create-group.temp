@@ -1,7 +1,7 @@
 <div class="container">
 
 		<center><h3>Create a group</h3></center>
-		<h4 class="text-danger"><strong>{{errormsg}}</strong></h4>
+		<center><h4 class="text-danger"><strong>{{errormsg}}</strong></h4></center>
 		<div ng-class="{'has-error': error.flag}">
 			<input class="form-control"  ng-model="group.name" placeholder="Group name" autocomplete="off" autocapitalize="off"><br>
 		</div>
