@@ -105,6 +105,23 @@ app.get("/db/create-group", function(req, res, next) {
 	});
 });
 
+/* Add phone number to user API */
+app.get("/db/add-phone-number", function(req, res, next) {
+	var user = req.user;
+	user.phonenumber = req.query.phonenumber;
+
+	user.save(function(err) {
+		if(err) {
+			console.log(err);
+			res.send(new String(err.code));
+		} else {
+			console.log("saved phone number to user");
+			res.send(true);
+		}
+	});	
+
+});
+
 app.get("/get/user", function(req, res, next) {
 	res.send(req.user);
 });

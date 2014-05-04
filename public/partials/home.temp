@@ -6,7 +6,7 @@
 			<div ng-class="{'has-error': error.flag}">
 				<input class="form-control"  ng-model="input.phonenumber" placeholder="Phone number (6315555555)" pattern="[0-9]*" inputmode="numeric" autocomplete="off" autocapitalize="off"><br>
 			</div>
-			<center><button type='button' class="btn btn-primary button-spacing" ng-click='addPhoneNumber(user)'>Add phone number</button></center>
+			<center><button type='button' class="btn btn-primary button-spacing" ng-click='addPhoneNumber(input)'>Add phone number</button></center>
 		</div>
 
 		<div ng-if="user.phonenumber">
