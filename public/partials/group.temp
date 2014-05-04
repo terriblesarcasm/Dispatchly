@@ -3,7 +3,7 @@
 		<h3>{{group.name}}</h3>
 		<table class="table">
 			<tbody>
-			<tr class="active"><td>Joe</td></tr>
+			<tr class="success"><td>Joe</td></tr>
 			<tr class="danger"><td>Steve</td></tr>
 			</tbody>
 		</table>
