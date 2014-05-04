@@ -1,6 +1,9 @@
 <div class="container">
 	<div ng-controller="FirebaseController">
-		<input class="form-control" ng-model="message" ui-keypress="{13:'addMessage(message)'}"><button type='button' class='btn btn-primary' ng-click='addMessage(message)'>Add message</button>
+		<center>
+		<input class="form-control pull-left" ng-model="message" ui-keypress="{13:'addMessage(message)'}">
+		<button type='button' class='btn btn-primary' ng-click='addMessage(message)'>Add message</button>
+		</center>
 		<br>
 		<p ng-repeat="item in items"><strong>{{item.username}}:</strong> {{item.mes}}</p>
 	</div>
