@@ -150,15 +150,5 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
     	$scope.message = '';
     };
 
-    /* do stuff when after the initial data is loaded */
-	$scope.items.$on("loaded", function() {
-	  console.log("Initial data received!");
-	    /* check to see if remote data has changed */
-	    $scope.items.$on("change", function() {
-			console.log("A remote change was applied locally!");
-		});
-	});    
-
-
   }
 ]);
