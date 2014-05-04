@@ -96,7 +96,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 				$scope.error = {flag:true};				
 			}
 			else {
-				// TODO: redirect back to homepage 
+				// redirect back to homepage 
 				$location.path("/");
 			}
 		})
@@ -113,6 +113,10 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			if (response == 'invalid') {
 				$scope.errormsg = 'Invalid group name/password';
 				$scope.error = {flag:true}; 
+			}
+			else {
+				// redirect back to homepage 
+				$location.path("/");
 			}
 		})
 		.error(function(error){
