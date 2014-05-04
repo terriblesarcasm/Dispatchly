@@ -54,7 +54,6 @@ app.get("/", function(req, res) {
 
 /* Create group API */
 app.get("/db/create-group", function(req, res, next) {
-
 	// Group model
 	var group = new Group({
 		group_id: req.query.name,
@@ -77,6 +76,49 @@ app.get("/db/create-group", function(req, res, next) {
 			//done(null, group);
 		}
 	});
+});
+
+/* Join group API */
+app.get("/db/join-group", function(req, res, next) {
+	// Look for a group_id/password match in the DB
+	Group.findOne({group_id: req.query.group_id, password: req.query.password}, function (err, groupData) {
+		if (err) return console.error(err);
+		if (groupData) { 
+			console.log('there is a match: ' + groupData);
+
+			// Add user to the group
+			var group = groupData;
+			group.users.push(req.user.name);
+
+			// Add group to user
+			var user = req.user;
+			user.groups.push(req.groupData.group_id);			
+
+			// Save changes to the DB
+			group.save(function(err) {
+				if(err) {
+					console.log(err);
+					res.send(new String(err.code));
+				} else {
+					console.log("saved group to DB");
+
+					user.save(function(err) {
+						if(err) {
+							console.log(err);
+							res.send(new String(err.code));
+						} else {
+							console.log("saved user to DB");
+							res.send(true);
+						}
+					});
+				}
+			});
+
+		}
+		else {
+			console.log('invalid username/password');
+		}
+	})
 
 
 });
