@@ -65,15 +65,18 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		$scope.user = response;
 	});	
 
-	$scope.setPhone = Phone.setPhone().then(function(response) {
-		console.log('testing');
-		if (response == 'invalid') {
-			$scope.errormsg = 'Invalid group name/password';
-			$scope.error = {flag:true}; 		
-		} else {
-			console.log('in else');
-		}
-	});
+	$scope.setPhone = function (phone) {
+		Phone.setPhone().then(function(response) {
+			console.log('testing');
+			if (response == 'invalid') {
+				$scope.errormsg = 'Invalid group name/password';
+				$scope.error = {flag:true}; 		
+			} else {
+				console.log('in else');
+			}
+		});
+	}
+	$scope.setPhone = 
 
 	$scope.call = function (longUrl) {
 		
