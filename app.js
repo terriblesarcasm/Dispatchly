@@ -31,7 +31,7 @@ passport.deserializeUser(function(id, done) {
         //console.log(user);
         if(!err) done(null, user);
         else done(err, null);
-    })
+    });
 });
 
 /* initialize all DB models */
@@ -118,7 +118,7 @@ app.get("/db/join-group", function(req, res, next) {
 		else {
 			console.log('invalid username/password');
 		}
-	})
+	});
 
 
 });
@@ -185,7 +185,7 @@ app.get("/home", ensureAuthenticated, function(req, res){
 		else {
 			res.sendfile('./views/app.html', { user: user });
 		}
-	})
+	});
 });
 
 

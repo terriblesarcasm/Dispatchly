@@ -34,7 +34,7 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 		name: 'test',
 		shorturl: '',
 		longUrl: ''
-	}
+	};
 
 	$scope.call = function (longUrl) {
 		
@@ -43,9 +43,9 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 			$scope.test = {
 				name: 'url',
 				shorturl: response.data.url
-			}	
+			};	
 		});
-	}
+	};
 })
 
 
@@ -61,7 +61,7 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 		.error(function(error){
 			console.log('error: ' + error);
 		});
-	}	
+	};	
 })
 
 
@@ -76,7 +76,7 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 		.error(function(error){
 			console.log('error: ' + error);
 		});
-	}	
+	};	
 })
 
 	
@@ -90,7 +90,7 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
     $scope.addMessage = function(message) {
     	$scope.items.$add({mes: message});
     	$scope.message = '';
-    }
+    };
 
     /* do stuff when after the initial data is loaded */
 	$scope.items.$on("loaded", function() {
