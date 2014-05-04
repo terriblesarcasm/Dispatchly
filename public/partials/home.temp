@@ -1,7 +1,7 @@
 <div class="container">
 		
 		<div ng-if="!user.phonenumber">
-			<div ng-include="phone.temp" ></div>
+			<div ng-include="./phone.temp" ></div>
 		</div>
 
 		<div ng-if="user.phonenumber">
