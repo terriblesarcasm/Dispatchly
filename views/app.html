@@ -40,7 +40,7 @@
             <li ng-class="{ active: isActive('/')}"><a ng-href="/randomlinks" ng-click="isCollapsed=true">Test Random Link</a></li>
           </ul>
           <div class='input-group navbar-right' ng-if="user.groups">
-            <select ng-model="user.groups" ngOptions="group in user.groups"> 
+            <select ng-model="user.groups" ngOptions="group in user.groups"> </select>
           </div>
         </div>
       </nav>
