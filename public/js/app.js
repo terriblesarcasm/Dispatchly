@@ -36,7 +36,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		getGroup: function() {
 			return group.name;
 		},
-		group;
+		group
 	}
 })
 
