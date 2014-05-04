@@ -23,9 +23,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 .factory('Phone', function (User, $http) {
-
+	
 		var setPhonePrivate = function(phone) {
-			$http.get('/db/add-phone-number?phonenumber=' + phone).success(function(response) {
+			return $http.get('/db/add-phone-number?phonenumber=' + phone).success(function(response) {
 			if (response == 'invalid') {
 				$scope.errormsg = 'Invalid group name/password';
 				$scope.error = {flag:true}; 
