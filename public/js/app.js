@@ -176,8 +176,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 	
 /*Firebase, AngularFire */
-.controller("FirebaseController", ["$scope", "$firebase", "User", $stateParams,
-  function($scope, $firebase, User, $stateParams) {
+.controller("FirebaseController", function($scope, $firebase, User, $stateParams) {
 	// Get username from factory
 	$scope.user = User.getuser();	
 	console.log($scope.user);
@@ -192,4 +191,4 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
     };
 
   }
-]);
+);
