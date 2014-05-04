@@ -18,7 +18,7 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 }])
 
 .controller('HeaderController', function ($scope, $window, $location) {
-	$scope.isCollapsed = { val = false };
+	$scope.isCollapsed = { val: false };
 })
 
 .controller('MainCtrl', function ($scope, $window, $location, $q, $http) {
