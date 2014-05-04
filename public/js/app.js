@@ -6,7 +6,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
     return { 
         setuser: function() {
             return $http.get('/get/user').then(function(response) {
-            	console.log("response from /get/user is: "+response);
                 user = response.data;
                 return user;
             });
@@ -20,7 +19,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 .factory('Phone', function ($http) {
 	return {
 		setPhone: function(phone) {
-			console.log('testing2222: '+phone);
 			return $http.get('/db/add-phone-number?phonenumber=' + phone)
 		}
 	}
@@ -67,13 +65,14 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 	$scope.setPhone = function (phone) {
 		Phone.setPhone(phone).then(function(response) {
-			console.log('testing: ' + response);
 			if (response == 'invalid') {
 				$scope.errormsg = 'Invalid group name/password';
 				$scope.error = {flag:true}; 		
 			} else {
 				console.log('in else');
 			}
+		}).then(function() {
+			$location.path("/");
 		});
 	}
 
