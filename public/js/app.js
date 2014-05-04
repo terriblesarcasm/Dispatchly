@@ -1,11 +1,5 @@
 var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.utils'])
 
-.filter('reverse', function() {
-  return function(items) {
-    return items.slice().reverse();
-  };
-})
-
 .factory('User', function ($http){
 	var user = {};
 
@@ -146,7 +140,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 	/* write data to Firebase */	
     $scope.addMessage = function(message) {
-    	$scope.items.$add({username: 'hardcoded', mes: message});
+    	$scope.items.$add({username: $scope.user.name, mes: message});
     	$scope.message = '';
     };
 
