@@ -97,9 +97,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			}
 			else {
 				// TODO: redirect back to homepage 
-				$scope.$apply(function() { 
-					$location.path("/");
-				});
+				$location.path("/");
 			}
 		})
 		.error(function(error){
