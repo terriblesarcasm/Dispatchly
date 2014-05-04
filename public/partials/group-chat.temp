@@ -5,6 +5,6 @@
 		<button type='button' class='btn btn-primary chatbutton' ng-click='addMessage(message)'>Add message</button>
 		</center>
 		<br>
-		<p ng-repeat="item in items | orderBy:'$index':false"><strong>{{item.username}}:</strong> {{item.mes}}</p>
+		<p ng-repeat="item in items | reverse:items"><strong>{{item.username}}:</strong> {{item.mes}}</p>
 	</div>
 </div>
