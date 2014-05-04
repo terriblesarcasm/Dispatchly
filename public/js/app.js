@@ -99,7 +99,17 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 
 .controller('PhoneCtrl', function ($scope, $window, $location, $q, $http) {
-
+	$scope.addPhoneNumber = function (input) {
+		$http.get('/db/add-phone-number?phonenumber=' + input.phonenumber).success(function(response) {
+			if (response == 'invalid') {
+				$scope.errormsg = 'Invalid group name/password';
+				$scope.error = {flag:true}; 
+			}
+		})
+		.error(function(error){
+			console.log('error: ' + error);
+		});
+	};	
 })
 
 	
