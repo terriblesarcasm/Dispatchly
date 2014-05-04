@@ -38,6 +38,7 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 
 
 .controller('CreateGroupCtrl', function ($scope, $window, $location, $q, $http) {
+console.log('CreateGroupCtrl is running');
 	$scope.createGroup = function (group) {
 		console.log('the function is running');
 		$http.get('/db/create-group?name=' + group.name + '&password=' + group.password + '&address=' + group.address + '&zipcode=' + group.zipcode).success(function(response) {
