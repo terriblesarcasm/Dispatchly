@@ -93,7 +93,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 	/* write data to Firebase */	
     $scope.addMessage = function(message) {
-    	$scope.items.$add({mes: message});
+    	$scope.items.$add({username: 'hardcoded', mes: message});
     	$scope.message = '';
     };
 
