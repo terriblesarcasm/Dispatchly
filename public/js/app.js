@@ -22,7 +22,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	};
 })
 
-.factory('Phone', function (User) {
+.factory('Phone', function (User, $http) {
 
 		var setPhonePrivate = function(phone) {
 			$http.get('/db/add-phone-number?phonenumber=' + phone).success(function(response) {
