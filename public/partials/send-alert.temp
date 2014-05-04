@@ -7,10 +7,10 @@
 				Alert Codes<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu">
-				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'House Fire (A)'})">House Fire <i class="icon-large icon-fire"></i><i class="icon-large icon-fire"></i></a></li>
-				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'House Fire (B)'})">House Fire <span class="glyphicon glyphicon-fire"></a></li>
-				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'Car Fire (A)'})">Car Fire <span class="glyphicon glyphicon-fire"><span class="glyphicon glyphicon-fire"></a></li>
-				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'Car Fire (B)'})">Car Fire <span class="glyphicon glyphicon-fire"></a></li>
+				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'House Fire (A)'})">House Fire (A)</i></a></li>
+				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'House Fire (B)'})">House Fire (B)</a></li>
+				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'Car Fire (A)'})">Car Fire (A)</a></li>
+				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'Car Fire (B)'})">Car Fire (B)</a></li>
 				<li id="dropdowns" ng-repeat="group in user.groups"><a ui-sref="group({group: group})">{{group}}</a></li>
 			</ul>
 			<br>
