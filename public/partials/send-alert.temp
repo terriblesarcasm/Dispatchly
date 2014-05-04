@@ -1,0 +1,16 @@
+<div class="container">
+	
+	<div>
+		<center>
+		<div class="btn-group" id="groupdropdown">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+				Alert Codes<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li id="dropdowns" ng-repeat="group in user.groups"><a ui-sref="group({group: group})">{{group}}</a></li>
+			</ul>
+		</div>
+		</center>
+	</div>
+
+</div> <!-- /container -->
