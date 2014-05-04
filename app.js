@@ -72,6 +72,7 @@ app.get("/db/create-group", function(req, res, next) {
 		if (err) return console.error(err);
 		if (groupData) { 
 			res.send('groupexists');
+			console.log('group already exists');
 		}
 		else {
 			res.send('invalid username/password');
