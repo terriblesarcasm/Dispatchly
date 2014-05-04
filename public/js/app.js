@@ -38,7 +38,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			var user = User.getUser();
 
 			return user;
-		});
+		})
 	}
 
 	return {
