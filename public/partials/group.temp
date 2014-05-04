@@ -7,9 +7,9 @@
 			<tr class="danger"><td>Steve</td></tr>
 			</tbody>
 		</table>
-		<a ui-sref="groupChat/{group:group.name}"><button type='button' class='btn btn-primary'>Group Chat</button></a>
+		<a ui-sref="groupChat({group:group.name})"><button type='button' class='btn btn-primary'>Group Chat</button></a>
 
-		<a ui-sref="sendAlert/{group:group.name}"><button type='button' class='btn btn-primary'>Send Alert </button></a>
+		<a ui-sref="sendAlert({group:group.name})"><button type='button' class='btn btn-primary'>Send Alert </button></a>
 
 	</center>
 </div>
