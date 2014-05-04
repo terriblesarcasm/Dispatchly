@@ -59,7 +59,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		controller: "JoinGroupCtrl"
 	})
 	.state('groupChat', {
-		url: "/groupChat",
+		url: "/groupChat/{group}",
 		templateUrl: "public/partials/group-chat.temp",
 		controller: "FirebaseController"
 	})
@@ -67,6 +67,11 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		url: "/group/{group}",
 		templateUrl: "public/partials/group.temp",
 		controller: "GroupCtrl"
+	})
+	.state('sendAlert', {
+		url: "/sendAlert/{group}",
+		templateUrl: "public/partials/send-alert.temp",
+		controller: "AlertCtrl"
 	});
 })
 
