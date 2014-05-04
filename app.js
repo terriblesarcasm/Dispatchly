@@ -105,6 +105,10 @@ app.get("/db/create-group", function(req, res, next) {
 	});
 });
 
+app.get("/get/user", function(req, res, next) {
+	res.send(req.user);
+});
+
 /* Join group API */
 app.get("/db/join-group", function(req, res, next) {
 	// Look for a group_id/password match in the DB
