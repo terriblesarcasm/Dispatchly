@@ -40,14 +40,6 @@
             <li ng-class="{ active: isActive('/joinGroup')}"><a ui-sref="joinGroup" ng-click="isCollapsed=true">Join Group</a></li>
             <li ng-class="{ active: isActive('/groupChat')}"><a ui-sref="groupChat" ng-click="isCollapsed=true">Group Chat Testing</a></li>
           </ul>
-          <div class='input-group navbar-right' ng-if="user.groups">
-            <select ng-model="user.groups" ng-options="$index for group in user.groups"> </select>
-
-            <select ng-model="user.groups">
-              <option ng-repeat="group in user.groups" value="{{group}}">{{group}}</option>
-            </select>
-
-          </div>
         </div>
       </nav>
     </div>

@@ -14,4 +14,11 @@
 			<center><button type='button' class="btn btn-primary button-spacing" ng-click='joinGroup(group)'>Join a Group</button></center>
 		</div>
 
+		<div class='input-group navbar-right' ng-if="user.groups">
+			<select ng-model="user.groups">
+				<option ng-repeat="group in user.groups" value="{{group}}">{{group}}</option>
+			</select>
+		</div>
+
+
 </div> <!-- /container -->
