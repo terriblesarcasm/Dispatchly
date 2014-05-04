@@ -39,9 +39,11 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 
 .controller('CreateGroupCtrl', function ($scope, $window, $location, $q, $http) {
 	$scope.createGroup = function (group) {
-		
 		$http.get('/db/create-group?name=' + group.name + '&password=' + group.password + '&address=' + group.address + '&zipcode=' + group.zipcode).success(function(response) {
 			console.log(response);
+		})
+		.error(function(error){
+			console.log(error);
 		});
 	}	
 })
