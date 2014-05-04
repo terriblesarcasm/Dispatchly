@@ -176,13 +176,13 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 	
 /*Firebase, AngularFire */
-.controller("FirebaseController", ["$scope", "$firebase", "User",
-  function($scope, $firebase, User) {
+.controller("FirebaseController", ["$scope", "$firebase", "User", $stateParams,
+  function($scope, $firebase, User, $stateParams) {
 	// Get username from factory
 	$scope.user = User.getuser();	
 	console.log($scope.user);
   	
-  	var URL = "https://dispatchninja.firebaseIO.com/";
+  	var URL = "https://dispatchninja.firebaseIO.com/" + $stateParams.group;
     $scope.items = $firebase(new Firebase(URL));
 
 	/* write data to Firebase */	
