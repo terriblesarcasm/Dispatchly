@@ -70,8 +70,12 @@ h3 {
   width: 95% !important;
 }
 
-#dropdowns { 
+#groupdropdown > button { 
   text-align: center;
   max-width: 500px !important;
   width: 95% !important;
+}
+
+#dropdowns {
+  width: 300px;
 }
