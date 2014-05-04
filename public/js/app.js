@@ -19,7 +19,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase'])
 		templateUrl: "public/partials/join-group.temp",
 		controller: "JoinGroupCtrl"
 	});
-}])
+})
 
 .controller('HeaderController', function ($scope, $window, $location) {
 	$scope.isActive = function (viewLocation) { 
