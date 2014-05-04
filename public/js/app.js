@@ -40,14 +40,14 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 .controller('CreateGroupCtrl', function ($scope, $window, $location, $q, $http) {
 	$scope.createGroup = function (group) {
 		$http.get('/db/create-group?name=' + group.name + '&password=' + group.password + '&address=' + group.address + '&zipcode=' + group.zipcode).success(function(response) {
-			console.log(response);
+			console.log('response: ' + response);
 			if (response == "11000") {
 				$scope.errormsg = 'Group name already exists';
 				console.log($scope.errormsg);
 			}
 		})
 		.error(function(error){
-			console.log(error);
+			console.log('error: ' + error);
 		});
 	}	
 })
