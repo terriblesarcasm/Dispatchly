@@ -76,7 +76,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 .controller('MainCtrl', function ($scope, $window, $location, $q, $http, User, Phone) {
-	$scope.setuser = User.setUser().then(function(response) {
+	User.setuser().then(function(response) {
 		$scope.user = response;
 	});	
 
