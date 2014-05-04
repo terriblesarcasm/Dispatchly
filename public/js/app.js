@@ -64,7 +64,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		$scope.user = response;
 	});	
 
-	$scope.setPhone = Phone.setPhone().then(function(response) {
+	$scope.setPhone = Phone.setPhone.then(function(response) {
 		if (response == 'invalid') {
 			$scope.errormsg = 'Invalid group name/password';
 			$scope.error = {flag:true}; 		
