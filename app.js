@@ -126,6 +126,33 @@ app.get("/get/user", function(req, res, next) {
 	res.send(req.user);
 });
 
+app.get("/db/add-alert", function(req, res, next) {
+	Group.findOne({req.query.group_id}, function(err, groupData) {
+		if (err) return console.error(err);
+		if (groupData) { 
+			console.log('there is a match: ' + groupData);
+
+			// add code to group
+			var group = groupData;
+			groups.alertcodes.push(req.query.alert);
+
+			group.save(function(err) {
+				if(err) {
+					console.log(err);
+					res.send(new String(err.code));
+				} else {
+					console.log("saved alert to group");
+					res.send("OK");
+				}
+			})
+
+		} else {
+			console.log('invalid group');
+			res.send('invalid');
+		}
+	}
+});
+
 /* Join group API */
 app.get("/db/join-group", function(req, res, next) {
 	// Look for a group_id/password match in the DB
@@ -227,6 +254,8 @@ app.get('/authz/twitter/callback',
   });
 
 app.get('/get/profilepic', getProfilePic);
+
+
 
 
 // testing
