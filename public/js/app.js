@@ -11,6 +11,10 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 			templateUrl: '/public/partials/create-group.temp',
 			controller: 'CreateGroupCtrl'
 		}).
+		when('/join-group', {
+			templateUrl: '/public/partials/join-group.temp',
+			controller: 'JoinGroupCtrl'
+		}).
 		otherwise({
 			redirectTo: '/'
 		});
