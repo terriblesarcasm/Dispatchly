@@ -18,6 +18,12 @@ body{
   width: 95%;
 }
 
+#dropdowns { 
+  text-align: center;
+  max-width: 300px;
+  width: 95%;
+}
+
 h3 {
   margin-top: 10px;
 }
