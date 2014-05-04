@@ -30,8 +30,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 .factory('Group', function () {
 	var group = {};
 	return {
-		setGroup: function(group) {
-			group.name = group;
+		setGroup: function(sentGroup) {
+			group.name = sentGroup;
 		},
 		getGroup: function() {
 			return group.name;
@@ -161,6 +161,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	console.log('logging the state param: ' + $stateParams.group);
 	$scope.group = {name: $stateParams.group};
 	Group.setGroup($stateParams.group);
+
 })
 
 	
