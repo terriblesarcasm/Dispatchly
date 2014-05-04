@@ -39,12 +39,12 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 			return user;
 		});
+	}
 
-		return {
-			setPhone: setPhonePrivate
-		};
-
-}})
+	return {
+		setPhone: setPhonePrivate
+	};
+})
 
 .config(function ($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise("/");
