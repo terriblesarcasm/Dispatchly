@@ -1,7 +1,7 @@
 <div class="container">
 	
 	<center>
-	<button type='button' class='btn btn-primary groupbutton' ui-sref="sendAlert({code: code, group: group})">Confirm alert</button>
+	<button type='button' class='btn btn-primary groupbutton'>Confirm alert</button>
 	</center>
 
 </div> <!-- /container -->
