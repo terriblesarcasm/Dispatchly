@@ -19,9 +19,6 @@
 		</center>
 	</div>
 
-<i class="icon-large icon-fire"></i>
-<i class="icon-large icon-fire"></i>
-<i class="icon-large icon-fire"></i>
-<i class="icon-large icon-fire"></i>
+<span class="glyphicon glyphicon-search"></span>
 
 </div> <!-- /container -->
