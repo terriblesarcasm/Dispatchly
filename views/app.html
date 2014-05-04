@@ -36,8 +36,9 @@
         <div class="collapse navbar-collapse" collapse="isCollapsed">
           <ul class="nav navbar-nav">
             <li ng-class="{ active: isActive('/')}"><a ui-sref="home" ng-click="isCollapsed=true">Groups</a></li>
-            <li ng-class="{ active: isActive('/create-group')}"><a ui-sref="createGroup" ng-click="isCollapsed=true">Create Group</a></li>
-            <li ng-class="{ active: isActive('/randomlinks')}"><a ui-sref="joinGroup" ng-click="isCollapsed=true">Join Group</a></li>
+            <li ng-class="{ active: isActive('/createGroup')}"><a ui-sref="createGroup" ng-click="isCollapsed=true">Create Group</a></li>
+            <li ng-class="{ active: isActive('/joinGroup')}"><a ui-sref="joinGroup" ng-click="isCollapsed=true">Join Group</a></li>
+            <li ng-class="{ active: isActive('/groupChat')}"><a ui-sref="groupChat" ng-click="isCollapsed=true">Group Chat Testing</a></li>
           </ul>
           <div class='input-group navbar-right' ng-if="user.groups">
             <select ng-model="user.groups" ngOptions="group in user.groups"> </select>
