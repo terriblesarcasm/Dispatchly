@@ -48,7 +48,15 @@ var Bitly = new BitlyAPI({
 
 /* serves main page */
 /* all other requests should fall below this */
-app.get("/", function(req, res) {
+app.get("/", ensureAuthenticated, function(req, res) {
+	res.sendfile('./views/app.html');
+});
+
+// app.get("/#/", ensureAuthenticated, function(req, res) {
+// 	res.sendfile('./views/app.html');
+// });
+
+app.get("/login", function(req, res) {
 	res.sendfile('./views/index.html');
 });
 
@@ -141,12 +149,12 @@ app.get("/auth/twitter", authnOrAuthzTwitter);
 
 app.get("/auth/facebook/callback", passport.authenticate('facebook', { failureRedirect: '/' }),
   function(req, res) {
-    res.redirect('/home');
+    res.redirect('/');
 });
 
 app.get("/auth/twitter/callback", passport.authenticate('twitter', { failureRedirect: '/' }),
 	function(req, res) {
-		res.redirect('/home');
+		res.redirect('/');
 	});
 
 app.get('/authz/facebook/callback', 
@@ -159,7 +167,7 @@ app.get('/authz/facebook/callback',
     account.userId = user.id;
     account.save(function(err) {
       if (err) { return self.error(err); }
-      res.redirect('/home');
+      res.redirect('/');
     });
   });
 
@@ -173,20 +181,20 @@ app.get('/authz/twitter/callback',
     account.userId = user.id;
     account.save(function(err) {
       if (err) { return self.error(err); }
-      res.redirect('/home');
+      res.redirect('/');
     });
   });
 
 
 // testing
-app.get("/home", ensureAuthenticated, function(req, res){
-	User.findById(req.session.passport.user, function(err, user) {
-		if (err) { console.log(err); }
-		else {
-			res.sendfile('./views/app.html', { user: user });
-		}
-	});
-});
+// app.get("/home", ensureAuthenticated, function(req, res){
+// 	User.findById(req.session.passport.user, function(err, user) {
+// 		if (err) { console.log(err); }
+// 		else {
+// 			res.sendfile('./views/app.html', { user: user });
+// 		}
+// 	});
+// });
 
 
 // secure
@@ -201,7 +209,7 @@ app.get("/home", ensureAuthenticated, function(req, res){
 
 function authnOrAuthzFacebook(req, res, next) {
   if (!req.isAuthenticated()) {
-    passport.authenticate('facebook', { scope: ['email'], successRedirect: '/home',
+    passport.authenticate('facebook', { scope: ['email'], successRedirect: '/',
                                         failureRedirect: '/login' })(req, res, next);
   } else {
     passport.authorize('facebook-authz')(req, res, next);
@@ -210,7 +218,7 @@ function authnOrAuthzFacebook(req, res, next) {
 
 function authnOrAuthzTwitter(req, res, next) {
   if (!req.isAuthenticated()) {
-    passport.authenticate('twitter', { scope: ['email'], successRedirect: '/home',
+    passport.authenticate('twitter', { scope: ['email'], successRedirect: '/',
                                         failureRedirect: '/login' })(req, res, next);
   } else {
     passport.authorize('twitter-authz')(req, res, next);
@@ -219,7 +227,7 @@ function authnOrAuthzTwitter(req, res, next) {
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/');
+  res.redirect('/login');
 }
 
 
