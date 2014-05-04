@@ -18,6 +18,11 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase'])
 		url: "/joinGroup",
 		templateUrl: "public/partials/join-group.temp",
 		controller: "JoinGroupCtrl"
+	})
+	.state('groupChat', {
+		url: "/groupChat",
+		templateUrl: "public/partials/group-chat.temp",
+		controller: "FirebaseController"
 	});
 })
 
@@ -83,7 +88,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase'])
 /*Firebase, AngularFire */
 .controller("FirebaseController", ["$scope", "$firebase",
   function($scope, $firebase) {
-  	var URL = "https://testing-node.firebaseio.com/";
+  	var URL = "https://dispatchninja.firebaseIO.com/";
     $scope.items = $firebase(new Firebase(URL));
 
 	/* write data to Firebase */	
