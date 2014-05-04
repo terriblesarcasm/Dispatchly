@@ -75,6 +75,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	})
 	.state('confirmAlert', {
 		url: "/confirmAlert/{code}",
+
 		templateUrl: "public/partials/confirm-alert.temp",
 		controller: "ConfirmAlertCtrl"
 	});
