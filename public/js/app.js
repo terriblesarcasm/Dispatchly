@@ -30,7 +30,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			console.log('error: ' + error);
 		})
 		.then(function() {
-			var user = User.getUser();
+			var user = User.getuser();
 
 			return user;
 		});
