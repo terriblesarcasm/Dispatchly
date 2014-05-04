@@ -1,6 +1,6 @@
 <div class="container">
 		
-		<div ng-if="!user.phonenumber" ng-controller="PhoneCtrl">
+		<div ng-if="!user.phonenumber">
 			<center><h3>Enter your phone number to receive SMS alerts</h3></center>
 			<center><h4 class="text-danger"><strong>{{errormsg}}</strong></h4></center>
 			<div ng-class="{'has-error': error.flag}">

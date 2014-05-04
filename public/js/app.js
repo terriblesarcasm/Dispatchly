@@ -4,7 +4,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	var user = {};
 
 	var getUserPrivate = function() {
-			$http.get('/get/user').success(function(response) {
+			return $http.get('/get/user').success(function(response) {
 				console.log(" response: "+response);
 				user = response;
 				return user;
@@ -75,7 +75,11 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 .controller('MainCtrl', function ($scope, $window, $location, $q, $http, User, Phone) {
-	$scope.user = User.getUser;	
+	$scope.getuser = User.getUser.then(function(user) {
+		$scope.user = user;
+	});	
+
+	console.log("mainctrl scope.user: " + $scope.user);
 
 	$scope.setPhone = Phone.setPhone().then(function(user) {
 		$scope.user = user;
@@ -121,13 +125,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		.error(function(error){
 			console.log('error: ' + error);
 		});
-	};	
-})
-
-
-.controller('PhoneCtrl', function ($scope, $window, $location, $q, $http) {
-	$scope.addPhoneNumber = function (input) {
-		
 	};	
 })
 
