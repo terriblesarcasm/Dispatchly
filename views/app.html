@@ -36,6 +36,7 @@
           <ul class="nav navbar-nav">
             <li ng-class="{ active: isActive('/home')}"><a ng-href="/home" ng-click="isCollapsed=true">Groups</a></li>
             <li ng-class="{ active: isActive('/create-group')}"><a ng-href="/create-group", ng-click="isCollapsed=true">Create Group</a></li>
+            <li ng-class="{ active: isActive('/')}"><a ng-href="/randomlinks", ng-click="isCollapsed=true">Test Random Link</a></li>
           </ul>
           <div class='input-group navbar-right' ng-if="user.groups">
             <select ng-model="user.groups" ngOptions="group in user.groups"> 
