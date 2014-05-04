@@ -1,30 +1,5 @@
-<div class="container" ng-init="sidebarIsActive = false">
+<div class="container">
 
-	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	  <div class="container">
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle" ng-click="sidebarIsActive = !sidebarIsActive">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	      <a class="navbar-brand" href="#">Dispatch Systems</a>
-	    </div>
-	  </div>
-	</div>
-
-	<div ng-class="{active: sidebarIsActive}" id="canvas">
-		
-		<div id="sidebar" class="col-xs-5 col-sm-3">
-			<ul class="nav nav-pills nav-stacked">
-		  <li class="active"><a href="#">Home</a></li>
-		  <li><a href="#">Profile</a></li>
-		  <li><a href="#">Messages</a></li>
-		</ul>
-		</div>
-
-      
     <div id="content" class="col-xs-12 col-sm-9">
 			<h3>Content</h3>
 			<p>Jelly beans candy.</p>
