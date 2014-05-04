@@ -58,6 +58,20 @@ app.get("/", ensureAuthenticated, function(req, res) {
 	});
 });
 
+
+/* serves response page */
+app.get("/alert-response.html", ensureAuthenticated, function(req, res) {
+	User.findById(req.session.passport.user, function(err, user) {
+	    if(err) { 
+	      console.log(err); 
+	    } else {
+	      res.sendfile('./views/alert-response.html', { user: user});
+	    }
+	});
+});
+
+
+
 /* twilio API request */
 app.get("/api/twilio", createSMS);
 
