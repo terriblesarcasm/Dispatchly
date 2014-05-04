@@ -12,6 +12,10 @@ body{
   padding: 0px;
 }
 
+h3 {
+  margin-top: 10px;
+}
+
 .form-control {
   margin: 0 auto;
   max-width: 500px;
