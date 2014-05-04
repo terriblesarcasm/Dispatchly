@@ -41,7 +41,7 @@
             <li ng-class="{ active: isActive('/groupChat')}"><a ui-sref="groupChat" ng-click="isCollapsed=true">Group Chat Testing</a></li>
           </ul>
           <div class='input-group navbar-right' ng-if="user.groups">
-            <select ng-model="user.groups" ng-options="grouping for group in user.groups"> </select>
+            <select ng-model="user.groups" ng-options="$index for group in user.groups"> </select>
           </div>
         </div>
       </nav>
