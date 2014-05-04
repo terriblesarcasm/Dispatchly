@@ -20,6 +20,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 .factory('Phone', function ($http) {
 	return {
 		setPhone: function(phone) {
+			console.log('testing2222');
 			return $http.get('/db/add-phone-number?phonenumber=' + phone)
 		}
 	}
@@ -64,7 +65,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		$scope.user = response;
 	});	
 
-	$scope.setPhone = Phone.setPhone.then(function(response) {
+	$scope.setPhone = Phone.setPhone().then(function(response) {
+		console.log('testing');
 		if (response == 'invalid') {
 			$scope.errormsg = 'Invalid group name/password';
 			$scope.error = {flag:true}; 		
