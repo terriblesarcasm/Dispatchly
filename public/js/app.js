@@ -76,7 +76,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			}
 		});
 	}
-	$scope.setPhone = 
 
 	$scope.call = function (longUrl) {
 		
