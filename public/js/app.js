@@ -83,7 +83,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 .controller('MainCtrl', function ($scope, $window, $location, $q, $http, User, Phone) {
 	$scope.user = User.getUser;	
 
-	$scope.setPhone = Phone.setPhone.then(function(user) {
+	$scope.setPhone = Phone.setPhone().then(function(user) {
 		$scope.user = user;
 	});
 
