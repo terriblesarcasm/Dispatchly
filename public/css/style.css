@@ -12,6 +12,12 @@ body{
   padding: 0px;
 }
 
+#groupdropdown { 
+  margin: 0 auto;
+  max-width: 300px;
+  width: 95%;
+}
+
 h3 {
   margin-top: 10px;
 }
