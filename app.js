@@ -226,6 +226,8 @@ app.get('/authz/twitter/callback',
     });
   });
 
+app.get('/get/profilepic', getProfilePic);
+
 
 // testing
 // app.get("/home", ensureAuthenticated, function(req, res){
@@ -269,6 +271,19 @@ function authnOrAuthzTwitter(req, res, next) {
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login');
+}
+
+function getProfilePic(accounts) {
+  var len = accounts.length;
+  var twitter = "";
+  for (var cnt = 0; cnt < len; cnt++) {
+    if (accounts[cnt].provider == 'facebook.com') {
+    	res.send(accounts[cnt].userid);
+    } else if (accounts[cnt].provider == 'twitter.com') {
+    	twitter = accounts[cnt].userid;
+    }
+  }
+  res.send(twitter);
 }
 
 

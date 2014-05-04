@@ -12,6 +12,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
         },
         getuser: function() {
             return user;
+        },
+        getgroups: function() {
+        	return user.groups;
         }
     }
 })
@@ -50,7 +53,11 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	});
 })
 
-.controller('HeaderController', function ($scope, $window, $location) {
+.controller('HeaderController', function ($scope, $window, $location, User) {
+	User.setuser().then(function(response) {
+		$scope.user = response;
+	});
+
 	$scope.isActive = function (viewLocation) { 
         return viewLocation === $location.path();
     };
@@ -59,9 +66,13 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 .controller('MainCtrl', function ($scope, $window, $location, $q, $http, User, Phone) {
-	User.setuser().then(function(response) {
-		$scope.user = response;
-	});	
+	if (!$scope.user) {
+		User.setuser().then(function(response) {
+			$scope.user = response;
+		}).then(function() {
+			User.getgroups();
+		});	
+	}
 
 	$scope.setPhone = function (phone) {
 		Phone.setPhone(phone).then(function(response) {
