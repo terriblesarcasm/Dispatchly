@@ -1,0 +1,53 @@
+<!doctype html>
+<html ng-app='myApp'>
+  <head>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+ 	<!-- CSS : bootstrap & local css file -->
+	<link rel="stylesheet" href="/public/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/public/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="/public/css/style.css">
+  <link rel="stylesheet" href="/public/css/bootstrap-glyphicons.css">
+  <!-- AngularJS 1.3.0 (beta) & local app.js file -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.6/angular.js"></script>
+  <script src='/public/js/app.js'></script>
+	<!-- Angular Route & Angular UI Bootstrap -->
+  <script src="/public/js/angular-ui-router.min.js"></script>
+  <script src="/public/js/ui-bootstrap-0.10.0.min.js"></script>
+  <script src="/public/js/ui-utils.min.js"></script>
+  <!-- Firebase : Firebase, AngularFire & Simple Login -->
+  <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.11/firebase.js'></script>
+	<script src="//cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
+	<script src="https://cdn.firebase.com/js/simple-login/1.3.0/firebase-simple-login.js"></script>
+	<!-- Custom JS -->
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-inverse" role="navigation" ng-controller="HeaderController">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">Dispatch Ninja</a>
+        </div>
+
+        <!-- This is for the nav links, forms, and other content that will be toggled -->
+        <div class="collapse navbar-collapse" collapse="isCollapsed">
+          <ul class="nav navbar-nav">
+            <li ng-class="{ active: isActive('/')}"><a ui-sref="home" ng-click="isCollapsed=true">Groups</a></li>
+            <li ng-class="{ active: isActive('/createGroup')}"><a ui-sref="createGroup" ng-click="isCollapsed=true">Create Group</a></li>
+            <li ng-class="{ active: isActive('/joinGroup')}"><a ui-sref="joinGroup" ng-click="isCollapsed=true">Join Group</a></li> 
+            <!--<li ng-class="{ active: isActive('/groupChat')}" ng-if="group.name"><a ui-sref="groupChat" ng-click="isCollapsed=true">{{group.name}} Chat</a></li>-->
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <a href="/db/update-status?username=&password="><button type='button' class='btn btn-primary groupbutton'>Responding</button></a>
+    <a href="/db/update-status?username=&password="><button type='button' class='btn btn-primary groupbutton'>Not Responding</button></a>
+
+    </div>
+  </body>
+</html>
