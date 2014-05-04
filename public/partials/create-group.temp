@@ -1,7 +1,6 @@
 <div class="container">
 
-	<div id="content" class="col-xs-12 col-sm-9">
-		<h3>Create a group</h3>
+		<center><h3>Create a group</h3></center>
 		<h4 class="text-danger"><strong>{{errormsg}}</strong></h4>
 		<div ng-class="{'has-error': error.flag}">
 			<input class="form-control"  ng-model="group.name" placeholder="Group name" autocomplete="off" autocapitalize="off"><br>
@@ -9,7 +8,6 @@
 		<input class="form-control" ng-model="group.password" placeholder="Group password" autocomplete="off" autocapitalize="off"><br>
 		<input class="form-control" ng-model="group.address" placeholder="Group address" autocomplete="off" autocapitalize="off"><br>
 		<input class="form-control" ng-model="group.zipcode" placeholder="Group zip code" autocomplete="off" autocapitalize="off">
-		<button type='button' class="btn btn-primary button-spacing" ng-click='createGroup(group)'>Create</button>
-	</div> <!-- /content -->
+		<center><button type='button' class="btn btn-primary button-spacing" ng-click='createGroup(group)'>Create</button></center>
 
 </div> <!-- /container -->
