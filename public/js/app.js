@@ -71,11 +71,12 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	});
 })
 
-.controller('HeaderController', function ($scope, $window, $location, User, Group) {
+.controller('HeaderController', function ($scope, $window, $location, User, Group, $stateProvider) {
 	User.setuser().then(function(response) {
 		$scope.user = response;
 	});
 
+	console.log($stateProvider);
 	$scope.group = Group.getGroup();
 	console.log($scope.group);
 
