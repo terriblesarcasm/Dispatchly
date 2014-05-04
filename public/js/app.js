@@ -92,7 +92,11 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			if (response == '"11000"') {
 				$scope.errormsg = 'Group name already exists';
 				$scope.error = {flag:true};
+				
 				// TODO: redirect back to homepage 
+				$scope.$apply(function() { 
+					$location.path("/");
+				});
 			}
 		})
 		.error(function(error){
