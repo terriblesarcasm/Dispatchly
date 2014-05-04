@@ -1,4 +1,4 @@
-<div class="container" ng-app="myApp" ng-controller="CreateGroupCtrl">
+<div class="container">
 
 	<div id="content" class="col-xs-12 col-sm-9">
 		<h3>Create a group</h3>
