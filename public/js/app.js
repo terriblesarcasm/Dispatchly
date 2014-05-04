@@ -17,6 +17,10 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 		$locationProvider.html5Mode(true);
 }])
 
+.controller('HeaderController', function ($scope, $window, $location) {
+	$scope.isCollapsed = { val = false };
+})
+
 .controller('MainCtrl', function ($scope, $window, $location, $q, $http) {
 	$scope.test = {
 		name: 'test',
