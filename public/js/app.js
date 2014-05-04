@@ -1,20 +1,20 @@
 var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.utils'])
 
-.factory('User', function ($http){
-	var user = {};
+.factory('User', function ($http) {
+    var user = {};
 
-	var getUserPrivate = function() {
-			return $http.get('/get/user').success(function(response) {
-				console.log(" response: "+response);
-
-				user = response;
-				return user;
-			});
-		}
-
-	return {
-		getUser: getUserPrivate
-	};
+    return { 
+        setuser: function() {
+            return $http.get('/get/user').then(function(response) {
+            	console.log("response from /get/user is: "+response);
+                user = response;
+                return user;
+            });
+        },
+        getuser: function() {
+            return user;
+        }
+    }
 })
 
 .factory('Phone', function (User, $http) {
@@ -76,8 +76,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 .controller('MainCtrl', function ($scope, $window, $location, $q, $http, User, Phone) {
-	$scope.getuser = User.getUser.then(function(user) {
-		$scope.user = user;
+	$scope.setuser = User.setUser().then(function(response) {
+		$scope.user = response;
 	});	
 
 	console.log("mainctrl scope.user: " + $scope.user);
