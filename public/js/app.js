@@ -72,6 +72,11 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		url: "/sendAlert/{group}",
 		templateUrl: "public/partials/send-alert.temp",
 		controller: "AlertCtrl"
+	})
+	.state('confirmAlert', {
+		url: "/confirmAlert/{code}",
+		templateUrl: "public/partials/confirm-alert.temp",
+		controller: "ConfirmAlertCtrl"
 	});
 })
 
@@ -144,6 +149,10 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 
 .controller('AlertCtrl', function ($scope, $window, $location, $q, $http) {
+
+})
+
+.controller('ConfirmAlertCtrl', function ($scope, $window, $location, $q, $http) {
 
 })
 
