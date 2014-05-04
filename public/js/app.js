@@ -69,7 +69,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 				$scope.errormsg = 'Invalid group name/password';
 				$scope.error = {flag:true}; 		
 			} else {
-				$location.path("/");
+				User.setuser().then(function(response) {
+					$scope.user = response;
+				});	
 			}
 		})
 	}
