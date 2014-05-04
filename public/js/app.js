@@ -44,6 +44,10 @@ var app = angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 		})
 		.error(function(error){
 			console.log(error);
+			if (error == "11000") {
+				$scope.errormsg = 'Group name already exists';
+				$scope.error = {class: true};
+			}
 		});
 	}	
 })
