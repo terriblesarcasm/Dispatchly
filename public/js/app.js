@@ -76,7 +76,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		$scope.user = response;
 	});
 
-	$scope.group = Group.getGroup();
+	$scope.group = Group.getGroup;
 
 	$scope.isActive = function (viewLocation) { 
         return viewLocation === $location.path();
