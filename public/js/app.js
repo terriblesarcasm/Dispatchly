@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase'])
+var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.utils'])
 
 .factory('User', function ($http){
 	var user = {};
@@ -33,6 +33,11 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase'])
 		url: "/joinGroup",
 		templateUrl: "public/partials/join-group.temp",
 		controller: "JoinGroupCtrl"
+	})
+	.state('groupChat', {
+		url: "/groupChat",
+		templateUrl: "public/partials/group-chat.temp",
+		controller: "FirebaseController"
 	});
 })
 
@@ -79,8 +84,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase'])
 .controller('JoinGroupCtrl', function ($scope, $window, $location, $q, $http) {
 	$scope.joinGroup = function (group) {
 		$http.get('/db/join-group?group_id=' + group.group_id + '&password=' + group.password).success(function(response) {
-			if (response == '"11000"') {
-				$scope.errormsg = 'Invalid username/password';
+			if (response == 'invalid') {
+				$scope.errormsg = 'Invalid group name/password';
 				$scope.error = {flag:true}; 
 			}
 		})
@@ -94,12 +99,12 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase'])
 /*Firebase, AngularFire */
 .controller("FirebaseController", ["$scope", "$firebase",
   function($scope, $firebase) {
-  	var URL = "https://testing-node.firebaseio.com/";
+  	var URL = "https://dispatchninja.firebaseIO.com/";
     $scope.items = $firebase(new Firebase(URL));
 
 	/* write data to Firebase */	
     $scope.addMessage = function(message) {
-    	$scope.items.$add({mes: message});
+    	$scope.items.$add({username: 'hardcoded', mes: message});
     	$scope.message = '';
     };
 

@@ -86,9 +86,22 @@ app.get("/db/create-group", function(req, res, next) {
 			res.send(new String(err.code));
 		} else {
 			console.log("saved group to DB");
-			res.send(true);
-			//done(null, group);
+
+			// Save group to user
+			var user = req.user;
+			user.groups.push(req.query.name);
+			
+			user.save(function(err) {
+				if(err) {
+					console.log(err);
+					res.send(new String(err.code));
+				} else {
+					console.log("saved group to user");
+					res.send(true);
+				}
+			});			
 		}
+
 	});
 });
 
@@ -106,7 +119,7 @@ app.get("/db/join-group", function(req, res, next) {
 
 			// Add group to user
 			var user = req.user;
-			user.groups.push(req.groupData.group_id);			
+			user.groups.push(groupData.group_id);
 
 			// Save changes to the DB
 			group.save(function(err) {
@@ -131,6 +144,7 @@ app.get("/db/join-group", function(req, res, next) {
 		}
 		else {
 			console.log('invalid username/password');
+			res.send('invalid');
 		}
 	});
 

@@ -22,6 +22,16 @@ h3 {
   width: 95%;
 }
 
+.chatform {
+  width:67%;
+  max-width: 67%;
+}
+
+.btn.btn-primary.chatbutton {
+  width: 33%;
+  max-width: 33%;
+}
+
 .btn.btn-primary {
   max-width: 250px;
   width: 100%;
