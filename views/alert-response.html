@@ -46,7 +46,8 @@
     </div>
     <div class="container">
       <center>
-      <a href="/db/update-status?username=&password="><button type='button' class='btn btn-primary groupbutton'>Responding</button></a>
+      {{response}}
+      <a href="/db/update-status?username=&password="><button type='button' class='btn btn-primary groupbutton' ng-click="response = 'Thank you for responding!'">Responding</button></a>
       <a href="/db/update-status?username=&password="><button type='button' class='btn btn-primary groupbutton'>Not Responding</button></a>
       </center>
     </div>
