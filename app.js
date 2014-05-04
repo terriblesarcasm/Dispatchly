@@ -72,8 +72,11 @@ app.get("/db/create-group", function(req, res, next) {
 		group_id: req.query.name,
 		password: req.query.password,
 		address: req.query.address,
-		zipcode: req.query.zipcode
+		zipcode: req.query.zipcode,
 	});
+
+	// Add user to the group they are creating
+	group.users.push(req.user.name);
 
 	// Save group to the DB
 	group.save(function(err) {
