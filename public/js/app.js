@@ -10,7 +10,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	var user = {};
 
 	var getUserPrivate = function() {
-		console.log('in function');
 			$http.get('/get/user').success(function(response) {
 				console.log(" response: "+response);
 				user = response;
@@ -21,6 +20,30 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	return {
 		getUser: getUserPrivate
 	};
+})
+
+.factory('Phone', function (User) {
+
+		var setPhonePrivate = function(phone) {
+			$http.get('/db/add-phone-number?phonenumber=' + phone).success(function(response) {
+			if (response == 'invalid') {
+				$scope.errormsg = 'Invalid group name/password';
+				$scope.error = {flag:true}; 
+			}
+		})
+		.error(function(error){
+			console.log('error: ' + error);
+		})
+		.then(function() {
+			var user = User.getUser();
+
+			return user;
+		});
+
+		return {
+			setPhone: setPhonePrivate
+		};
+
 })
 
 .config(function ($stateProvider, $urlRouterProvider) {
@@ -57,8 +80,12 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	$scope.isCollapsed = true;
 })
 
-.controller('MainCtrl', function ($scope, $window, $location, $q, $http, User) {
+.controller('MainCtrl', function ($scope, $window, $location, $q, $http, User, Phone) {
 	$scope.user = User.getUser;	
+
+	$scope.setPhone = Phone.setPhone.then(function(user) {
+		$scope.user = user;
+	});
 
 	$scope.call = function (longUrl) {
 		
@@ -106,15 +133,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 .controller('PhoneCtrl', function ($scope, $window, $location, $q, $http) {
 	$scope.addPhoneNumber = function (input) {
-		$http.get('/db/add-phone-number?phonenumber=' + input.phonenumber).success(function(response) {
-			if (response == 'invalid') {
-				$scope.errormsg = 'Invalid group name/password';
-				$scope.error = {flag:true}; 
-			}
-		})
-		.error(function(error){
-			console.log('error: ' + error);
-		});
+		
 	};	
 })
 
