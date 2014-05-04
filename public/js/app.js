@@ -27,6 +27,19 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	}
 })
 
+.factory('Group', function () {
+	var group = {};
+	return {
+		setGroup: function(group) {
+			group.name = group;
+		},
+		getGroup: function() {
+			return group.name;
+		},
+		group;
+	}
+})
+
 .config(function ($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise("/");
 
@@ -58,10 +71,12 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	});
 })
 
-.controller('HeaderController', function ($scope, $window, $location, User) {
+.controller('HeaderController', function ($scope, $window, $location, User, Group) {
 	User.setuser().then(function(response) {
 		$scope.user = response;
 	});
+
+	$scope.group = Group.group;
 
 	$scope.isActive = function (viewLocation) { 
         return viewLocation === $location.path();
@@ -143,9 +158,10 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 
-.controller('GroupCtrl', function ($scope, $window, $location, $q, $http, $stateParams) {
+.controller('GroupCtrl', function ($scope, $window, $location, $q, $http, $stateParams, Group) {
 	console.log('logging the state param: ' + $stateParams.group);
 	$scope.group = {name: $stateParams.group};
+	group.setGroup($stateParams.group);
 })
 
 	
