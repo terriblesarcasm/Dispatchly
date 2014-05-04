@@ -31,6 +31,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	var group = {};
 	return {
 		setGroup: function(sentGroup) {
+			console.log('sentGroup is: ' + sentGroup);
 			group.name = sentGroup;
 		},
 		getGroup: function() {
