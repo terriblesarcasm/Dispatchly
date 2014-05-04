@@ -34,7 +34,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			group.name = sentGroup;
 		},
 		getGroup: function() {
-			console.log('getGroup: ' + group.name)
 			return group.name;
 		}
 	}
@@ -71,14 +70,12 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	});
 })
 
-.controller('HeaderController', function ($scope, $window, $location, User, Group, $stateProvider) {
+.controller('HeaderController', function ($scope, $window, $location, User, Group) {
 	User.setuser().then(function(response) {
 		$scope.user = response;
 	});
 
-	console.log($stateProvider);
 	$scope.group = Group.getGroup();
-	console.log($scope.group);
 
 	$scope.isActive = function (viewLocation) { 
         return viewLocation === $location.path();
