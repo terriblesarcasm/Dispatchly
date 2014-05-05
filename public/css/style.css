@@ -10,7 +10,6 @@
 html,
 body{
   padding: 0px;
-  background-color: transparent;
 }
 
 h3 {
@@ -49,17 +48,19 @@ h3 {
 
 #content {
   width: 500px;
-  max-width: 95%;
-  border: 1px solid #000000;
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
+  max-width: 95%;  
   background-color: #FFFFFF;
   margin: 0 auto;
 }
 
-#index {
-  background: ;
+@media(min-width: 768px){
+  #content {
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: 1px solid #000000;
+  }
 }
+
 .container {
   padding: 0px;
 }
