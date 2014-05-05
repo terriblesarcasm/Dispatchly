@@ -16,4 +16,9 @@ body {
 .home-social-buttons {
 	width: 50%;
 	min-width: 250px;
+	margin-top: 10px; 
+	margin-bottom: 10px;}
+
+.btn.btn-primary.loginform {
+	margin-top: 10px;
 }
