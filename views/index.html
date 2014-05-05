@@ -30,10 +30,11 @@
         <center>
           <h3>Login</h3>
           <form role="form">
-            <input type="text" class="form-control" placeholder="Username">
-            <input type="password" class="form-control" placeholder="Password">
-            <button class="btn btn-primary" type="button" submit="/login/localuser">Login</button>
+            <input type="text" class="form-control loginform" id="username" placeholder="Username">
+            <input type="password" class="form-control loginform" id="password" placeholder="Password">
+            <button class="btn btn-primary loginform" type="button" submit="/login/localuser">Login</button>
           </form>
+          <br>
           <a href="/auth/facebook"><img class="socialimages img-responsive" src="/public/imgs/loginfacebook.png"></a>
           <a href="/auth/twitter"><img class="socialimages img-responsive" src="/public/imgs/logintwitter.png"></a>
         </center>
