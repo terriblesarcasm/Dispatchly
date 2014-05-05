@@ -1,4 +1,16 @@
-/* Desktop media query */
+body {
+  background-color: transparent;
+}
+
+nav {
+  border-radius: 0px;
+}
+
+#uiview.container {
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
 @media(min-width: 992px){
   html,
   body {
@@ -58,6 +70,14 @@ h3 {
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border: 1px solid #000000;
+  }
+
+  html {  
+    background: url(/public/imgs/bg.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
 }
 
