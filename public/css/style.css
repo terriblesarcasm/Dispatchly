@@ -6,7 +6,7 @@ nav {
   border-radius: 0px;
 }
 
-#uiview.container {
+#uiview .container {
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
   background-color: #FFFFFF;
