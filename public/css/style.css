@@ -50,8 +50,10 @@ h3 {
   width: 500px;
   max-width: 95%;
   border: 1px solid #000000;
-  border-radius: 20px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
   background-color: #FFFFFF;
+  margin: 0 auto;
 }
 
 #index {
