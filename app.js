@@ -108,8 +108,17 @@ function createSMS(req, res, next) {
 // });
 
 app.get("/login", function(req, res) {
-	res.sendfile('./views/index.html');
-});
+		res.sendfile('./views/index.html');
+	});
+
+
+app.post('/login/localuser', 
+	passport.authenticate('local', {failureRedirect: '/login' }),
+	function(req, res) {
+		res.redirect('/');
+	});
+
+
 
 /* Create group API */
 app.get("/db/create-group", function(req, res, next) {

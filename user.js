@@ -8,7 +8,9 @@ var User = mongoose.model('User', {
   emailaddress: String,
   created: Date,
   groups: [],
-  accounts: []
+  accounts: [],
+  username: String,
+  password: String
 });
 
 module.exports = User;
