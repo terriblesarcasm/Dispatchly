@@ -46,9 +46,16 @@ h3 {
   margin: 0 auto;
 }
 
-.content {
+#content {
   width: 500px;
   max-width: 95%;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  background-color: #FFFFFF;
+}
+
+#index {
+  background: ;
 }
 .container {
   padding: 0px;
