@@ -130,8 +130,7 @@ app.get("/db/register", function(req, res, next) {
 	var user = new User ({
 	user:username = req.query.emailaddress;
 	user:password = req.query.password;
-	user:firstname = req.query.firstname;
-	user:lastname = req.query.lastname;
+	user:name = req.query.firstname + " " + req.query.lastname;
 	user:phonenumber = req.query.phonenumber;
 	)};
 	console.log(user);
