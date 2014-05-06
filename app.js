@@ -13,7 +13,8 @@ var app = express();
 app.configure(function() {
   app.use(express.static('public'));
   app.use(express.cookieParser());
-  app.use(express.bodyParser());
+  app.use(express.urlencoded());
+  app.use(express.json());
   app.use(express.session({ secret: 'keyboard cat' }));
   app.use(passport.initialize());
   app.use(passport.session());
@@ -128,10 +129,10 @@ app.post("/db/register", function(req, res, next) {
 	// should first check DB to see if the username currently exists
 
 	var user = new User ({
-	username: req.query.emailaddress,
-	password: req.query.password,
-	name: req.query.firstname + " " + req.query.lastname,
-	phonenumber: req.query.phonenumber,
+	username: req.body.emailaddress,
+	password: req.body.password,
+	name: req.body.firstname + " " + req.body.lastname,
+	phonenumber: req.body.phonenumber,
 	});
 	console.log(user);
 
