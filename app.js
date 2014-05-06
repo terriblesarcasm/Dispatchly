@@ -13,7 +13,7 @@ var app = express();
 app.configure(function() {
   app.use(express.static('public'));
   app.use(express.cookieParser());
-  app.use(express.bodyParser());
+  app.use(express.urlencoded());
   app.use(express.json());
   app.use(express.session({ secret: 'keyboard cat' }));
   app.use(passport.initialize());
@@ -127,24 +127,24 @@ app.post('/login/localuser',
 /* Create new user account via API */
 app.post("/db/register", function(req, res, next) {
 	// should first check DB to see if the username currently exists
-	console.log(req.body);
-	// var user = new User ({
-	// username: req.body.emailaddress,
-	// password: req.body.password,
-	// name: req.body.firstname + " " + req.body.lastname,
-	// phonenumber: req.body.phonenumber,
-	// });
-	// console.log(user);
 
-	// user.save(function(err) {
-	// 	if(err) {
-	// 		console.log(err);
-	// 		res.send(new String(err.code));
-	// 	} else {
-	// 		console.log("saved new user: " + user);
-	// 		res.send(true);
-	// 	}
-	// });	
+	var user = new User ({
+	username: req.body.emailaddress,
+	password: req.body.password,
+	name: req.body.firstname + " " + req.body.lastname,
+	phonenumber: req.body.phonenumber,
+	});
+	console.log(user);
+
+	user.save(function(err) {
+		if(err) {
+			console.log(err);
+			res.send(new String(err.code));
+		} else {
+			console.log("saved new user: " + user);
+			res.send(true);
+		}
+	});	
 
 });
 
