@@ -13,8 +13,8 @@
 				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'Car Fire (B)'})">Car Fire (B)</a></li>
 				<li id="dropdowns" ng-repeat="group in user.groups"><a ui-sref="group({group: group})">{{group}}</a></li>
 			</ul>
-			<br>
 		</div>
+			<br>
 			<button type='button' class='btn btn-default' style="margin-top: 10px; max-width: 250px;">Add new alert code</button>
 		</center>
 	</div>
