@@ -14,10 +14,6 @@
 		border-top-right-radius: 15px;
 		overflow: hidden;
 	}
-
-
-	#container {display:table;}
-	#cell {display:table-cell; vertical-align:middle;}
 }
 
 #top {
