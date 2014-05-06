@@ -20,10 +20,10 @@
           <h3 id="title">Dispatch Ninja</h3>
         </div>
         <center>
-          <form role="form" style="margin-top: 20px;">
+          <form role="form" action="/db/login" method="POST" style="margin-top: 20px;">
           <h3>Turn your phone into a dispatcher made specifically for emergency workers</h3>
-            <input type="text" class="form-control loginform" id="username" placeholder="Username">
-            <input type="password" class="form-control loginform" id="password" placeholder="Password">
+            <input type="text" class="form-control loginform" name="username" placeholder="Username">
+            <input type="password" class="form-control loginform" name="password" placeholder="Password">
             <button class="btn btn-primary loginform" type="button" submit="/login/localuser">Sign in</button>
           </form>
           <br>
