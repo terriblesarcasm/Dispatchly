@@ -140,7 +140,7 @@ app.get("/db/register", function(req, res, next) {
 			console.log(err);
 			res.send(new String(err.code));
 		} else {
-			console.log("saved new user: " + req.query.user);
+			console.log("saved new user: " + user);
 			res.send(true);
 		}
 	});	
