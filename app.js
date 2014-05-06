@@ -127,13 +127,13 @@ app.post('/login/localuser',
 app.get("/db/register", function(req, res, next) {
 	// should first check DB to see if the username currently exists
 
-	var user = req.user;
+	var user = new User ({
 	user.username = req.query.emailaddress;
 	user.password = req.query.password;
 	user.firstname = req.query.firstname;
 	user.lastname = req.query.lastname;
 	user.phonenumber = req.query.phonenumber;
-
+	)};
 	console.log(user);
 
 	user.save(function(err) {
