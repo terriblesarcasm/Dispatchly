@@ -1,4 +1,3 @@
-<div class="container">
 	<center>
 		<h3>{{group.name}}</h3>
 		<table class="table">
@@ -12,4 +11,3 @@
 		<a ui-sref="sendAlert({group:group.name})"><button type='button' class='btn btn-primary groupbutton'>Send Alert </button></a>
 
 	</center>
-</div>

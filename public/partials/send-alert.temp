@@ -1,22 +1,18 @@
-<div class="container">
-	
-	<div>
-		<center>
-		<div class="btn-group" id="groupdropdown">
-			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-				Alert Codes<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu" style="width: 95%;">
-				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'House Fire (A)'})">House Fire (A)</i></a></li>
-				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'House Fire (B)'})">House Fire (B)</a></li>
-				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'Car Fire (A)'})">Car Fire (A)</a></li>
-				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'Car Fire (B)'})">Car Fire (B)</a></li>
-				<li id="dropdowns" ng-repeat="group in user.groups"><a ui-sref="group({group: group})">{{group}}</a></li>
-			</ul>
-		</div>
-			<br>
-			<button type='button' class='btn btn-default alert-button'>Add new alert code</button>
-		</center>
+<div>
+	<center>
+	<div class="btn-group" id="groupdropdown">
+		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+			Alert Codes<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu" style="width: 95%;">
+			<li id="dropdowns"><a ui-sref="confirmAlert({code: 'House Fire (A)'})">House Fire (A)</i></a></li>
+			<li id="dropdowns"><a ui-sref="confirmAlert({code: 'House Fire (B)'})">House Fire (B)</a></li>
+			<li id="dropdowns"><a ui-sref="confirmAlert({code: 'Car Fire (A)'})">Car Fire (A)</a></li>
+			<li id="dropdowns"><a ui-sref="confirmAlert({code: 'Car Fire (B)'})">Car Fire (B)</a></li>
+			<li id="dropdowns" ng-repeat="group in user.groups"><a ui-sref="group({group: group})">{{group}}</a></li>
+		</ul>
 	</div>
-
-</div> <!-- /container -->
+		<br>
+		<button type='button' class='btn btn-default alert-button'>Add new alert code</button>
+	</center>
+</div>

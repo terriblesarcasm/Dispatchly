@@ -1,15 +1,13 @@
-<div class="container">
 
-	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">Dispatch Systems</a>
-	    </div>
-	</div> <!-- /navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Dispatch Systems</a>
+    </div>
+</div> <!-- /navbar -->
 
-    <div id="content" class="col-xs-12 col-sm-9">
-	    <h1>CLICK TO:</h1>
-	    <a href="#"><img class="socialimages img-responsive" src="/public/imgs/loginfacebook.png"></a>
-	    <a href="#"><img class="socialimages img-responsive" src="/public/imgs/logintwitter.png"></a>
-	</div> <!-- /content -->
+<div id="content" class="col-xs-12 col-sm-9">
+    <h1>CLICK TO:</h1>
+    <a href="#"><img class="socialimages img-responsive" src="/public/imgs/loginfacebook.png"></a>
+    <a href="#"><img class="socialimages img-responsive" src="/public/imgs/logintwitter.png"></a>
+</div> <!-- /content -->
 
-</div> <!-- /container -->

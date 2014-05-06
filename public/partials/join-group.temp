@@ -1,5 +1,3 @@
-<div class="container">
-
 	<center><h3>Join a group</h3></center>
 	<center><h4 class="text-danger"><strong>{{errormsg}}</strong></h4></center>
 	<div ng-class="{'has-error': error.flag}">
@@ -8,4 +6,3 @@
 	</div>
 	<center><button type='button' class="btn btn-primary button-spacing" ng-click='joinGroup(group)'>Join</button></center>
 
-</div> <!-- /container -->

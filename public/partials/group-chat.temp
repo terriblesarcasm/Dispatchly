@@ -1,10 +1,7 @@
-<div class="container">
-	<div ng-controller="FirebaseController">
-		<center>
-		<input class="form-control pull-left chatform" ng-model="message" ui-keypress="{13:'addMessage(message)'}">
-		<button type='button' class='btn btn-primary chatbutton' ng-click='addMessage(message)'>Add message</button>
-		</center>
-		<br>
-		<p ng-repeat="item in items"><strong>{{item.username}}:</strong> {{item.mes}}</p>
-	</div>
-</div>
+
+	<center>
+	<input class="form-control pull-left chatform" ng-model="message" ui-keypress="{13:'addMessage(message)'}">
+	<button type='button' class='btn btn-primary chatbutton' ng-click='addMessage(message)'>Add message</button>
+	</center>
+	<br>
+	<p ng-repeat="item in items"><strong>{{item.username}}:</strong> {{item.mes}}</p>
