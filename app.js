@@ -124,7 +124,7 @@ app.post('/login/localuser',
 	});
 
 /* Create new user account via API */
-app.get("/db/register", function(req, res, next) {
+app.post("/db/register", function(req, res, next) {
 	// should first check DB to see if the username currently exists
 
 	var user = new User ({
