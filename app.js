@@ -60,7 +60,7 @@ app.get("/", ensureAuthenticated, function(req, res) {
 
 /* serves sign up page */
 app.get("/signup.html", function(req, res) {
-	res.sendfile('./signup.html');
+	res.sendfile('./views/signup.html');
 });
 
 
