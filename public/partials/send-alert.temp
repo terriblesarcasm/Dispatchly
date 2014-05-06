@@ -5,10 +5,10 @@
 			Alert Codes<span class="caret"></span>
 		</button>
 		<ul class="dropdown-menu" role="menu" style="width: 95%;">
-			<li id="dropdowns"><a ui-sref="confirmAlert({group: group, code: 'House Fire (A)'})">House Fire (A)</i></a></li>
-			<li id="dropdowns"><a ui-sref="confirmAlert({group: group, code: 'House Fire (B)'})">House Fire (B)</a></li>
-			<li id="dropdowns"><a ui-sref="confirmAlert({group: group, code: 'Car Fire (A)'})">Car Fire (A)</a></li>
-			<li id="dropdowns"><a ui-sref="confirmAlert({group: group, code: 'Car Fire (B)'})">Car Fire (B)</a></li>
+			<li id="dropdowns"><a ui-sref="confirmAlert({group: group}{code: 'House Fire (A)'})">House Fire (A)</i></a></li>
+			<li id="dropdowns"><a ui-sref="confirmAlert({group: group}{code: 'House Fire (B)'})">House Fire (B)</a></li>
+			<li id="dropdowns"><a ui-sref="confirmAlert({group: group}{code: 'Car Fire (A)'})">Car Fire (A)</a></li>
+			<li id="dropdowns"><a ui-sref="confirmAlert({group: group}{code: 'Car Fire (B)'})">Car Fire (B)</a></li>
 			<li id="dropdowns" ng-repeat="group in user.groups"><a ui-sref="group({group: group})">{{group}}</a></li>
 		</ul>
 	</div>
