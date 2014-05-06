@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+ 	<!-- CSS : bootstrap & local css file -->
+	<link rel="stylesheet" href="/public/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/public/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="/public/css/style.css">
+  <link rel="stylesheet" href="/public/css/index.css">
+  <link rel="stylesheet" href="/public/css/bootstrap-social.css">
+  <!-- Font awesome CDN -->
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="container" style="background: transparent;">
+
+      <div id="content">
+        <div id="top">
+          <h3 id="title">Dispatch Ninja</h3>
+        </div>
+        <center>
+          <form role="form" style="margin-top: 20px;">
+          <h3>You're one step away from becoming a Dispatch Ninja</h3>
+            <input type="text" class="form-control loginform" id="emailaddress" placeholder="Email address" autocomplete="off" autocapitalize="off">
+            <input type="password" class="form-control loginform" id="password" placeholder="Password" autocomplete=off" autocapitalize="off"">
+            <input type="text" class="form-control loginform" id="firstname" placeholder="First name" autocomplete="off" autocapitalize="off">
+            <input type="text" class="form-control loginform" id="lastname" placeholder="Last name" autocomplete="off" autocapitalize="off">
+            <input type="text" class="form-control loginform" id="password" placeholder="Phone number (6315551234)" type="tel" pattern="[0-9]*" inputmode="numeric" autocomplete="off" autocapitalize="off">
+            <button class="btn btn-primary loginform" type="button" submit="/login/localuser">Sign in</button>
+          </form>
+          <br>
+
+        <a class="btn btn-block btn-social btn-facebook home-social-buttons" href="/auth/facebook">
+          <i class="fa fa-facebook"></i>Sign in with Facebook
+        </a>
+
+         <a class="btn btn-block btn-social btn-twitter home-social-buttons" href="/auth/twitter">
+          <i class="fa fa-twitter"></i> Sign in with Twitter
+         </a>
+
+        </center>
+      </div> <!-- /content -->
+
+    </div> <!-- /container -->
+  </body>
+</html>
