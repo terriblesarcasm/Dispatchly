@@ -16,7 +16,7 @@
 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
 					Your Groups <span class="caret"></span>
 				</button>
-				<ul class="dropdown-menu home-dropdown-menu" role="menu">
+				<ul class="dropdown-menu" role="menu" style="width: 95%;">
 					<li id="dropdowns" ng-repeat="group in user.groups"><a ui-sref="group({group: group})">{{group}}</a></li>
 				</ul>
 			</div>
