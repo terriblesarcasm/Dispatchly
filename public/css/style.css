@@ -1,5 +1,6 @@
 body {
   background-color: transparent;
+  height: 100vh;
 }
 
 nav {
@@ -13,9 +14,9 @@ nav {
 }
 
 .container {
-    background-color: #FFFFFF;
-  min-height: 100vh;
-
+  background-color: #FFFFFF;
+  height: 100%;
+  max-height: 100vh - 50px;
 }
 
 @media(min-width: 992px){
