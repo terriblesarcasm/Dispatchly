@@ -127,5 +127,9 @@ h3 {
 }
 
 #dropdowns {
+  width: 300px;
+}
+
+.dropdown_menu {
   width: 95%;
 }
