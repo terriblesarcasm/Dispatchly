@@ -14,8 +14,8 @@
 				<li id="dropdowns" ng-repeat="group in user.groups"><a ui-sref="group({group: group})">{{group}}</a></li>
 			</ul>
 			<br>
-			<button type='button' class='btn btn-default' style="margin-top: 10px;">Add new alert code</button>
 		</div>
+			<button type='button' class='btn btn-default' style="margin-top: 10px; max-width: 250px;">Add new alert code</button>
 		</center>
 	</div>
 
