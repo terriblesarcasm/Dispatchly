@@ -150,6 +150,11 @@ app.post("/db/register", function(req, res, next) {
 
 });
 
+app.get("/logout", function(req, res, next) {
+	req.logout();
+	res.redirect("/");
+});
+
 
 /* Create group API */
 app.get("/db/create-group", function(req, res, next) {
