@@ -23,6 +23,13 @@
 	border-top-right-radius: 15px;
 }
 
+h3 {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
 body {
 	background-color: transparent;
 }
