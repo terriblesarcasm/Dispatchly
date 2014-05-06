@@ -134,7 +134,6 @@ app.post("/db/register", function(req, res, next) {
 	name: req.body.firstname + " " + req.body.lastname,
 	phonenumber: req.body.phonenumber,
 	});
-	console.log(user);
 
 	user.save(function(err) {
 		if(err) {
