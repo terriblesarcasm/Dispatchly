@@ -8,7 +8,11 @@
 		-o-background-size: cover;
 		background-size: cover;
 	}
+}
 
+.container {
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
 }
 
 body {
