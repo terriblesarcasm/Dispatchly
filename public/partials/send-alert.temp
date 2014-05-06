@@ -3,7 +3,7 @@
 	<div>
 		<center>
 		<div class="btn-group" id="groupdropdown">
-			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
 				Alert Codes<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu" style="width: 95%;">
@@ -14,7 +14,7 @@
 				<li id="dropdowns" ng-repeat="group in user.groups"><a ui-sref="group({group: group})">{{group}}</a></li>
 			</ul>
 			<br>
-			<button type='button' class='btn btn-primary' style="margin-top: 10px;">Add new alert code</button>
+			<button type='button' class='btn btn-default' style="margin-top: 10px;">Add new alert code</button>
 		</div>
 		</center>
 	</div>
