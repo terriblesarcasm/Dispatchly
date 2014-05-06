@@ -69,12 +69,12 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		controller: "GroupCtrl"
 	})
 	.state('sendAlert', {
-		url: "/sendAlert/{group}",
+		url: "/sendAlert/{group, code}",
 		templateUrl: "public/partials/send-alert.temp",
-		controller: "AlertCtrl"
+		controller: "SendAlertCtrl"
 	})
 	.state('confirmAlert', {
-		url: "/confirmAlert/{code}",
+		url: "/confirmAlert/{group, code}",
 
 		templateUrl: "public/partials/confirm-alert.temp",
 		controller: "ConfirmAlertCtrl"
@@ -149,8 +149,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 
-.controller('AlertCtrl', function ($scope, $window, $location, $q, $http) {
-
+.controller('SendAlertCtrl', function ($scope, $window, $location, $q, $http, $stateParams) {
+	console.log("group: " + $stateParams.group + " code: " $stateParams.code);
 })
 
 .controller('ConfirmAlertCtrl', function ($scope, $window, $location, $q, $http) {
