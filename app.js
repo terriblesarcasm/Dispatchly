@@ -132,7 +132,7 @@ app.get("/db/register", function(req, res, next) {
 	password: req.query.password,
 	name: req.query.firstname + " " + req.query.lastname,
 	phonenumber: req.query.phonenumber,
-	)};
+	});
 	console.log(user);
 
 	user.save(function(err) {
