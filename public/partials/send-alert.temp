@@ -6,7 +6,7 @@
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 				Alert Codes<span class="caret"></span>
 			</button>
-			<ul class="dropdown-menu" role="menu">
+			<ul class="dropdown-menu" role="menu" style="width: 95%;">
 				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'House Fire (A)'})">House Fire (A)</i></a></li>
 				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'House Fire (B)'})">House Fire (B)</a></li>
 				<li id="dropdowns"><a ui-sref="confirmAlert({code: 'Car Fire (A)'})">Car Fire (A)</a></li>
