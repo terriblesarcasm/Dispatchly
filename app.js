@@ -13,7 +13,7 @@ var app = express();
 app.configure(function() {
   app.use(express.static('public'));
   app.use(express.cookieParser());
-  app.use(express.urlencoded());
+  app.use(express.bodyParser());
   app.use(express.json());
   app.use(express.session({ secret: 'keyboard cat' }));
   app.use(passport.initialize());
