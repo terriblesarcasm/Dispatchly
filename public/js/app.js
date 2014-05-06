@@ -150,7 +150,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 
 .controller('SendAlertCtrl', function ($scope, $window, $location, $q, $http, $stateParams) {
-	console.log("group: " + $stateParams.group + " code: " $stateParams.code);
+	console.log("group: " + $stateParams.group + " code: " + $stateParams.code);
 })
 
 .controller('ConfirmAlertCtrl', function ($scope, $window, $location, $q, $http) {
