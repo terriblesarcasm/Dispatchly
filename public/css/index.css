@@ -8,6 +8,12 @@
 		-o-background-size: cover;
 		background-size: cover;
 	}
+
+	#content {
+		border-top-left-radius: 15px;
+		border-top-right-radius: 15px;
+		overflow: hidden;
+	}
 }
 
 #top {
@@ -18,11 +24,7 @@
 	margin: 0 auto;
 }
 
-#content {
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
-	overflow: hidden;
-}
+
 
 h3 {
 	margin-top: 0;
