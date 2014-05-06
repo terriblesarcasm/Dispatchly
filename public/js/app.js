@@ -130,7 +130,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 
-.controller('CreateGroupCtrl', function ($scope, $window, $location, $q, $http) {
+.controller('CreateGroupCtrl', function ($scope, $window, $location, $http) {
 	$scope.createGroup = function (group) {
 		$http.get('/db/create-group?name=' + group.name + '&password=' + group.password + '&address=' + group.address + '&zipcode=' + group.zipcode).success(function(response) {
 			if (response == '"11000"') {
@@ -149,17 +149,16 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 
-.controller('SendAlertCtrl', function ($scope, $window, $location, $q, $http, $stateParams) {
+.controller('SendAlertCtrl', function ($scope, $window, $location, $stateParams) {
+	console.log("group: " + $stateParams.group);
+})
+
+.controller('ConfirmAlertCtrl', function ($scope, $window, $location, $stateParams) {
 	console.log("group: " + $stateParams.group + " code: " + $stateParams.code);
-	console.log("stateparams: " + $stateParams);
-})
-
-.controller('ConfirmAlertCtrl', function ($scope, $window, $location, $q, $http) {
-
 })
 
 
-.controller('JoinGroupCtrl', function ($scope, $window, $location, $q, $http) {
+.controller('JoinGroupCtrl', function ($scope, $window, $location, $http) {
 	$scope.joinGroup = function (group) {
 		$http.get('/db/join-group?group_id=' + group.group_id + '&password=' + group.password).success(function(response) {
 			if (response == 'invalid') {
@@ -178,7 +177,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 
-.controller('GroupCtrl', function ($scope, $window, $location, $q, $http, $stateParams, Group) {
+.controller('GroupCtrl', function ($scope, $window, $location, $stateParams, Group) {
 	console.log('logging the state param: ' + $stateParams.group);
 	$scope.group = {name: $stateParams.group};
 	Group.setGroup($stateParams.group);
