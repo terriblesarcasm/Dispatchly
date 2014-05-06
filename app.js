@@ -133,6 +133,7 @@ app.get("/db/register", function(req, res, next) {
 	name: req.query.firstname + " " + req.query.lastname,
 	phonenumber: req.query.phonenumber,
 	});
+
 	console.log(user);
 
 	user.save(function(err) {
@@ -140,7 +141,7 @@ app.get("/db/register", function(req, res, next) {
 			console.log(err);
 			res.send(new String(err.code));
 		} else {
-			console.log("saved new user: " + user);
+			console.log("saved new user: ");
 			res.send(true);
 		}
 	});	
