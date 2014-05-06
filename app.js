@@ -128,10 +128,10 @@ app.get("/db/register", function(req, res, next) {
 	// should first check DB to see if the username currently exists
 
 	var user = new User ({
-	username: req.query.emailaddress;
-	password: req.query.password;
-	name: req.query.firstname + " " + req.query.lastname;
-	phonenumber: req.query.phonenumber;
+	username: req.query.emailaddress,
+	password: req.query.password,
+	name: req.query.firstname + " " + req.query.lastname,
+	phonenumber: req.query.phonenumber,
 	)};
 	console.log(user);
 
