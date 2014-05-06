@@ -123,6 +123,30 @@ app.post('/login/localuser',
 		res.redirect('/');
 	});
 
+/* Create new user account via API */
+app.get("/db/register", function(req, res, next) {
+	// should first check DB to see if the username currently exists
+
+	var user = req.user;
+	user.username = req.query.emailaddress;
+	user.password = req.query.password;
+	user.firstname = req.query.firstname;
+	user.lastname = req.query.lastname;
+	user.phonenumber = req.query.phonenumber;
+
+	console.log(user);
+
+	user.save(function(err) {
+		if(err) {
+			console.log(err);
+			res.send(new String(err.code));
+		} else {
+			console.log("saved new user: " + req.query.user);
+			res.send(true);
+		}
+	});	
+
+});
 
 
 /* Create group API */
