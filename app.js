@@ -128,23 +128,22 @@ app.post('/login/localuser',
 app.post("/db/register", function(req, res, next) {
 	// should first check DB to see if the username currently exists
 
-	console.log(req.body);
-	// var user = new User ({
-	// username: req.body.emailaddress,
-	// password: req.body.password,
-	// name: req.body.firstname + " " + req.body.lastname,
-	// phonenumber: req.body.phonenumber,
-	// });
+	var user = new User ({
+	username: req.body.emailaddress,
+	password: req.body.password,
+	name: req.body.firstname + " " + req.body.lastname,
+	phonenumber: req.body.phonenumber,
+	});
 
-	// user.save(function(err) {
-	// 	if(err) {
-	// 		console.log(err);
-	// 		res.send(new String(err.code));
-	// 	} else {
-	// 		console.log("saved new user: " + user);
-	// 		res.send(true);
-	// 	}
-	// });	
+	user.save(function(err) {
+		if(err) {
+			console.log(err);
+			res.send(new String(err.code));
+		} else {
+			console.log("saved new user: " + user);
+			res.send(true);
+		}
+	});	
 
 });
 
