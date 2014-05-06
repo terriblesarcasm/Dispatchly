@@ -69,7 +69,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		controller: "GroupCtrl"
 	})
 	.state('sendAlert', {
-		url: "/sendAlert/{group, code}",
+		url: "/sendAlert/{group}",
 		templateUrl: "public/partials/send-alert.temp",
 		controller: "SendAlertCtrl"
 	})
