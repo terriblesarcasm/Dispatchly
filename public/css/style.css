@@ -3,7 +3,7 @@ body {
   height: 100vh;
 }
 
-nav {
+nav, .navbar, .navbar-inverse {
   border-radius: 0px;
 }
 
