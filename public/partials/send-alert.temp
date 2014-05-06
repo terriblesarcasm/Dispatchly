@@ -15,7 +15,7 @@
 			</ul>
 		</div>
 			<br>
-			<button type='button' class='btn btn-default' style="margin-top: 10px; max-width: 250px;">Add new alert code</button>
+			<button type='button' class='btn btn-default alert-button'>Add new alert code</button>
 		</center>
 	</div>
 
