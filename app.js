@@ -84,7 +84,7 @@ app.get("/api/twilio", createSMS);
 function createSMS(req, res, next) {
 	//Get the group sending the alert
 	Group.findOne({ group_id: req.query.group }, 'users', function(err, groupData) {
-		if (err) return err;
+		if (err) res.send("error");
 		if (groupData) {
 			for (var i = groupData.length - 1; i >= 0; i--) {
 
@@ -118,6 +118,10 @@ function createSMS(req, res, next) {
 				//     }
 				// });
 			}
+			res.send("success from: " + req.query.group + " code: " + req.query.code);
+		}
+		else {
+			res.send("Couldn't find the group");
 		}
 	});
 }
