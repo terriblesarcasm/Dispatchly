@@ -80,6 +80,11 @@ h3 {
     border: 1px solid #000000;
   }
 
+  #logout-nav {
+    float: right;
+  }
+
+
   html {  
     background: url(/public/imgs/bg.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
