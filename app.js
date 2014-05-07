@@ -86,37 +86,52 @@ function createSMS(req, res, next) {
 	Group.findOne({ group_id: req.query.group }, 'users', function(err, groupData) {
 		if (err) res.send("error");
 		if (groupData) {
-			console.log("groupdata " + groupData);
-			console.log("groupdata.length " + groupData.length);
-			for (var i = groupData.length - 1; i >= 0; i--) {
-				console.log("i: " + i);
-				
-				//Need to User.findOne({name: user.name}) to get phone
-				//create Twilio SMS
-				// client.sms.messages.create({
-				//     to:req.query.phone,
-				//     from:req.query.from,
-				//     body:req.query.bodymessage
-				// }, function(error, message) {
-				//     // The HTTP request to Twilio will run asynchronously. This callback
-				//     // function will be called when a response is received from Twilio
-				//     // The "error" variable will contain error information, if any.
-				//     // If the request was successful, this value will be "falsy"
-				//     if (!error) {
-				//         // The second argument to the callback will contain the information
-				//         // sent back by Twilio for the request. In this case, it is the
-				//         // information about the text messsage you just sent:
-				//         console.log('Success! The SID for this SMS message is:');
-				//         console.log(message.sid);
-				//         res.send('Success! The SID for this SMS message is: ' + message.sid);
-				 
-				//         console.log('Message sent on:');
-				//         console.log(message.dateCreated);
-				//     } else {
-				//         console.log('Oops! There was an error.');
-				//         console.log(error);
-				//     }
-				// });
+			var bodymessage = "Alert code: " + req.query.code + " from group: " + req.query.group + " respond here: ";
+			var response = [];
+			for (var i = groupData.users.length - 1; i >= 0; i--) {
+				User.findOne({ name: groupData.users[i] }, 'phonenumber', function(err, userData) {
+					if (err) {
+						console.log("unable to find user: " + groupData.users[i] " in createSMS");
+					} else if (userData) {
+						var longUrl = "http://dispatch.systems/respond/alert?group=" + req.query.group + "&name=" + groupData.users[i];
+						var shorturl;
+						Bitly.authenticate("spamr", "i001254m", function(err, access_token) {
+						    // Returns an error if there was one, or an access_token if there wasn't 
+						    Bitly.setAccessToken(access_token);
+						    // Shorten the URL being passed through
+							Bitly.shorten(longUrl, function(err, results) {
+						    	shorturl = results;
+							});
+						});
+
+						bodymessage = bodymessage + shorturl;
+
+						client.sms.messages.create({
+						    to:userData.phonenumber,
+						    from:config.twilio.from,
+						    body:bodymessage
+						}, function(error, message) {
+						    // The HTTP request to Twilio will run asynchronously. This callback
+						    // function will be called when a response is received from Twilio
+						    // The "error" variable will contain error information, if any.
+						    // If the request was successful, this value will be "falsy"
+						    if (!error) {
+						        // The second argument to the callback will contain the information
+						        // sent back by Twilio for the request. In this case, it is the
+						        // information about the text messsage you just sent:
+						        console.log('Success! The SID for this SMS message is:');
+						        console.log(message.sid);
+						        response.push('Success! The SID for this SMS message is: ' + message.sid);
+						 
+						        console.log('Message sent on:');
+						        console.log(message.dateCreated);
+						    } else {
+						        console.log('Oops! There was an error.');
+						        console.log(error);
+						    }
+						});
+					}
+				})
 			}
 			res.send("success from: " + req.query.group + " code: " + req.query.code);
 		} else {
