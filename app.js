@@ -88,9 +88,7 @@ function createSMS(req, res, next) {
 		if (groupData) {
 			console.log(groupData)
 			for (var i = groupData.length - 1; i >= 0; i--) {
-				console.log(groupData)
-                var user = groupData[i];
-                console.log(user);
+				console.log("i: " + i);
 				
 				//Need to User.findOne({name: user.name}) to get phone
 				//create Twilio SMS
