@@ -83,15 +83,14 @@ app.get("/api/twilio", createSMS);
 
 function createSMS(req, res, next) {
 	//Get the group sending the alert
-	console.log("in createSMS");
 	Group.findOne({ group_id: req.query.group }, 'users', function(err, groupData) {
 		if (err) res.send("error");
 		if (groupData) {
-			console.log('in groupdata');
+			console.log(groupData)
 			for (var i = groupData.length - 1; i >= 0; i--) {
-
-				var user = groupData[i];
-				console.log(user);
+				console.log(groupData)
+                var user = groupData[i];
+                console.log(user);
 				
 				//Need to User.findOne({name: user.name}) to get phone
 				//create Twilio SMS
@@ -122,7 +121,6 @@ function createSMS(req, res, next) {
 			}
 			res.send("success from: " + req.query.group + " code: " + req.query.code);
 		} else {
-			console.log("Couldn't find the group");
 			res.send("Couldn't find the group");
 		}
 	});
