@@ -27,6 +27,14 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	}
 })
 
+.factory('Twilio', function($http) {
+	return {
+		sendTwilioAlert: function(group, code) {
+			return $http.get('/api/twilio?group=' + group + '&code=' + code)
+		}
+	}
+})
+
 .factory('Group', function () {
 	var group = {};
 	return {
@@ -150,12 +158,13 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 
 .controller('SendAlertCtrl', function ($scope, $window, $location, $stateParams) {
-	console.log("SendAlertCtrl group: " + $stateParams.group);
-	$scope.group = {name: $stateParams.group}
+	$scope.group = {name: $stateParams.group};
 })
 
-.controller('ConfirmAlertCtrl', function ($scope, $window, $location, $stateParams) {
-	console.log("ConfirmAlertCtrl group: " + $stateParams.group + " code: " + $stateParams.code);
+.controller('ConfirmAlertCtrl', function ($scope, $window, $location, $stateParams, Twilio) {
+	$scope.alert = { group: $stateParams.group, code: $stateParams.code };
+	
+	$scope.twilioAlert = Twilio.sendTwilioAlert;
 })
 
 

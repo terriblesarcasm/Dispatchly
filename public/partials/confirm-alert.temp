@@ -1,3 +1,7 @@
 	<center>
-	<button type='button' class='btn btn-primary groupbutton'>Confirm alert</button>
+		Confirm Alert<br>
+		Group: {{ alert.group }}
+		Code: {{ alert.code }}<br>
+
+		<button type='button' class='btn btn-primary groupbutton' ng-click='twilioAlert()'>Confirm alert</button>
 	</center>
