@@ -83,6 +83,7 @@ app.get("/api/twilio", createSMS);
 
 function createSMS(req, res, next) {
 	//Get the group sending the alert
+	console.log("in createSMS");
 	Group.findOne({ group_id: req.query.group }, 'users', function(err, groupData) {
 		if (err) res.send("error");
 		if (groupData) {
