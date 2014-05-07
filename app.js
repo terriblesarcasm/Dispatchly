@@ -157,7 +157,7 @@ app.get("/logout", function(req, res, next) {
 
 
 app.get("/db/loadgroup", function(req, res, next) {
-	Group.findOne({group_id: req.query.group_id}, "users" function(err, groupData) {
+	Group.findOne({group_id: req.query.group_id}, "users", function(err, groupData) {
 		if (err) return console.error(err);
 		if (groupData) { 
 			console.log('loading groupData: ' + groupData);
