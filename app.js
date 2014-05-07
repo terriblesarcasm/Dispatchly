@@ -6,7 +6,7 @@ var _ = require('underscore');
 var client = new twilio.RestClient('AC645f23a47956757b6ee240ba83acc40d', 'da6895bd80208b87f5eeb94fa776961b');
 var mongoose = require('mongoose');
 var passport = require('passport');
-var config = require('oauth.js');
+var config = require('./oauth.js');
 
 
 var app = express();
