@@ -87,6 +87,7 @@ function createSMS(req, res, next) {
 	Group.findOne({ group_id: req.query.group }, 'users', function(err, groupData) {
 		if (err) res.send("error");
 		if (groupData) {
+			console.log('in groupdata');
 			for (var i = groupData.length - 1; i >= 0; i--) {
 
 				var user = groupData[i];
@@ -121,6 +122,7 @@ function createSMS(req, res, next) {
 			}
 			res.send("success from: " + req.query.group + " code: " + req.query.code);
 		} else {
+			console.log("Couldn't find the group");
 			res.send("Couldn't find the group");
 		}
 	});
