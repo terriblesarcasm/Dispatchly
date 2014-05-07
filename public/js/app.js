@@ -164,7 +164,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 .controller('ConfirmAlertCtrl', function ($scope, $window, $location, $stateParams, Twilio) {
 	$scope.alert = { group: $stateParams.group, code: $stateParams.code };
 	
-	$scope.twilioAlert = Twilio.sendTwilioAlert($scope.alert);
+	$scope.twilioAlert = Twilio.sendTwilioAlert($scope.alert).then(function() {
+		console.log('inside of alert');
+	});
 })
 
 
