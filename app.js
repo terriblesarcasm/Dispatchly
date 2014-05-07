@@ -156,6 +156,20 @@ app.get("/logout", function(req, res, next) {
 });
 
 
+app.get("/db/loadgroup", function(req, res, next) {
+	Group.findOne({group_id: req.query.group_id}, "users" function(err, groupData) {
+		if (err) return console.error(err);
+		if (groupData) { 
+			console.log('loading groupData: ' + groupData);
+			res.send(groupData);
+		} 
+		else {
+			// no group found for whatever reason
+		}
+	})
+});
+
+
 /* Create group API */
 app.get("/db/create-group", function(req, res, next) {
 	// Group model
