@@ -86,7 +86,8 @@ function createSMS(req, res, next) {
 	Group.findOne({ group_id: req.query.group }, 'users', function(err, groupData) {
 		if (err) res.send("error");
 		if (groupData) {
-			console.log(groupData)
+			console.log("groupdata " + groupData);
+			console.log("groupdata.length " + groupData.length);
 			for (var i = groupData.length - 1; i >= 0; i--) {
 				console.log("i: " + i);
 				
