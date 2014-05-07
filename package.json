@@ -1,0 +1,36 @@
+{
+  "name": "dispatchly",
+  "version": "0.0.0",
+  "description": "Turn your phone into an emergency dispatcher.",
+  "main": "app.js",
+  "dependencies": {
+    "express": "~3.4.8",
+    "mongoose": "~3.8.8",
+    "node-bitlyapi": "~0.4.0",
+    "passport": "~0.2.0",
+    "passport-facebook": "~1.0.3",
+    "passport-local": "~1.0.0",
+    "passport-twitter": "~1.0.2",
+    "twilio": "~1.6.0",
+    "underscore": "~1.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/terriblesarcasm/Dispatchly.git"
+  },
+  "keywords": [
+    "node",
+    "angularjs",
+    "express"
+  ],
+  "author": "Steve Thompson and Joe Barreca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/terriblesarcasm/Dispatchly/issues"
+  },
+  "homepage": "https://github.com/terriblesarcasm/Dispatchly"
+}
