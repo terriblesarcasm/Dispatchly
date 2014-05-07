@@ -6,6 +6,7 @@ var _ = require('underscore');
 var client = new twilio.RestClient('AC645f23a47956757b6ee240ba83acc40d', 'da6895bd80208b87f5eeb94fa776961b');
 var mongoose = require('mongoose');
 var passport = require('passport');
+var config = require('oauth.js');
 
 
 var app = express();
@@ -24,15 +25,15 @@ app.configure(function() {
 
 // seralize and deseralize
 passport.serializeUser(function(user, done) {
-    //console.log('serializeUser: ' + user._id)
-    done(null, user._id);
+	//console.log('serializeUser: ' + user._id)
+	done(null, user._id);
 });
 passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user){
-        //console.log(user);
-        if(!err) done(null, user);
-        else done(err, null);
-    });
+	User.findById(id, function(err, user){
+		//console.log(user);
+		if(!err) done(null, user);
+		else done(err, null);
+	});
 });
 
 /* initialize all DB models */
@@ -43,19 +44,19 @@ mongoose.connect('mongodb://localhost/dispatchly');
 /* bitly credentials / requirements */
 var BitlyAPI = require("node-bitlyapi");
 var Bitly = new BitlyAPI({
-    client_id: "149af734d55f5dea2049022bffeb8342ce40aa6d",
-    client_secret: "26fb726bafb6c08fa4e3fc4b89e7628601352326"    
+	client_id: "149af734d55f5dea2049022bffeb8342ce40aa6d",
+	client_secret: "26fb726bafb6c08fa4e3fc4b89e7628601352326"    
 });
 
 /* serves main page */
 /* all other requests should fall below this */
 app.get("/", ensureAuthenticated, function(req, res) {
 	User.findById(req.session.passport.user, function(err, user) {
-	    if(err) { 
-	      console.log(err); 
-	    } else {
-	      res.sendfile('./views/app.html', { user: user});
-	    }
+		if(err) { 
+		  console.log(err); 
+		} else {
+		  res.sendfile('./views/app.html', { user: user});
+		}
 	});
 });
 
@@ -68,11 +69,11 @@ app.get("/signup", function(req, res) {
 /* serves response page */
 app.get("/alert-response.html", ensureAuthenticated, function(req, res) {
 	User.findById(req.session.passport.user, function(err, user) {
-	    if(err) { 
-	      console.log(err); 
-	    } else {
-	      res.sendfile('./views/alert-response.html', { user: user});
-	    }
+		if(err) { 
+		  console.log(err); 
+		} else {
+		  res.sendfile('./views/alert-response.html', { user: user});
+		}
 	});
 });
 
@@ -96,39 +97,39 @@ function createSMS(req, res, next) {
 						var longUrl = "http://dispatch.systems/respond/alert?group=" + req.query.group + "&name=" + groupData.users[i];
 						var shorturl;
 						Bitly.authenticate("spamr", "i001254m", function(err, access_token) {
-						    // Returns an error if there was one, or an access_token if there wasn't 
-						    Bitly.setAccessToken(access_token);
-						    // Shorten the URL being passed through
+							// Returns an error if there was one, or an access_token if there wasn't 
+							Bitly.setAccessToken(access_token);
+							// Shorten the URL being passed through
 							Bitly.shorten(longUrl, function(err, results) {
-						    	shorturl = results;
+								shorturl = results;
 							});
 						});
 
 						bodymessage = bodymessage + shorturl;
 
 						client.sms.messages.create({
-						    to:userData.phonenumber,
-						    from:config.twilio.from,
-						    body:bodymessage
+							to:userData.phonenumber,
+							from:config.twilio.from,
+							body:bodymessage
 						}, function(error, message) {
-						    // The HTTP request to Twilio will run asynchronously. This callback
-						    // function will be called when a response is received from Twilio
-						    // The "error" variable will contain error information, if any.
-						    // If the request was successful, this value will be "falsy"
-						    if (!error) {
-						        // The second argument to the callback will contain the information
-						        // sent back by Twilio for the request. In this case, it is the
-						        // information about the text messsage you just sent:
-						        console.log('Success! The SID for this SMS message is:');
-						        console.log(message.sid);
-						        response.push('Success! The SID for this SMS message is: ' + message.sid);
+							// The HTTP request to Twilio will run asynchronously. This callback
+							// function will be called when a response is received from Twilio
+							// The "error" variable will contain error information, if any.
+							// If the request was successful, this value will be "falsy"
+							if (!error) {
+								// The second argument to the callback will contain the information
+								// sent back by Twilio for the request. In this case, it is the
+								// information about the text messsage you just sent:
+								console.log('Success! The SID for this SMS message is:');
+								console.log(message.sid);
+								response.push('Success! The SID for this SMS message is: ' + message.sid);
 						 
-						        console.log('Message sent on:');
-						        console.log(message.dateCreated);
-						    } else {
-						        console.log('Oops! There was an error.');
-						        console.log(error);
-						    }
+								console.log('Message sent on:');
+								console.log(message.dateCreated);
+							} else {
+								console.log('Oops! There was an error.');
+								console.log(error);
+							}
 						});
 					}
 				})
@@ -338,11 +339,11 @@ app.get("/db/join-group", function(req, res, next) {
 /* bitly API request */
 app.get("/api/bitly", function(req, res) {
 	Bitly.authenticate("spamr", "i001254m", function(err, access_token) {
-    // Returns an error if there was one, or an access_token if there wasn't 
-    Bitly.setAccessToken(access_token);
-    // Shorten the URL being passed through
-	    Bitly.shorten({longUrl:req.query.name}, function(err, results) {
-	    	res.send(results);
+	// Returns an error if there was one, or an access_token if there wasn't 
+	Bitly.setAccessToken(access_token);
+	// Shorten the URL being passed through
+		Bitly.shorten({longUrl:req.query.name}, function(err, results) {
+			res.send(results);
 			});
 	});
 });
@@ -353,7 +354,7 @@ app.get("/auth/twitter", authnOrAuthzTwitter);
 
 app.get("/auth/facebook/callback", passport.authenticate('facebook', { failureRedirect: '/' }),
   function(req, res) {
-    res.redirect('/');
+	res.redirect('/');
 });
 
 app.get("/auth/twitter/callback", passport.authenticate('twitter', { failureRedirect: '/' }),
@@ -364,29 +365,29 @@ app.get("/auth/twitter/callback", passport.authenticate('twitter', { failureRedi
 app.get('/authz/facebook/callback', 
   passport.authorize('facebook-authz', { failureRedirect: '/' }),
   function(req, res) {
-    var user = req.user;
-    var account = req.account;
+	var user = req.user;
+	var account = req.account;
 
-    // Associate the Twitter account with the logged-in user.
-    account.userId = user.id;
-    account.save(function(err) {
-      if (err) { return self.error(err); }
-      res.redirect('/');
-    });
+	// Associate the Twitter account with the logged-in user.
+	account.userId = user.id;
+	account.save(function(err) {
+	  if (err) { return self.error(err); }
+	  res.redirect('/');
+	});
   });
 
 app.get('/authz/twitter/callback', 
   passport.authorize('twitter-authz', { failureRedirect: '/' }),
   function(req, res) {
-    var user = req.user;
-    var account = req.account;
+	var user = req.user;
+	var account = req.account;
 
-    // Associate the Twitter account with the logged-in user.
-    account.userId = user.id;
-    account.save(function(err) {
-      if (err) { return self.error(err); }
-      res.redirect('/');
-    });
+	// Associate the Twitter account with the logged-in user.
+	account.userId = user.id;
+	account.save(function(err) {
+	  if (err) { return self.error(err); }
+	  res.redirect('/');
+	});
   });
 
 app.get('/get/profilepic', getProfilePic);
@@ -417,19 +418,19 @@ app.get('/get/profilepic', getProfilePic);
 
 function authnOrAuthzFacebook(req, res, next) {
   if (!req.isAuthenticated()) {
-    passport.authenticate('facebook', { scope: ['email'], successRedirect: '/',
-                                        failureRedirect: '/login' })(req, res, next);
+	passport.authenticate('facebook', { scope: ['email'], successRedirect: '/',
+										failureRedirect: '/login' })(req, res, next);
   } else {
-    passport.authorize('facebook-authz')(req, res, next);
+	passport.authorize('facebook-authz')(req, res, next);
   }
 }
 
 function authnOrAuthzTwitter(req, res, next) {
   if (!req.isAuthenticated()) {
-    passport.authenticate('twitter', { scope: ['email'], successRedirect: '/',
-                                        failureRedirect: '/login' })(req, res, next);
+	passport.authenticate('twitter', { scope: ['email'], successRedirect: '/',
+										failureRedirect: '/login' })(req, res, next);
   } else {
-    passport.authorize('twitter-authz')(req, res, next);
+	passport.authorize('twitter-authz')(req, res, next);
   }
 }
 
@@ -442,11 +443,11 @@ function getProfilePic(accounts) {
   var len = accounts.length;
   var twitter = "";
   for (var cnt = 0; cnt < len; cnt++) {
-    if (accounts[cnt].provider == 'facebook.com') {
-    	res.send(accounts[cnt].userid);
-    } else if (accounts[cnt].provider == 'twitter.com') {
-    	twitter = accounts[cnt].userid;
-    }
+	if (accounts[cnt].provider == 'facebook.com') {
+		res.send(accounts[cnt].userid);
+	} else if (accounts[cnt].provider == 'twitter.com') {
+		twitter = accounts[cnt].userid;
+	}
   }
   res.send(twitter);
 }
