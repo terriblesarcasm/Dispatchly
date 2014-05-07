@@ -119,8 +119,7 @@ function createSMS(req, res, next) {
 				// });
 			}
 			res.send("success from: " + req.query.group + " code: " + req.query.code);
-		}
-		else {
+		} else {
 			res.send("Couldn't find the group");
 		}
 	});
