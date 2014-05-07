@@ -11,7 +11,6 @@ var User = mongoose.model('User', {
   accounts: [],
   username: String,
   password: String,
-  availability: String
 });
 
 module.exports = User;
