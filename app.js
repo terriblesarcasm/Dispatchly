@@ -91,7 +91,7 @@ function createSMS(req, res, next) {
 			for (var i = groupData.users.length - 1; i >= 0; i--) {
 				User.findOne({ name: groupData.users[i] }, 'phonenumber', function(err, userData) {
 					if (err) {
-						console.log("unable to find user: " + groupData.users[i] " in createSMS");
+						console.log("unable to find user: " + groupData.users[i] + " in createSMS");
 					} else if (userData) {
 						var longUrl = "http://dispatch.systems/respond/alert?group=" + req.query.group + "&name=" + groupData.users[i];
 						var shorturl;
