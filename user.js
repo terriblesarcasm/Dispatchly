@@ -10,7 +10,8 @@ var User = mongoose.model('User', {
   groups: [],
   accounts: [],
   username: String,
-  password: String
+  password: String,
+  availability: String
 });
 
 module.exports = User;
