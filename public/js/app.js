@@ -189,7 +189,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 				// group exists, check the passwords
 				if (group.password == $scope.groups.password) {
 					console.log('passwords match');
-					$scope.groups.users.$add({name: User.getuser().name, availability: null});
+					var user = User.getuser().name;
+					$scope.groups.users.$add({name: user, availability: null});
 				}
 			}
 		})
