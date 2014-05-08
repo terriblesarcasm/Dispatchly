@@ -157,7 +157,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 
-.controller('JoinGroupCtrl', function ($scope, $window, $location, $http) {
+.controller('JoinGroupCtrl', function ($scope, $window, $location, $firebase, $http) {
 	$scope.joinGroup = function (group) {
 		// $http.get('/db/join-group?group_id=' + group.group_id + '&password=' + group.password).success(function(response) {
 		// 	if (response == 'invalid') {
