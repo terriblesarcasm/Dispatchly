@@ -180,8 +180,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		    				});
 
 		    // need to add group to the user DB (in Mongo)
-		    // need to add group to the user DB (in Mongo)
-		    // need to add group to the user DB (in Mongo)
 			User.add_group_to_user(group.name);			    
 
 		    $location.path("/");
