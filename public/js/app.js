@@ -166,7 +166,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		});
 
 		// create group
-	    $scope.groups.$set({group_id: group.name, password: group.password, address: group.address, zipcode: group.zipcode});
+	    //$scope.groups.$set({group_id: group.name, password: group.password, address: group.address, zipcode: group.zipcode});
 
 	}
 
