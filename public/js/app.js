@@ -161,8 +161,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		var groupRef = new Firebase("https://dispatchninja.firebaseIO.com/groups/" + group.name);
 
 		// check if group name already exists
-		groupRef.once('value', function(data) {
-		  console.log('value = ' + data.val());
+		groupRef.once('value', function(snapshot) {
+		  console.log('value = ' + snapshot.val());
+		  console.log('group_id = ' snapshot.group_id);
 		});
 
 		// create group
