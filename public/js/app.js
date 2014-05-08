@@ -166,7 +166,12 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		  if(snapshot.val() == null) {
 		  	// ^ if no group with that name exists
 		  	// create group
-		    $scope.groups.$set({group_id: group.name, password: group.password, address: group.address, zipcode: group.zipcode});
+		    $scope.groups.$set({group_id: group.name, 
+		    					password: group.password, 
+		    					address: group.address, 
+		    					zipcode: group.zipcode,
+		    					users: [$scope.user = User.getuser()]
+		    				});
 
 		    // need to add group to the user DB (in Mongo)
 		    // need to add group to the user DB (in Mongo)
