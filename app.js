@@ -208,7 +208,7 @@ app.get("/db/add-group-to-user", function(req, res, next) {
 
 	// Save group to user
 	var user = req.user;
-	user.groups.push(req.query.name);
+	user.groups.push(req.query.group_id);
 	
 	user.save(function(err) {
 		if(err) {

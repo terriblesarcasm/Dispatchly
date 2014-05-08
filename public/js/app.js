@@ -28,7 +28,13 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
         },
         getgroups: function() {
         	return user.groups;
-        }
+        },
+        add_group_to_user: function(group_id) {
+            return $http.get('/db/add-group-to-user/?group_id=' + group_id).then(function(response) {
+                group_id = response.data;
+                return group_id;
+            });
+        }        
     }
 })
 
@@ -176,6 +182,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		    // need to add group to the user DB (in Mongo)
 		    // need to add group to the user DB (in Mongo)
 		    // need to add group to the user DB (in Mongo)
+			User.add_group_to_user(group.name);			    
 
 		    $location.path("/");
 		  }
