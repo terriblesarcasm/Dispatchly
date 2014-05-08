@@ -7,6 +7,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
         setgroupies: function() {
             return $http.get('/db/loadgroup').then(function(response) {
                 groupies = response.data;
+                console.log('groupies in factory: ' + groupies);
                 return groupies;
             });
         },
@@ -212,9 +213,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	$scope.group = {name: $stateParams.group};
 	Group.setGroup($stateParams.group);
 
-	Groupies.setgroupies($scope.group).then(function(response) {
+	Groupies.setgroupies().then(function(response) {
 		$scope.groupies = response;
-		console.log($scope.groupies);
+		console.log('logging $scope.groupies ' + $scope.groupies);
 	});
 
 
