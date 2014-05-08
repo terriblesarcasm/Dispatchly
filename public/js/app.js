@@ -221,7 +221,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		    					password: group.password, 
 		    					address: group.address, 
 		    					zipcode: group.zipcode,
-		    					users: [User.getuser().name]
+		    					users: [User.getuser().name] //instead of setting it, it may be best to make the array seperately using $add
 		    				});
 
 		    // need to add group to the user DB (in Mongo)
