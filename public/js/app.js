@@ -2,17 +2,12 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 .factory('Groupies', function ($http) {
     var groupies = {};
-    console.log('Groupies factory is running');
 
     return { 
         getgroupies: function(group_id) {
-        	console.log('entered getgroupies');
-        	console.log('group_id = ' + group_id);
             return $http.get('/db/loadgroup/?group_id=' + group_id).then(function(response) {
-                console.log('response = ' + response);
-                console.log('response.data = ' + response.data);
                 console.log('response.data.users = ' + response.data.users);                
-                groupies = response.data;
+                groupies = response.data.users;
                 console.log('groupies in factory: ' + groupies);
                 return groupies;
             });
