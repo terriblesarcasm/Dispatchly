@@ -1,10 +1,11 @@
 	<center>
 		<h3>{{group.name}}</h3>
-		<h4 ng-repeat="member in groupies">{{member}}</h4>
+		
 		<table class="table">
 			<tbody>
-			<tr class="success"><td>Joe</td></tr>
-			<tr class="danger"><td>Steve</td></tr>
+				<tr ng-repeat="member in groupies">
+					<td>{{member}}</td>
+				</tr>
 			</tbody>
 		</table>
 		<a ui-sref="groupChat({group:group.name})"><button type='button' class='btn btn-primary groupbutton'>Group Chat</button></a>
