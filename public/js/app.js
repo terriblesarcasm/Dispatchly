@@ -162,7 +162,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		// create group
 	  	var URL = "https://dispatchninja.firebaseIO.com/groups/";
 	    $scope.groups = $firebase(new Firebase(URL));
-	    var new_group = $scope.groups.$child(group);
+	    var new_group = $scope.groups.$child(group.name);
 
 	}
 
