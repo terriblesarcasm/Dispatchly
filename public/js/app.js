@@ -164,9 +164,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 		// check if group name already exists
 		groupRef.on('value', function(snapshot) {
-		  console.log('value.group_id = ' + snapshot.val());
+		  console.log('snapshot.val() = ' + snapshot.val());
 
-		  if(snapshot.val().group_id == null) {
+		  if(snapshot.val() == null) {
 		  	console.log('no group exists, create one here');
 		  	// create group
 		    $scope.groups.$set({group_id: group.name, password: group.password, address: group.address, zipcode: group.zipcode});
