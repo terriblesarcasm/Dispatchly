@@ -1,7 +1,7 @@
 	<center><h3>Join a group</h3></center>
 	<center><h4 class="text-danger"><strong>{{errormsg}}</strong></h4></center>
 	<div ng-class="{'has-error': error.flag}">
-		<input class="form-control"  ng-model="group.group_id" placeholder="Group name" autocomplete="off" autocapitalize="off"><br>
+		<input class="form-control"  ng-model="group.name" placeholder="Group name" autocomplete="off" autocapitalize="off"><br>
 		<input class="form-control" ng-model="group.password" placeholder="Group password" autocomplete="off" autocapitalize="off"><br>
 	</div>
 	<center><button type='button' class="btn btn-primary button-spacing" ng-click='joinGroup(group)'>Join</button></center>

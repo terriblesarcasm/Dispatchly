@@ -157,19 +157,62 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 
+.controller('JoinGroupCtrl', function ($scope, $window, $location, $http) {
+	$scope.joinGroup = function (group) {
+		// $http.get('/db/join-group?group_id=' + group.group_id + '&password=' + group.password).success(function(response) {
+		// 	if (response == 'invalid') {
+		// 		$scope.errormsg = 'Invalid group name/password';
+		// 		$scope.error = {flag:true}; 
+		// 	}
+		// 	else {
+		// 		// redirect back to homepage 
+		// 		$location.path("/");
+		// 	}
+		// })
+		// .error(function(error){
+		// 	console.log('error: ' + error);
+		// });
+
+		// initialize Firebase references
+		var URL = "https://dispatchninja.firebaseIO.com/groups/" + group.name;
+		var groupRef - new Firebase(URL);
+
+		//this should probably be set in the following groupRef.once
+		$scope.groups = $firebase(new Firebase(URL));
+
+		// check to make sure group exists
+		groupRef.once('value', function(snapshot) {
+			console.log('snapshot.val() = ' + snapshot.val());
+			if(snapshot.val() === null) {
+				// ^ if no group exists
+				$scope.error = {flag:true, message: 'Group does not exist or password is wrong.'};
+			} else {
+				// group exists, check the passwords
+				if (group.password == snapshot.password) {
+					console.log('passwords match');
+				}
+			}
+		})
+
+	};	
+})
+
+
 .controller('CreateGroupCtrl', function ($scope, $window, $location, $http, $firebase, User) {
 
 	$scope.createGroup = function (group) {
 		// initialize Firebase references
-		var groupRef = new Firebase("https://dispatchninja.firebaseIO.com/groups/" + group.name);
-	  	var URL = "https://dispatchninja.firebaseIO.com/groups/" + group.name;
+		var URL = "https://dispatchninja.firebaseIO.com/groups/" + group.name;
+		var groupRef = new Firebase(URL);	  	
+
+		//this should probably be set in the following groupRef.once
 	    $scope.groups = $firebase(new Firebase(URL));
 
 		// check if group name already exists
 		groupRef.once('value', function(snapshot) {
 		  console.log('snapshot.val() = ' + snapshot.val());
 
-		  if(snapshot.val() == null) {
+		  if(snapshot.val() === null) {
 		  	// ^ if no group with that name exists
 		  	// create group
 		    $scope.groups.$set({group_id: group.name, 
@@ -209,26 +252,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		});
 	}
 })
-
-
-.controller('JoinGroupCtrl', function ($scope, $window, $location, $http) {
-	$scope.joinGroup = function (group) {
-		$http.get('/db/join-group?group_id=' + group.group_id + '&password=' + group.password).success(function(response) {
-			if (response == 'invalid') {
-				$scope.errormsg = 'Invalid group name/password';
-				$scope.error = {flag:true}; 
-			}
-			else {
-				// redirect back to homepage 
-				$location.path("/");
-			}
-		})
-		.error(function(error){
-			console.log('error: ' + error);
-		});
-	};	
-})
-
 
 .controller('GroupCtrl', function ($scope, $window, $location, $stateParams, Group, Groupies) {
 	console.log('logging the state param: ' + $stateParams.group);
