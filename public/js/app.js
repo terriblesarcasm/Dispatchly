@@ -160,10 +160,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 
 		// create group
-	  	var URL = "https://dispatchninja.firebaseIO.com/groups/";
+	  	var URL = "https://dispatchninja.firebaseIO.com/groups/" + group.name;
 	    $scope.groups = $firebase(new Firebase(URL));
-	    var new_group = $scope.groups.$child(group.name);
-	    $scope.new_group.$set({bar: "baz"});
+	    $scope.groups.$set({group_id: group.name, password: group.password, address: group.address, zipcode: group.zipcode});
 
 	}
 
