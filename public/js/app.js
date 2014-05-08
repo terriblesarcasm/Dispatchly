@@ -158,7 +158,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	  	var URL = "https://dispatchninja.firebaseIO.com/groups/" + group.name;
 	    $scope.groups = $firebase(new Firebase(URL));
 	    console.log($scope.groups.$getIndex());
-	    console.log($scope.groups.$getIndex().length());
+	    console.log($scope.groups.$getIndex().length;
 		// check if group name already exists
 
 		if($scope.groups.$getIndex() == null || ""){
