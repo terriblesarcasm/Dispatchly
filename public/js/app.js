@@ -175,7 +175,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 		// initialize Firebase references
 		var URL = "https://dispatchninja.firebaseIO.com/groups/" + group.name;
-		var groupRef - new Firebase(URL);
+		var groupRef = new Firebase(URL);
 
 		//this should probably be set in the following groupRef.once
 		$scope.groups = $firebase(new Firebase(URL));
