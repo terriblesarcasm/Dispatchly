@@ -182,19 +182,14 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 		// check to make sure group exists
 		groupRef.once('value', function(snapshot) {
-			console.log('snapshot.val() = ' + snapshot.val());
-			console.log('snapshot.val().name: ' + snapshot.val().group_id);
-			console.log('groupRef: ' + groupRef);
-			console.log('groupRef: ' + groupRef.group_id);
-			console.log('scope.groups: ' + $scope.groups);
-
 			if(snapshot.val() === null) {
 				// ^ if no group exists
 				$scope.error = {flag:true, message: 'Group does not exist or password is wrong.'};
 			} else {
 				// group exists, check the passwords
-				if (group.password == snapshot.password) {
+				if (group.password == $scope.groups.password) {
 					console.log('passwords match');
+					$scope.groups.users.$add({name: $scope.user.name, availability: null});
 				}
 			}
 		})
