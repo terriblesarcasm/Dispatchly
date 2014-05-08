@@ -151,7 +151,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 
-.controller('CreateGroupCtrl', function ($scope, $window, $location, $http, $firebase) {
+.controller('CreateGroupCtrl', function ($scope, $window, $location, $http, $firebase, User) {
 
 	$scope.createGroup = function (group) {
 		// initialize Firebase references
