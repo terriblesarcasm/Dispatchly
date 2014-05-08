@@ -188,26 +188,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		});
 
 	}
-
-
-/* Using MongoDB
-
-	$scope.createGroup = function (group) {
-		$http.get('/db/create-group?name=' + group.name + '&password=' + group.password + '&address=' + group.address + '&zipcode=' + group.zipcode).success(function(response) {
-			if (response == '"11000"') {
-				$scope.errormsg = 'Group name already exists';
-				$scope.error = {flag:true};				
-			}
-			else {
-				// redirect back to homepage 
-				$location.path("/");
-			}
-		})
-		.error(function(error){
-			console.log('error: ' + error);
-		});
-	};	
-*/
 })
 
 
