@@ -151,7 +151,24 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 
-.controller('CreateGroupCtrl', function ($scope, $window, $location, $http) {
+.controller('CreateGroupCtrl', function ($scope, $window, $location, $http, $firebase) {
+
+	$scope.createGroup = function (group) {
+		// using Firebase
+
+		// check if group name already exists
+
+
+		// create group
+	  	var URL = "https://dispatchninja.firebaseIO.com/groups/";
+	    $scope.groups = $firebase(new Firebase(URL));
+	    var new_group = $scope.groups.$child(group);
+
+	}
+
+
+/* Using MongoDB
+
 	$scope.createGroup = function (group) {
 		$http.get('/db/create-group?name=' + group.name + '&password=' + group.password + '&address=' + group.address + '&zipcode=' + group.zipcode).success(function(response) {
 			if (response == '"11000"') {
@@ -167,6 +184,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			console.log('error: ' + error);
 		});
 	};	
+*/
 })
 
 
