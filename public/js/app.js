@@ -213,6 +213,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	$scope.group = {name: $stateParams.group};
 	Group.setGroup($stateParams.group);
 
+	console.log('testing');
+	
 	Groupies.setgroupies().then(function(response) {
 		$scope.groupies = response;
 		console.log('logging $scope.groupies ' + $scope.groupies);
