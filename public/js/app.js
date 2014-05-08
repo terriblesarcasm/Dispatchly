@@ -216,6 +216,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		$scope.groupies = response;
 	});
 
+	console.log($scope.groupies);
 
 })
 
