@@ -154,25 +154,25 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 .controller('CreateGroupCtrl', function ($scope, $window, $location, $http, $firebase) {
 
 	$scope.createGroup = function (group) {
-		// using Firebase
+		// initialize Firebase references
+		var groupRef = new Firebase("https://dispatchninja.firebaseIO.com/groups/" + group.name);
 	  	var URL = "https://dispatchninja.firebaseIO.com/groups/" + group.name;
 	    $scope.groups = $firebase(new Firebase(URL));
-
-		var groupRef = new Firebase("https://dispatchninja.firebaseIO.com/groups/" + group.name);
-
-		console.log('groupRef = ' + groupRef);
 
 		// check if group name already exists
 		groupRef.once('value', function(snapshot) {
 		  console.log('snapshot.val() = ' + snapshot.val());
 
 		  if(snapshot.val() == null) {
-		  	console.log('no group exists, create one here');
+		  	// ^ if no group with that name exists
 		  	// create group
 		    $scope.groups.$set({group_id: group.name, password: group.password, address: group.address, zipcode: group.zipcode});
+		    // redirect goes here
 		  }
 		  else{
-		  	console.log('this group name already exists in Firebase');
+		  	// group already exists
+		  	$scope.errormsg = 'Group name already exists';
+		  	$scope.error = {flag:true};
 		  }
 
 		});
