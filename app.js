@@ -204,42 +204,22 @@ app.get("/db/loadgroup", function(req, res, next) {
 
 
 /* Create group API */
-app.get("/db/create-group", function(req, res, next) {
-	// Group model
-	var group = new Group({
-		group_id: req.query.name,
-		password: req.query.password,
-		address: req.query.address,
-		zipcode: req.query.zipcode,
-	});
+app.get("/db/add-group-to-user", function(req, res, next) {
 
-	// Add user to the group they are creating
-	group.users.push(req.user.name);
-
-	// Save group to the DB
-	group.save(function(err) {
+	// Save group to user
+	var user = req.user;
+	user.groups.push(req.query.name);
+	
+	user.save(function(err) {
 		if(err) {
 			console.log(err);
 			res.send(new String(err.code));
 		} else {
-			console.log("saved group to DB");
-
-			// Save group to user
-			var user = req.user;
-			user.groups.push(req.query.name);
-			
-			user.save(function(err) {
-				if(err) {
-					console.log(err);
-					res.send(new String(err.code));
-				} else {
-					console.log("saved group to user");
-					res.send(true);
-				}
-			});			
+			console.log("saved group to user");
+			res.send(true);
 		}
+	});			
 
-	});
 });
 
 /* Add phone number to user API */
