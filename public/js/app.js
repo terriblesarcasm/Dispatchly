@@ -1,5 +1,21 @@
 var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.utils'])
 
+.factory('Groupies', function ($http) {
+    var groupies = {};
+
+    return { 
+        setgroupies: function() {
+            return $http.get('/db/loadgroup').then(function(response) {
+                groupies = response.data;
+                return groupies;
+            });
+        },
+        getgroupies: function() {
+            return groupies;
+        }
+    }
+})
+
 .factory('User', function ($http) {
     var user = {};
 
@@ -191,10 +207,15 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 
-.controller('GroupCtrl', function ($scope, $window, $location, $stateParams, Group) {
+.controller('GroupCtrl', function ($scope, $window, $location, $stateParams, Group, Groupies) {
 	console.log('logging the state param: ' + $stateParams.group);
 	$scope.group = {name: $stateParams.group};
 	Group.setGroup($stateParams.group);
+
+	Groupies.setgroupies().then(function(response) {
+		$scope.groupies = response;
+	});
+
 
 })
 
