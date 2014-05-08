@@ -163,10 +163,17 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		// check if group name already exists
 		groupRef.once('value', function(snapshot) {
 		  console.log('value.group_id = ' + snapshot.val().group_id);
-		});
 
-		// create group
-	    //$scope.groups.$set({group_id: group.name, password: group.password, address: group.address, zipcode: group.zipcode});
+		  if(snapshot.val().group_id == null) {
+		  	console.log('no group exists, create one here');
+		  	// create group
+		    //$scope.groups.$set({group_id: group.name, password: group.password, address: group.address, zipcode: group.zipcode});
+		  }
+		  else{
+		  	console.log('this group name already exists in Firebase');
+		  }
+
+		});
 
 	}
 
