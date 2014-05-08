@@ -155,13 +155,13 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 	$scope.createGroup = function (group) {
 		// using Firebase
-
-		// check if group name already exists
-
-
-		// create group
 	  	var URL = "https://dispatchninja.firebaseIO.com/groups/" + group.name;
 	    $scope.groups = $firebase(new Firebase(URL));
+	    console.log($scope.groups);
+	    console.log($scope.groups.length);
+		// check if group name already exists
+
+		// create group
 	    $scope.groups.$set({group_id: group.name, password: group.password, address: group.address, zipcode: group.zipcode});
 
 	}
