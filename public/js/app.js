@@ -7,7 +7,10 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
     return { 
         getgroupies: function(group_id) {
         	console.log('entered getgroupies');
+        	console.log('group_id = ' + group_id);
             return $http.get('/db/loadgroup/?group_id=' + group_id).then(function(response) {
+                console.log('response = ' + response);
+                console.log('response.data = ' + response.data);
                 groupies = response.data;
                 console.log('groupies in factory: ' + groupies);
                 return groupies;
