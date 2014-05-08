@@ -157,7 +157,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 
-.controller('JoinGroupCtrl', function ($scope, $window, $location, $firebase, $http) {
+.controller('JoinGroupCtrl', function ($scope, $window, $location, $firebase, $http, User) {
 	$scope.joinGroup = function (group) {
 		// $http.get('/db/join-group?group_id=' + group.group_id + '&password=' + group.password).success(function(response) {
 		// 	if (response == 'invalid') {
@@ -189,7 +189,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 				// group exists, check the passwords
 				if (group.password == $scope.groups.password) {
 					console.log('passwords match');
-					$scope.groups.users.$add({name: $scope.user.name, availability: null});
+					$scope.groups.users.$add({name: User.getuser().name, availability: null});
 				}
 			}
 		})
@@ -219,7 +219,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		    					password: group.password, 
 		    					address: group.address, 
 		    					zipcode: group.zipcode,
-		    					users: [$scope.user = User.getuser().name]
+		    					users: [User.getuser().name]
 		    				});
 
 		    // need to add group to the user DB (in Mongo)
