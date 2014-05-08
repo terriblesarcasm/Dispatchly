@@ -163,7 +163,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		console.log('groupRef = ' + groupRef);
 
 		// check if group name already exists
-		groupRef.on('value', function(snapshot) {
+		groupRef.once('value', function(snapshot) {
 		  console.log('snapshot.val() = ' + snapshot.val());
 
 		  if(snapshot.val() == null) {
