@@ -159,7 +159,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	    $scope.groups = $firebase(new Firebase(URL));
 
 		// check if group name already exists
-		URL.once('value', function(data) {
+		$scope.groups.once('value', function(data) {
 		  console.log('value = ' + snapshot.val());
 		});
 
