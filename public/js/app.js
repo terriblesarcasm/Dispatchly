@@ -163,15 +163,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		  console.log('value = ' + value);
 		});
 
-		if($scope.groups.$getIndex() == null || ""){
-			// create group
-			console.log('no group currently exists');
-		    $scope.groups.$set({group_id: group.name, password: group.password, address: group.address, zipcode: group.zipcode});
-		    // insert redirect here
-		}
-		else{
-			console.log('this group name already exists');
-		}
+		// create group
+	    $scope.groups.$set({group_id: group.name, password: group.password, address: group.address, zipcode: group.zipcode});
 
 	}
 
