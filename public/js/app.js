@@ -162,7 +162,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 		// check if group name already exists
 		groupRef.once('value', function(data) {
-		  console.log('value = ' + data);
+		  console.log('value = ' + data.val());
 		});
 
 		// create group
