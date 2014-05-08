@@ -1,6 +1,6 @@
 	<center>
 		<h3>{{group.name}}</h3>
-		<h4>{{groupies}}</h4>
+		<h4 ng-repeat="member in groupies">{{member}}</h4>
 		<table class="table">
 			<tbody>
 			<tr class="success"><td>Joe</td></tr>
