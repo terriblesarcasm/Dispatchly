@@ -5,7 +5,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
     return { 
         getgroupies: function(group_id) {
-            return $http.get('/db/loadgroup/?group_id' + group_id).then(function(response) {
+            return $http.get('/db/loadgroup/?group_id=' + group_id).then(function(response) {
                 groupies = response.data;
                 console.log('groupies in factory: ' + groupies);
                 return groupies;
