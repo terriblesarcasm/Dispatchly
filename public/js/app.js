@@ -160,7 +160,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 		// check if group name already exists
 		URL.once('value', function(data) {
-		  console.log('value = ' + value);
+		  console.log('value = ' + snapshot.val());
 		});
 
 		// create group
