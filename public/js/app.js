@@ -160,7 +160,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	    console.log($scope.groups.$getIndex());
 		// check if group name already exists
 
-		if($scope.groups.$getIndex() == "[]"){
+		if($scope.groups.$getIndex() == null || ""){
 			// create group
 			console.log('no group currently exists');
 		    $scope.groups.$set({group_id: group.name, password: group.password, address: group.address, zipcode: group.zipcode});
