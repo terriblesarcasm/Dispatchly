@@ -167,7 +167,12 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		  	// ^ if no group with that name exists
 		  	// create group
 		    $scope.groups.$set({group_id: group.name, password: group.password, address: group.address, zipcode: group.zipcode});
-		    // redirect goes here
+
+		    // need to add group to the user DB (in Mongo)
+		    // need to add group to the user DB (in Mongo)
+		    // need to add group to the user DB (in Mongo)
+
+		    $location.path("/");
 		  }
 		  else{
 		  	// group already exists
