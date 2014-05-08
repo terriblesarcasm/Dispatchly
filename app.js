@@ -205,7 +205,6 @@ app.get("/db/loadgroup", function(req, res, next) {
 
 /* Create group API */
 app.get("/db/add-group-to-user", function(req, res, next) {
-
 	// Save group to user
 	var user = req.user;
 	user.groups.push(req.query.group_id);
@@ -219,7 +218,6 @@ app.get("/db/add-group-to-user", function(req, res, next) {
 			res.send(true);
 		}
 	});			
-
 });
 
 /* Add phone number to user API */
