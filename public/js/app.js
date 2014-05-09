@@ -260,7 +260,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	}
 })
 
-.controller('GroupCtrl', function ($scope, $window, $location, $stateParams, Group, Groupies) {
+.controller('GroupCtrl', function ($scope, $window, $location, $stateParams, Group, Groupies, $firebase) {
 	console.log('logging the state param: ' + $stateParams.group);
 
 	// initalize variables / references
