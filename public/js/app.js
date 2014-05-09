@@ -265,7 +265,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	$scope.user = User.getuser();	
 	console.log($scope.user);
   	
-  	var URL = "https://dispatchninja.firebaseIO.com/" + $stateParams.group;
+  	var URL = "https://dispatchninja.firebaseIO.com/" + $stateParams.group + '/chat';
     $scope.items = $firebase(new Firebase(URL));
 
 	/* write data to Firebase */	
