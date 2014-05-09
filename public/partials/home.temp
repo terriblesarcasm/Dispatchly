@@ -8,12 +8,11 @@
 		<center><button type='button' class="btn btn-primary button-spacing" ng-click='setPhone(input.phonenumber)'>Add phone number</button></center>
 	</div>
 
-	<div ng-if="{{group}}">
-		<h1>YOU SHOULD PROB JOIN A GROUP YOU LAZY $%^&</h1>
+	<div ng-if="user.groups">
+		<h1>YOU SHOULD PROB JOIN A GROUP YOU LAZY $%^!</h1>
 	</div>
 
 	<div ng-if="user.phonenumber">
-	<h1>{{group}}</h1>
 		<center>
 		<div class="btn-group" id="groupdropdown">
 			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
