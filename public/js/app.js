@@ -216,12 +216,12 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 		    // add the user to the Firebase group
 		    $scope.user_to_group = $firebase(new Firebase(URL + '/users'))
-		    $scope.user_to_group.$add({name: User.getuser().name});
+		    $scope.user_to_group.$add({name: User.getuser().name}).then(
+		    				User.add_group_to_user(group.name).then(
+   							    $location.path("/group/" + group.name)));
 
 		    // add group to the user DB (in Mongo)
-			User.add_group_to_user(group.name);			    
 
-		    $location.path("/");
 		  }
 		  else{
 		  	// group already exists
