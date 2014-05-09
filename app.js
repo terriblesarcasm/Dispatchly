@@ -7,7 +7,7 @@ var client = new twilio.RestClient('AC645f23a47956757b6ee240ba83acc40d', 'da6895
 var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('./oauth.js');
-
+var Firebase = require('firebase');
 
 var app = express();
 
@@ -84,11 +84,19 @@ app.get("/api/twilio", createSMS);
 
 function createSMS(req, res, next) {
 	//Get the group sending the alert
-	Group.findOne({ group_id: req.query.group }, 'users', function(err, groupData) {
-		if (err) res.send("error");
-		if (groupData) {
+	//Change this to firebase
+	var GroupRef = new Firebase('https://dispatchninja.firebaseIO.com/groups/' + req.query.group);
+
+	GroupRef.once('value', function(snapshot) {
+		if (snapshot.val() === null) {
+			// could not find group 
+			res.send("error");
+		} else {
 			var bodymessage = "Alert code: " + req.query.code + " from group: " + req.query.group + " respond here: ";
 			var response = [];
+			groupData = snapshow.val();
+			console.log(groupData);
+			
 			for (var i = groupData.users.length - 1; i >= 0; i--) {
 				User.findOne({ name: groupData.users[i] }, 'phonenumber', function(err, userData) {
 					if (err) {
@@ -135,10 +143,65 @@ function createSMS(req, res, next) {
 				})
 			}
 			res.send("success from: " + req.query.group + " code: " + req.query.code);
-		} else {
-			res.send("Couldn't find the group");
 		}
 	});
+
+	// old mongo code
+	// Group.findOne({ group_id: req.query.group }, 'users', function(err, groupData) {
+	// 	if (err) res.send("error");
+	// 	if (groupData) {
+	// 		var bodymessage = "Alert code: " + req.query.code + " from group: " + req.query.group + " respond here: ";
+	// 		var response = [];
+	// 		for (var i = groupData.users.length - 1; i >= 0; i--) {
+	// 			User.findOne({ name: groupData.users[i] }, 'phonenumber', function(err, userData) {
+	// 				if (err) {
+	// 					console.log("unable to find user: " + groupData.users[i] + " in createSMS");
+	// 				} else if (userData) {
+	// 					var longUrl = "http://dispatch.systems/respond/alert?group=" + req.query.group + "&name=" + groupData.users[i];
+	// 					var shorturl;
+	// 					Bitly.authenticate("spamr", "i001254m", function(err, access_token) {
+	// 						// Returns an error if there was one, or an access_token if there wasn't 
+	// 						Bitly.setAccessToken(access_token);
+	// 						// Shorten the URL being passed through
+	// 						Bitly.shorten(longUrl, function(err, results) {
+	// 							shorturl = results;
+	// 						});
+	// 					});
+
+	// 					bodymessage = bodymessage + shorturl;
+
+	// 					client.sms.messages.create({
+	// 						to:userData.phonenumber,
+	// 						from:config.twilio.from,
+	// 						body:bodymessage
+	// 					}, function(error, message) {
+	// 						// The HTTP request to Twilio will run asynchronously. This callback
+	// 						// function will be called when a response is received from Twilio
+	// 						// The "error" variable will contain error information, if any.
+	// 						// If the request was successful, this value will be "falsy"
+	// 						if (!error) {
+	// 							// The second argument to the callback will contain the information
+	// 							// sent back by Twilio for the request. In this case, it is the
+	// 							// information about the text messsage you just sent:
+	// 							console.log('Success! The SID for this SMS message is:');
+	// 							console.log(message.sid);
+	// 							response.push('Success! The SID for this SMS message is: ' + message.sid);
+						 
+	// 							console.log('Message sent on:');
+	// 							console.log(message.dateCreated);
+	// 						} else {
+	// 							console.log('Oops! There was an error.');
+	// 							console.log(error);
+	// 						}
+	// 					});
+	// 				}
+	// 			})
+	// 		}
+	// 		res.send("success from: " + req.query.group + " code: " + req.query.code);
+	// 	} else {
+	// 		res.send("Couldn't find the group");
+	// 	}
+	// });
 }
 
 
