@@ -9,6 +9,7 @@
 	</div>
 
 	<div ng-if="user.phonenumber">
+	<h1>{{group}}</h1>
 		<center>
 		<div class="btn-group" id="groupdropdown">
 			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
