@@ -1,18 +1,5 @@
 var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.utils'])
 
-.factory('Groupies', function ($http) {
-    var groupies = {};
-
-    return { 
-        getgroupies: function(group_id) {
-            return $http.get('/db/loadgroup/?group_id=' + group_id).then(function(response) {
-                groupies = response.data;
-                return groupies;
-            });
-        }
-    }
-})
-
 .factory('User', function ($http) {
     var user = {};
 
@@ -260,7 +247,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	}
 })
 
-.controller('GroupCtrl', function ($scope, $window, $location, $stateParams, Group, Groupies, $firebase) {
+.controller('GroupCtrl', function ($scope, $window, $location, $stateParams, Group, $firebase) {
 	console.log('logging the state param: ' + $stateParams.group);
 
 	// initalize variables / references
