@@ -94,7 +94,7 @@ function createSMS(req, res, next) {
 		} else {
 			var bodymessage = "Alert code: " + req.query.code + " from group: " + req.query.group + " respond here: ";
 			var response = [];
-			groupData = snapshow.val();
+			groupData = snapshot.val();
 			console.log(groupData);
 			
 			for (var i = groupData.users.length - 1; i >= 0; i--) {
