@@ -268,17 +268,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	var URL = "https://dispatchninja.firebaseIO.com/groups/" + $stateParams.group;
     $scope.users = $firebase(new Firebase(URL + '/users'));
 
-    console.log('scope.users = ' + $scope.users);
-
-
-	/*
-	Group.setGroup($stateParams.group);
-	Groupies.getgroupies($stateParams.group).then(function(response) {
-		$scope.groupies = response.users;
-		console.log('logging $stateParams.group ' + $scope.groupies);
-	});
-	*/
-
+    //console.log('scope.users = ' + $scope.users);
 })
 
 	
