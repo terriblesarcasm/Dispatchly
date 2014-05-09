@@ -3,8 +3,8 @@
 		
 		<table class="table">
 			<tbody>
-				<tr ng-repeat="member in groupies">
-					<td>{{member}}</td>
+				<tr ng-repeat="member in users">
+					<td>{{member.name}}</td>
 				</tr>
 			</tbody>
 		</table>
