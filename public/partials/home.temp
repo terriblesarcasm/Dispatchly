@@ -8,7 +8,7 @@
 		<center><button type='button' class="btn btn-primary button-spacing" ng-click='setPhone(input.phonenumber)'>Add phone number</button></center>
 	</div>
 
-	<div ng-if="!user.groups">
+	<div ng-if="user.groups.length >= 1">
 		<h1>YOU SHOULD PROB JOIN A GROUP YOU LAZY $%^!</h1>
 	</div>
 
