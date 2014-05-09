@@ -253,6 +253,21 @@ app.get("/db/add-alert", function(req, res, next) {
 	})
 });
 
+app.get("/db/add-user-to-group", function(req, res, next) {
+	var user = req.user;
+	user.groups.push(req.query.group_id);
+
+	user.save(function(err) {
+		if(err) {
+			console.log(err);
+			res.send(new String(err.code));
+		} else {
+			console.log("saved user to DB");
+			res.send(true);
+		}
+	});
+})
+
 /* Join group API */
 app.get("/db/join-group", function(req, res, next) {
 	// Look for a group_id/password match in the DB
@@ -265,10 +280,6 @@ app.get("/db/join-group", function(req, res, next) {
 			var group = groupData;
 			group.users.push(req.user.name);
 
-			// Add group to user
-			var user = req.user;
-			user.groups.push(groupData.group_id);
-
 			// Save changes to the DB
 			group.save(function(err) {
 				if(err) {
@@ -276,6 +287,10 @@ app.get("/db/join-group", function(req, res, next) {
 					res.send(new String(err.code));
 				} else {
 					console.log("saved group to DB");
+
+					// Add group to user
+					var user = req.user;
+					user.groups.push(groupData.group_id);
 
 					user.save(function(err) {
 						if(err) {

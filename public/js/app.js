@@ -178,7 +178,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 					console.log('passwords match');
 					
 					$scope.users = $firebase(new Firebase(URL + "/users"));
-					$scope.users.$add({name: User.getuser().name, availability: null});
+					$scope.users.$add({name: User.getuser().name, availability: null}).then(
+						User.add_group_to_user(group.name).then(
+							$location.path("/group/"+group.name)));
 				}
 			}
 		})
