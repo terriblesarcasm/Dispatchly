@@ -262,14 +262,22 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 .controller('GroupCtrl', function ($scope, $window, $location, $stateParams, Group, Groupies) {
 	console.log('logging the state param: ' + $stateParams.group);
-	$scope.group = {name: $stateParams.group};
-	Group.setGroup($stateParams.group);
 
+	// initalize variables / references
+	$scope.group = {name: $stateParams.group};
+	var URL = "https://dispatchninja.firebaseIO.com/groups/" + $stateParams.group;
+    $scope.users = $firebase(new Firebase(URL + '/users'));
+
+    console.log('scope.users = ' + $scope.users);
+
+
+	/*
+	Group.setGroup($stateParams.group);
 	Groupies.getgroupies($stateParams.group).then(function(response) {
 		$scope.groupies = response.users;
 		console.log('logging $stateParams.group ' + $scope.groupies);
 	});
-
+	*/
 
 })
 
