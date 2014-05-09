@@ -12,7 +12,7 @@
 		<h1>YOU SHOULD PROB JOIN A GROUP YOU LAZY $%^!</h1>
 	</div>
 
-	<div ng-if="user.phonenumber">
+	<div ng-if="user.phonenumber && user.groups.length >= 1">
 		<center>
 		<div class="btn-group" id="groupdropdown">
 			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
