@@ -9,7 +9,9 @@
 	</div>
 
 	<div ng-if="user.groups.length == 0">
+		<center>
 		<h1>YOU SHOULD PROB JOIN A GROUP YOU LAZY $%^!</h1>
+		</center>
 	</div>
 
 	<div ng-if="user.phonenumber && user.groups.length >= 1">
