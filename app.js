@@ -108,8 +108,10 @@ function createSMS(req, res, next) {
 							Bitly.setAccessToken(access_token);
 							// Shorten the URL being passed through
 							Bitly.shorten({longUrl: longUrl}, function(err, results) {
-								shorturl = results.data.url;
-								console.log('shorturl: ' + shorturl);
+								if (!err){
+									shorturl = results.data.url;
+									console.log('shorturl: ' + shorturl);									
+								}
 							});
 						});
 
