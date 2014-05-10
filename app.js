@@ -98,7 +98,7 @@ function testingFirebase(req, res, next) {
 
 			// attempting to iterate through the groups user data
 			_.each(groupData, function(user) { 
-			    console.log(user)
+			    console.log('sending alert to: ' + user.name);
 			});			
 
 
