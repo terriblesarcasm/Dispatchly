@@ -109,12 +109,12 @@ function createSMS(req, res, next) {
 							// Shorten the URL being passed through
 							Bitly.shorten({longUrl: longUrl}, function(err, results) {
 								shorturl = results;
-								console.log('bitly results: ' + results.data.url);
+								console.log('bitly results: ' + results.data);
 							});
 						});
 
 						bodymessage = bodymessage + shorturl;
-
+/*
 						client.sms.messages.create({
 							to:userData.phonenumber,
 							from:config.twilio.from,
@@ -139,6 +139,7 @@ function createSMS(req, res, next) {
 								console.log(error);
 							}
 						});
+*/
 					}
 				})
 			});
