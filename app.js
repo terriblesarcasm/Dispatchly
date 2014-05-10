@@ -94,6 +94,7 @@ function testingFirebase(req, res, next) {
 			var response = [];
 			groupData = snapshot.val();
 			console.log(groupData);	
+		}
 	});
 
 }
