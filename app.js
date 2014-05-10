@@ -77,6 +77,17 @@ app.get("/alert-response.html", ensureAuthenticated, function(req, res) {
 	});
 });
 
+// temp testing only
+// temp testing only
+// temp testing only
+app.get("/api/firebase", testingFirebase);
+
+function testingFirebase(req, res, next) {
+
+}
+// temp testing only
+// temp testing only
+// temp testing only
 
 /* twilio API request */
 app.get("/api/twilio", createSMS);
