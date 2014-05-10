@@ -77,38 +77,6 @@ app.get("/alert-response.html", ensureAuthenticated, function(req, res) {
 	});
 });
 
-// temp testing only
-// temp testing only
-// temp testing only
-app.get("/api/firebase", testingFirebase);
-
-function testingFirebase(req, res, next) {
-	var GroupRef = new Firebase('https://dispatchninja.firebaseIO.com/groups/' + req.query.group + '/users');
-
-	GroupRef.once('value', function(snapshot) {
-		if (snapshot.val() === null) {
-			// could not find group 
-			res.send("error");
-		} else {
-			var bodymessage = "Alert code: " + req.query.code + " from group: " + req.query.group + " respond here: ";
-			var response = [];
-			groupData = snapshot.val();
-			console.log(groupData);	
-
-
-			// attempting to iterate through the groups user data
-			_.each(groupData, function(user) { 
-			    console.log('sending alert to: ' + user.name);
-			});			
-
-
-		}
-	});
-}
-// temp testing only
-// temp testing only
-// temp testing only
-
 /* twilio API request */
 app.get("/api/twilio", createSMS);
 
