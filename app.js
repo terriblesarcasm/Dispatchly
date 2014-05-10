@@ -109,11 +109,12 @@ function createSMS(req, res, next) {
 							// Shorten the URL being passed through
 							Bitly.shorten({longUrl: longUrl}, function(err, results) {
 								if (!err){
-									shorturl = results.url;
+									console.log(results);
+									shorturl = results.data;
 									console.log('shorturl: ' + shorturl);									
 								}
 								else{
-									// there was an error
+									// log the error
 									console.log('there was an error on the bitly shorten call')
 								}
 							});
