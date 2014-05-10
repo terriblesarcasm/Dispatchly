@@ -172,7 +172,7 @@ function createSMS(req, res, next) {
 						});
 					}
 				})
-			}
+			});
 			res.send("success from: " + req.query.group + " code: " + req.query.code);
 		}
 	});
