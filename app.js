@@ -115,7 +115,7 @@ app.get("/api/twilio", createSMS);
 function createSMS(req, res, next) {
 	//Get the group sending the alert
 	//Change this to firebase
-	var GroupRef = new Firebase('https://dispatchninja.firebaseIO.com/groups/' + req.query.group);
+	var GroupRef = new Firebase('https://dispatchninja.firebaseIO.com/groups/' + req.query.group + '/users');
 
 	GroupRef.once('value', function(snapshot) {
 		if (snapshot.val() === null) {
@@ -127,12 +127,13 @@ function createSMS(req, res, next) {
 			groupData = snapshot.val();
 			console.log(groupData);
 			
-			for (var i = groupData.users.length - 1; i >= 0; i--) {
-				User.findOne({ name: groupData.users[i] }, 'phonenumber', function(err, userData) {
+			//for (var i = groupData.users.length - 1; i >= 0; i--) {
+			_.each(groupData, function(user) {
+				User.findOne({ name: user.name }, 'phonenumber', function(err, userData) {
 					if (err) {
-						console.log("unable to find user: " + groupData.users[i] + " in createSMS");
+						console.log("unable to find user: " + user.name + " in createSMS");
 					} else if (userData) {
-						var longUrl = "http://dispatch.systems/respond/alert?group=" + req.query.group + "&name=" + groupData.users[i];
+						var longUrl = "http://dispatch.systems/respond/alert?group=" + req.query.group + "&name=" + user.name;
 						var shorturl;
 						Bitly.authenticate("spamr", "i001254m", function(err, access_token) {
 							// Returns an error if there was one, or an access_token if there wasn't 
