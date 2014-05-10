@@ -94,9 +94,16 @@ function testingFirebase(req, res, next) {
 			var response = [];
 			groupData = snapshot.val();
 			console.log(groupData);	
+
+
+			// attempting to iterate through the groups user data
+			_.each(groupData, function(user) { 
+			    console.log(user)
+			});			
+
+
 		}
 	});
-
 }
 // temp testing only
 // temp testing only
