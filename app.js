@@ -96,6 +96,7 @@ function testingFirebase(req, res, next) {
 			groupData = snapshot.val();
 			console.log(groupData);	
 		}
+	}
 }
 // temp testing only
 // temp testing only
