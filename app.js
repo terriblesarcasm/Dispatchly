@@ -112,6 +112,7 @@ function createSMS(req, res, next) {
 									var bitlydata = JSON.parse(results);	
 									console.log('bitlydata: %j', bitlydata);
 									console.log('bitlydata.data: %j', bitlydata.data);
+									console.log('bitlydata.data.url: %j', bitlydata.data.url);
 									shorturl = bitlydata.data.url; //should be response.data.url
 									
 								}
