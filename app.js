@@ -107,14 +107,12 @@ function createSMS(req, res, next) {
 							// Returns an error if there was one, or an access_token if there wasn't 
 							Bitly.setAccessToken(access_token);
 							// Shorten the URL being passed through
-							Bitly.shorten({longUrl: longUrl}, function(err, response) {
-								if (!err){
-									shorturl = response; //should be response.data.url
-									console.log('response: ' + response);	
-									console.log('response.status_code: ' + response.status_code);	
-									console.log('response.data: ' + response.data);	
-									console.log('response.data.data: ' + response.data.data);
-
+							Bitly.shortenLink(longUrl, function(err, results) {
+								if (!err){									
+									shorturl = results.data.url; //should be response.data.url
+									console.log('results: ' + results);	
+									console.log('results.status_code: ' + results.status_code);	
+									console.log('results.data: ' + results.data);	
 								}
 								else{
 									// log the error
