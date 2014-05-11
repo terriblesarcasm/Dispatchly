@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.utils'])
+var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.utils', 'ngAnimate'])
 
 .factory('User', function ($http) {
     var user = {};
@@ -265,7 +265,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 .controller("FirebaseController", function($scope, $firebase, User, $stateParams) {
 	// Get username from factory
 	$scope.user = User.getuser();	
-	console.log($scope.user);
+	//console.log($scope.user);
   	
   	var URL = "https://dispatchninja.firebaseIO.com/groups/" + $stateParams.group + '/chat';
     $scope.items = $firebase(new Firebase(URL));
