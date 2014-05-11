@@ -216,9 +216,8 @@ function createSMS(req, res, next) {
 // 	res.sendfile('./views/app.html');
 // });
 
-app.get("/login", function(req, res) {
-		console.log('running');
-		console.log(req);
+app.get("/login*", function(req, res) {
+		console.log(req.query);
 		res.sendfile('./views/index.html');
 	});
 
