@@ -1,8 +1,8 @@
-	<center>
-	<div class="chat-container" style="margin-left:5%; margin-right:5%;">
-		<input class="form-control pull-left chatform" ng-model="message" ui-keypress="{13:'addMessage(message)'}">
-		<button type='button' class='btn btn-primary chatbutton' ng-click='addMessage(message)'>Send</button>
-		</center>
-		<br>
-		<p class="chatmsg" ng-repeat="item in items" style="margin-left:5%; margin-right:5%;"><strong>{{item.username}}:</strong> {{item.mes}}</p>
-	</div>
+<center>
+<div class="chat-container" style="margin-left:5%; margin-right:5%;">
+	<input class="form-control pull-left chatform" ng-model="message" ui-keypress="{13:'addMessage(message)'}">
+	<button type='button' class='btn btn-primary chatbutton' ng-click='addMessage(message)'>Send</button>
+	</center>
+	<br>
+	<p class="animate" ng-repeat="item in items" style="margin-left:5%; margin-right:5%;"><strong>{{item.username}}:</strong> {{item.mes}}</p>
+</div>
