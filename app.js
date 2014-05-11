@@ -110,6 +110,8 @@ function createSMS(req, res, next) {
 							Bitly.shortenLink(longUrl, function(err, results) {
 								if (!err){		
 									var bitlydata = JSON.parse(results);	
+									console.log('bitlydata: ' + bitlydata);
+									console.log('bitlydata.data' + bitlydata.data);
 									shorturl = bitlydata.data.url; //should be response.data.url
 									
 								}
