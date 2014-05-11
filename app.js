@@ -118,7 +118,7 @@ function createSMS(req, res, next) {
 									client.sms.messages.create({
 										to:userData.phonenumber,
 										from:config.twilio.from,
-										body:bodymessage
+										body:usermessage
 									}, function(error, message) {
 										// The HTTP request to Twilio will run asynchronously. This callback
 										// function will be called when a response is received from Twilio
