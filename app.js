@@ -113,6 +113,7 @@ function createSMS(req, res, next) {
 									console.log('response: ' + response);	
 									console.log('response.status_code: ' + response.status_code);	
 									console.log('response.data: ' + response.data);	
+									console.log('response.data.data: ' + response.data.data);
 
 								}
 								else{
