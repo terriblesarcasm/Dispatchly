@@ -247,10 +247,7 @@ app.post("/db/register", function(req, res, next) {
 			res.send(new String(err.code));
 		} else {
 			console.log("saved new user: " + user);
-			passport.authenticate('local', {failureRedirect: '/login' }),
-				function(req, res) {
-					res.redirect('/');
-				}
+			res.redirect('/login');
 		}
 	});	
 
