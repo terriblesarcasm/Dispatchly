@@ -103,6 +103,8 @@ function createSMS(req, res, next) {
 					} else if (userData) {
 						// clear availability of user in group on firebase
 						console.log('user: ', user);
+						console.log('user.name: ', user.name());
+						console.log('user.parent: ', user.parent());
 						var UserRef = new Firebase('https://dispatchninja.firebaseIO.com/groups/' + req.query.group + '/users/' + user);
 						UserRef.update({availability: null});
 
