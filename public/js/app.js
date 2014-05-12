@@ -33,7 +33,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	}
 })
 
-.factory('Twilio', function($http) {
+.factory('Twilio', function ($http) {
 	return {
 		sendTwilioAlert: function(alert) {
 			return $http.get('/api/twilio?group=' + alert.group + '&code=' + alert.code)
@@ -41,7 +41,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	}
 })
 
-.factory('Group', function () {
+.factory('Group', function ($http) {
 	var group = {};
 	return {
 		setGroup: function(sentGroup) {
