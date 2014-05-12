@@ -88,7 +88,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		controller: "SendAlertCtrl"
 	})
 	.state('respondAlert', {
-		url: "/respondAlert/{group}/{user}",
+		url: "/respondAlert/{group}/{user}/{code}",
 		templateUrl: "public/partials/respond-alert.temp",
 		controller: "RespondAlertCtrl"
 	})
@@ -154,20 +154,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 .controller('JoinGroupCtrl', function ($scope, $window, $location, $firebase, $http, User) {
 	$scope.joinGroup = function (group) {
-		// $http.get('/db/join-group?group_id=' + group.group_id + '&password=' + group.password).success(function(response) {
-		// 	if (response == 'invalid') {
-		// 		$scope.errormsg = 'Invalid group name/password';
-		// 		$scope.error = {flag:true}; 
-		// 	}
-		// 	else {
-		// 		// redirect back to homepage 
-		// 		$location.path("/");
-		// 	}
-		// })
-		// .error(function(error){
-		// 	console.log('error: ' + error);
-		// });
-
 		// initialize Firebase references
 		var URL = "https://dispatchninja.firebaseIO.com/groups/" + group.name;
 		var groupRef = new Firebase(URL);
@@ -224,7 +210,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 		    // add the user to the Firebase group
 		    $scope.user_to_group = $firebase(new Firebase(URL + '/users'))
-		    $scope.user_to_group.$add({name: User.getuser().name}).then(
+		    $scope.user_to_group.$add({name: User.getuser().name, availability: null}).then(
 		    				User.add_group_to_user(group.name).then(
    							    $location.path("/group/" + group.name)));
 
