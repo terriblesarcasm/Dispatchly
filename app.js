@@ -93,7 +93,6 @@ function createSMS(req, res, next) {
 			var bodymessage = "Alert code: " + req.query.code + " from group: " + req.query.group + " respond here: ";
 			var response = [];
 			groupData = snapshot.val();
-			console.log(groupData);
 			
 			//for (var i = groupData.users.length - 1; i >= 0; i--) {
 			_.each(groupData, function(user, index) {
@@ -102,8 +101,7 @@ function createSMS(req, res, next) {
 						console.log("unable to find user: " + user.name + " in createSMS");
 					} else if (userData) {
 						// clear availability of user in group on firebase
-						console.log("index of underscore: ", index);
-						var UserRef = new Firebase('https://dispatchninja.firebaseIO.com/groups/' + req.query.group + '/users/' + user);
+						var UserRef = new Firebase('https://dispatchninja.firebaseIO.com/groups/' + req.query.group + '/users/' + index);
 						UserRef.update({availability: null});
 
 						// create bitly link for SMS
