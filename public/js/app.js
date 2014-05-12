@@ -252,7 +252,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	
 	$scope.twilioAlert = function() {
 		Twilio.sendTwilioAlert($scope.alert).then(function() {
-			console.log('inside of alert');
+			$location.path("/group/" + $stateParams.group);
 		});
 	}
 })
