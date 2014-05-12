@@ -96,15 +96,13 @@ function createSMS(req, res, next) {
 			console.log(groupData);
 			
 			//for (var i = groupData.users.length - 1; i >= 0; i--) {
-			_.each(groupData, function(user) {
+			_.each(groupData, function(user, index) {
 				User.findOne({ name: user.name }, 'phonenumber', function(err, userData) {
 					if (err) {
 						console.log("unable to find user: " + user.name + " in createSMS");
 					} else if (userData) {
 						// clear availability of user in group on firebase
-						console.log('user: ', user);
-						console.log('user.name: ', user.name());
-						console.log('user.parent: ', user.parent());
+						console.log("index of underscore: ", index);
 						var UserRef = new Firebase('https://dispatchninja.firebaseIO.com/groups/' + req.query.group + '/users/' + user);
 						UserRef.update({availability: null});
 
