@@ -49,6 +49,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		},
 		getGroup: function() {
 			return group.name;
+		},
+		updateAvailability: function(group, user, availability) {
+			return $http.get('/db/update-status?group=' + group + '&user=' + user + '&availability=' + availability)
 		}
 	}
 })
@@ -147,8 +150,13 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	};
 })
 
-.controller('RespondAlertCtrl', function ($scope, $window, $location, $q, $http, User, Phone, $stateParams) {
+.controller('RespondAlertCtrl', function ($scope, $window, $location, Group, $stateParams) {
 		$scope.alert = { group: $stateParams.group, user: $stateParams.user, code: $stateParams.code };
+		$scope.updateStatus = function(group, user, availability) {
+			Group.updateAvailability(group, user, availability).then(function(response) {
+				$location.path('/group/' + group);
+			})
+		}
 })
 
 
