@@ -101,7 +101,7 @@ function createSMS(req, res, next) {
 					if (err) {
 						console.log("unable to find user: " + user.name + " in createSMS");
 					} else if (userData) {
-						var longUrl = "http://dispatch.systems/respond/alert?group=" + req.query.group + "&name=" + user.name;
+						var longUrl = "http://dispatch.systems/#/respondAlert/" + req.query.group + "/" + user.name;
 						var shorturl;
 						Bitly.authenticate("spamr", "i001254m", function(err, access_token) {
 							// Returns an error if there was one, or an access_token if there wasn't 
