@@ -148,9 +148,10 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	};
 })
 
-.controller('RespondAlertCtrl', function ($scope, $window, $location, $q, $http, User, Phone) {
+.controller('RespondAlertCtrl', function ($scope, $window, $location, $q, $http, User, Phone, $stateParams) {
 		// empty controller for respondAlert
 		console.log('RespondAlertCtrl is running');
+		console.log($stateParams.group + $stateParams.user);
 })
 
 
