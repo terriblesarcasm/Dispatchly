@@ -148,7 +148,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 .controller('RespondAlertCtrl', function ($scope, $window, $location, $q, $http, User, Phone, $stateParams) {
-		$scope.alert = { group: $stateParams.group, code: $stateParams.code };
+		$scope.alert = { group: $stateParams.group, user: $stateParams.user, code: $stateParams.code };
 })
 
 
@@ -244,8 +244,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 .controller('GroupCtrl', function ($scope, $window, $location, $stateParams, Group, $firebase) {
-	console.log('logging the state param: ' + $stateParams.group);
-
 	// initalize variables / references
 	$scope.group = {name: $stateParams.group};
 	var URL = "https://dispatchninja.firebaseIO.com/groups/" + $stateParams.group;

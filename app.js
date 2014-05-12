@@ -105,7 +105,7 @@ function createSMS(req, res, next) {
 						UserRef.update({availability: null});
 
 						// create bitly link for SMS
-						var longUrl = "http://dispatch.systems/#/respondAlert/" + req.query.group + "/" + user.name + "/" + req.query.code;
+						var longUrl = "http://dispatch.systems/#/respondAlert/" + req.query.group + "/" + index + "/" + req.query.code;
 						var shorturl;
 						Bitly.authenticate("spamr", "i001254m", function(err, access_token) {
 							// Returns an error if there was one, or an access_token if there wasn't 
@@ -253,6 +253,11 @@ app.post("/db/register", function(req, res, next) {
 	});	
 
 });
+
+app.get("/db/update-status", function(req, res, next) {
+	var UserRef = new Firebase('https://dispatchninja.firebaseIO.com/groups/' + req.query.group + '/users/' + req.query.user);
+	UserRef.update({availability: req.query.availability});
+})
 
 app.get("/logout", function(req, res, next) {
 	req.logout();
