@@ -102,6 +102,7 @@ function createSMS(req, res, next) {
 						console.log("unable to find user: " + user.name + " in createSMS");
 					} else if (userData) {
 						// clear availability of user in group on firebase
+						console.log('user: ', user);
 						var UserRef = new Firebase('https://dispatchninja.firebaseIO.com/groups/' + req.query.group + '/users/' + user);
 						UserRef.update({availability: null});
 
