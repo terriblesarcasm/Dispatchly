@@ -94,7 +94,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	})
 	.state('confirmAlert', {
 		url: "/confirmAlert/{group}/{code}",
-
 		templateUrl: "public/partials/confirm-alert.temp",
 		controller: "ConfirmAlertCtrl"
 	});
@@ -149,9 +148,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 .controller('RespondAlertCtrl', function ($scope, $window, $location, $q, $http, User, Phone, $stateParams) {
-		// empty controller for respondAlert
-		console.log('RespondAlertCtrl is running');
-		console.log($stateParams.group + $stateParams.user);
+		$scope.alert = { group: $stateParams.group, code: $stateParams.code };
 })
 
 

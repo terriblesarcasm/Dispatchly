@@ -1,6 +1,8 @@
 <div>
   <center>
-  <a href="/db/update-status?username=&password="><button type='button' class='btn btn-primary groupbutton'>Responding</button></a>
-  <a href="/db/update-status?username=&password="><button type='button' class='btn btn-primary groupbutton'>Not Responding</button></a>
+  		Responding to alert: {{ alert.code }} <br>
+  		From group: {{ alert.group }}
+		<a href="/db/update-status?username=&password="><button type='button' class='btn btn-primary groupbutton'>Responding</button></a>
+		<a href="/db/update-status?username=&password="><button type='button' class='btn btn-primary groupbutton'>Not Responding</button></a>
   </center>
 </div>
