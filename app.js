@@ -101,6 +101,11 @@ function createSMS(req, res, next) {
 					if (err) {
 						console.log("unable to find user: " + user.name + " in createSMS");
 					} else if (userData) {
+						// clear availability of user in group on firebase
+						var UserRef = new Firebase('https://dispatchninja.firebaseIO.com/groups/' + req.query.group + '/users/' + user);
+						UserRef.update({availability: null});
+
+						// create bitly link for SMS
 						var longUrl = "http://dispatch.systems/#/respondAlert/" + req.query.group + "/" + user.name + "/" + req.query.code;
 						var shorturl;
 						Bitly.authenticate("spamr", "i001254m", function(err, access_token) {
@@ -217,7 +222,6 @@ function createSMS(req, res, next) {
 // });
 
 app.get("/login*", function(req, res) {
-		console.log(req);
 		res.sendfile('./views/index.html');
 	});
 
@@ -501,7 +505,7 @@ function getProfilePic(accounts) {
 
 /* serves all the static files */
 app.get(/^(.+)$/, function(req, res){
-	console.log('static file request : ' + req.params);
+	//console.log('static file request : ' + req.params);
 	res.sendfile( __dirname + req.params[0]);
 });
 
@@ -509,5 +513,5 @@ app.get(/^(.+)$/, function(req, res){
 /* node port config */
 var port = process.env.PORT || 5000;
 	app.listen(port, function() {
-	console.log("MEAN stack is running on port " + port);
+	console.log("Dispatch Ninja is running on port " + port);
 });
