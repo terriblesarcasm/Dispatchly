@@ -61,6 +61,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 	$stateProvider
 	.state('home', {
+		resolve: {	if (User.getgroups().length == 1) {
+					$location.path('/group/' + User.getgroups()); }
+		}
 		url: "/",
 		templateUrl: "public/partials/home.temp",
 		controller: "MainCtrl"
@@ -122,12 +125,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			$scope.user = response;
 		}).then(function() {
 			User.getgroups();
-
-			// if the user is only in one group redirect to that groups page.
-			if (User.getgroups().length == 1) {
-				$location.path('/group/' + User.getgroups());
-			}
-
 		});	
 	}
 
