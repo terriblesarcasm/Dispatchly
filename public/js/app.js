@@ -1,8 +1,8 @@
 var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.utils', 'ngAnimate'])
 
 .run(function($rootScope, User, $location) {
-    console.log("app run");
-
+    //console.log("app run");
+    
     // listen for the state start / change
 	$rootScope.$on('$stateChangeStart', 
 	function(event, toState, toParams, fromState, fromParams){ 
@@ -17,7 +17,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			}
 		}
 	})
-
 })
 
 .factory('User', function ($http) {
