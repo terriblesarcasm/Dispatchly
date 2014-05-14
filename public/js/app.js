@@ -122,8 +122,15 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			$scope.user = response;
 		}).then(function() {
 			User.getgroups();
+
+			// if the user is only in one group redirect to that groups page.
+			if (User.getgroups().length == 1) {
+				$location.path('/group/' + User.getgroups());
+			}
+
 		});	
 	}
+
 
 	$scope.setPhone = function (phone) {
 		Phone.setPhone(phone).then(function(response) {
@@ -138,16 +145,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		})
 	}
 
-	$scope.call = function (longUrl) {
-		
-		$http.get('/api/bitly?name=' + longUrl).success(function(response) {
-			console.log(response);
-			$scope.test = {
-				name: 'url',
-				shorturl: response.data.url
-			};	
-		});
-	};
 })
 
 .controller('RespondAlertCtrl', function ($scope, $window, $location, Group, $stateParams) {
