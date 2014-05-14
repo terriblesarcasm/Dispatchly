@@ -13,7 +13,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			// if the user is only in one group redirect to that groups page.
 			if (User.getgroups().length == 1) {
 				console.log('true');
-				$location.path('/group/' + User.getgroups());
+				//$location.path('/group/' + User.getgroups());
+				window.location = '/#/group/' + User.getgroups();
 			}
 		}
 	})
