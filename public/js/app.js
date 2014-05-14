@@ -9,11 +9,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		// check if the interior homepage has been loaded
 		if (toState.url == "/") {
 			event.preventDefault(); 
-			console.log('loaded the homepage');
+			//console.log('loaded the homepage');
 			// if the user is only in one group redirect to that groups page.
 			if (User.getgroups().length == 1) {
-				console.log('true');
-				//$location.path('/group/' + User.getgroups());
 				window.location = '/#/group/' + User.getgroups();
 			}
 		}
