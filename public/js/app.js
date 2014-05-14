@@ -1,6 +1,6 @@
 var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.utils', 'ngAnimate'])
 
-.run(function($rootScope) {
+.run(function($rootScope, User, $location) {
     console.log("app run");
 
     // listen for the state start / change
@@ -8,9 +8,11 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	function(event, toState, toParams, fromState, fromParams){ 
 		// check if the interior homepage has been loaded
 		if (toState.url == "/") {
+			event.preventDefault(); 
 			console.log('loaded the homepage');
 			// if the user is only in one group redirect to that groups page.
 			if (User.getgroups().length == 1) {
+				console.log('true');
 				$location.path('/group/' + User.getgroups());
 			}
 		}
