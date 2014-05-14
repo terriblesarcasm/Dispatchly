@@ -1,5 +1,23 @@
 var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.utils', 'ngAnimate'])
 
+.run(function($rootScope) {
+    console.log("app run");
+
+    // listen for the state start / change
+	$rootScope.$on('$stateChangeStart', 
+	function(event, toState, toParams, fromState, fromParams){ 
+		// check if the interior homepage has been loaded
+		if (toState.url == "/") {
+			console.log('loaded the homepage');
+			// if the user is only in one group redirect to that groups page.
+			if (User.getgroups().length == 1) {
+				$location.path('/group/' + User.getgroups());
+			}
+		}
+	})
+
+})
+
 .factory('User', function ($http) {
     var user = {};
 
@@ -122,12 +140,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			$scope.user = response;
 		}).then(function() {
 			User.getgroups();
-
-			// if the user is only in one group redirect to that groups page.
-			if (User.getgroups().length == 1) {
-				$location.path('/group/' + User.getgroups());
-			}
-
 		});	
 	}
 
