@@ -1,17 +1,16 @@
 var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.utils', 'ngAnimate'])
 
 .run(function($rootScope, User, $location) {
-    //console.log("app run");
-    
-    // listen for the state start / change
+	//console.log("app run");
+	
+	// listen for the state start / change
 	$rootScope.$on('$stateChangeStart', 
 	function(event, toState, toParams, fromState, fromParams){ 
 		// check if the interior homepage has been loaded
 		if (toState.url == "/") {
 			var user = User.getuser();
-			//console.log('loaded the homepage');
-			// if the user is only in one group redirect to that groups page.
-			if (user !== null && user != {}) {
+
+			if (user !== null && !isObjectEmpty(user)) {
 				var groups = user.groups;
 				console.log(user);
 				console.log('groups: ', groups);
@@ -21,7 +20,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 				}
 			} else {
 				User.setuser().then(function(user) {
-					if (user && groups.length == 1) {
+					if (user && user.groups.length == 1) {
 						event.preventDefault(); 
 						window.location = '/#/group/' + User.getgroups();
 					}
@@ -33,28 +32,28 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 })
 
 .factory('User', function ($http) {
-    var user = {};
+	var user = {};
 
-    return { 
-        setuser: function() {
-            return $http.get('/get/user').then(function(response) {
-                user = response.data;
-                return user;
-            });
-        },
-        getuser: function() {
-            return user;
-        },
-        getgroups: function() {
-        	return user.groups;
-        },
-        add_group_to_user: function(group_id) {
-            return $http.get('/db/add-group-to-user/?group_id=' + group_id).then(function(response) {
-                group_id = response.data;
-                return group_id;
-            });
-        }        
-    }
+	return { 
+		setuser: function() {
+			return $http.get('/get/user').then(function(response) {
+				user = response.data;
+				return user;
+			});
+		},
+		getuser: function() {
+			return user;
+		},
+		getgroups: function() {
+			return user.groups;
+		},
+		add_group_to_user: function(group_id) {
+			return $http.get('/db/add-group-to-user/?group_id=' + group_id).then(function(response) {
+				group_id = response.data;
+				return group_id;
+			});
+		}        
+	}
 })
 
 .factory('Phone', function ($http) {
@@ -142,8 +141,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	$scope.group = Group.getGroup();
 
 	$scope.isActive = function (viewLocation) { 
-        return viewLocation === $location.path();
-    };
+		return viewLocation === $location.path();
+	};
 
 	$scope.isCollapsed = true;
 })
@@ -222,36 +221,36 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		var groupRef = new Firebase(URL);	  	
 
 		//this should probably be set in the following groupRef.once
-	    $scope.groups = $firebase(new Firebase(URL));
+		$scope.groups = $firebase(new Firebase(URL));
 
 		// check if group name already exists
 		groupRef.once('value', function(snapshot) {
 		  console.log('snapshot.val() = ' + snapshot.val());
 
 		  if(snapshot.val() === null) {
-		  	// ^ if no group with that name exists
-		  	// create group
-		    $scope.groups.$set({group_id: group.name, 
-		    					password: group.password, 
-		    					address: group.address, 
-		    					zipcode: group.zipcode//,
+			// ^ if no group with that name exists
+			// create group
+			$scope.groups.$set({group_id: group.name, 
+								password: group.password, 
+								address: group.address, 
+								zipcode: group.zipcode//,
 //		    					users: [User.getuser().name] //instead of setting it, it may be best to make the array seperately using $add
-		    				});
+							});
 
 
-		    // add the user to the Firebase group
-		    $scope.user_to_group = $firebase(new Firebase(URL + '/users'))
-		    $scope.user_to_group.$add({name: User.getuser().name, availability: null}).then(
-		    				User.add_group_to_user(group.name).then(
-   							    $location.path("/group/" + group.name)));
+			// add the user to the Firebase group
+			$scope.user_to_group = $firebase(new Firebase(URL + '/users'))
+			$scope.user_to_group.$add({name: User.getuser().name, availability: null}).then(
+							User.add_group_to_user(group.name).then(
+								$location.path("/group/" + group.name)));
 
-		    // add group to the user DB (in Mongo)
+			// add group to the user DB (in Mongo)
 
 		  }
 		  else{
-		  	// group already exists
-		  	$scope.errormsg = 'Group name already exists';
-		  	$scope.error = {flag:true};
+			// group already exists
+			$scope.errormsg = 'Group name already exists';
+			$scope.error = {flag:true};
 		  }
 
 		});
@@ -278,9 +277,9 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	// initalize variables / references
 	$scope.group = {name: $stateParams.group};
 	var URL = "https://dispatchninja.firebaseIO.com/groups/" + $stateParams.group;
-    $scope.users = $firebase(new Firebase(URL + '/users'));
+	$scope.users = $firebase(new Firebase(URL + '/users'));
 
-    //console.log('scope.users = ' + $scope.users);
+	//console.log('scope.users = ' + $scope.users);
 })
 
 	
@@ -289,15 +288,25 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	// Get username from factory
 	$scope.user = User.getuser();	
 	//console.log($scope.user);
-  	
-  	var URL = "https://dispatchninja.firebaseIO.com/groups/" + $stateParams.group + '/chat';
-    $scope.items = $firebase(new Firebase(URL));
+	
+	var URL = "https://dispatchninja.firebaseIO.com/groups/" + $stateParams.group + '/chat';
+	$scope.items = $firebase(new Firebase(URL));
 
 	/* write data to Firebase */	
-    $scope.addMessage = function(message) {
-    	$scope.items.$add({username: $scope.user.name, mes: message});
-    	$scope.message = '';
-    };
+	$scope.addMessage = function(message) {
+		$scope.items.$add({username: $scope.user.name, mes: message});
+		$scope.message = '';
+	};
 
   }
 );
+
+function isObjectEmpty(object)
+{
+	var isEmpty = true;
+	for(keys in object) {
+		isEmpty = false;
+		break; // exiting since we found that the object is not empty
+	}
+	return isEmpty;
+}
