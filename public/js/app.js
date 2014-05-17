@@ -8,11 +8,21 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	function(event, toState, toParams, fromState, fromParams){ 
 		// check if the interior homepage has been loaded
 		if (toState.url == "/") {
-			event.preventDefault(); 
 			//console.log('loaded the homepage');
 			// if the user is only in one group redirect to that groups page.
-			if (User.getgroups().length == 1) {
-				window.location = '/#/group/' + User.getgroups();
+			if (User.getuser() !== null && User.getuser() != {}) {
+				if (User.getgroups().length == 1) {
+					event.preventDefault(); 
+					window.location = '/#/group/' + User.getgroups();
+				}
+			} else {
+				User.setuser().then(function(user) {
+					if (user && User.getgroups().length == 1) {
+						event.preventDefault(); 
+						window.location = '/#/group/' + User.getgroups();
+					}
+				});
+
 			}
 		}
 	})
