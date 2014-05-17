@@ -8,12 +8,12 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	function(event, toState, toParams, fromState, fromParams){ 
 		// check if the interior homepage has been loaded
 		if (toState.url == "/") {
+			var user = User.getuser();
 			//console.log('loaded the homepage');
 			// if the user is only in one group redirect to that groups page.
-			if (User.getuser() !== null && User.getuser() != {}) {
-				var user = User.getuser();
+			if (user !== null && user != {}) {
 				var groups = user.groups;
-				console.log('user: ', user);
+				console.log(user);
 				console.log('groups: ', groups);
 				if (groups.length == 1) {
 					event.preventDefault(); 
