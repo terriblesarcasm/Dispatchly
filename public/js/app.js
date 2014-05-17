@@ -11,6 +11,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			//console.log('loaded the homepage');
 			// if the user is only in one group redirect to that groups page.
 			if (User.getuser() !== null && User.getuser() != {}) {
+				console.log('user.getuser: ', User.getuser());
 				console.log('user.getgroups: ', User.getgroups());
 				var groups = User.getgroups();
 				console.log('groups ', groups);
