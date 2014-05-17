@@ -13,7 +13,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			if (User.getuser() !== null && User.getuser() != {}) {
 				console.log('user.getgroups: ', User.getgroups());
 				var groups = User.getgroups();
-				console.log('groups.length', groups.length);
+				console.log('groups ', groups);
 				if ((User.getgroups()).length == 1) {
 					event.preventDefault(); 
 					window.location = '/#/group/' + User.getgroups();
