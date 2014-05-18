@@ -11,5 +11,7 @@
 		<a ui-sref="groupChat({group:group.name})"><button type='button' class='btn btn-primary groupbutton'>Group Chat</button></a>
 
 		<a ui-sref="sendAlert({group:group.name})"><button type='button' class='btn btn-primary groupbutton'>Send Alert </button></a>
+		<br>
+		<a ui-sref="inviteGroup({group:group.name})"><button type='button' class='btn btn-primary'>Invite to Group</button></a>
 
 	</center>

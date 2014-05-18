@@ -1,5 +1,57 @@
 var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.utils', 'ngAnimate'])
 
+.config(function ($stateProvider, $urlRouterProvider) {
+	$urlRouterProvider.otherwise("/");
+
+	$stateProvider
+	.state('home', {
+		url: "/",
+		templateUrl: "public/partials/home.temp",
+		controller: "MainCtrl"
+	})
+	.state('createGroup', {
+		url: "/createGroup",
+		templateUrl: "public/partials/create-group.temp",
+		controller: "CreateGroupCtrl"
+	})
+	.state('joinGroup', {
+		url: "/joinGroup",
+		templateUrl: "public/partials/join-group.temp",
+		controller: "JoinGroupCtrl"
+	})
+	.state('groupChat', {
+		url: "/groupChat/{group}",
+		templateUrl: "public/partials/group-chat.temp",
+		controller: "FirebaseController"
+	})
+	.state('group', {
+		url: "/group/{group}",
+		templateUrl: "public/partials/group.temp",
+		controller: "GroupCtrl"
+	})
+	.state('sendAlert', {
+		url: "/sendAlert/{group}",
+		templateUrl: "public/partials/send-alert.temp",
+		controller: "SendAlertCtrl"
+	})
+	.state('respondAlert', {
+		url: "/respondAlert/{group}/{user}/{code}",
+		templateUrl: "public/partials/respond-alert.temp",
+		controller: "RespondAlertCtrl"
+	})
+	.state('confirmAlert', {
+		url: "/confirmAlert/{group}/{code}",
+		templateUrl: "public/partials/confirm-alert.temp",
+		controller: "ConfirmAlertCtrl"
+	})
+	.state('inviteGroup', {
+		url: "/inviteGroup/{group}",
+		templateUrl: "public/partials/inviteGroup.temp",
+		controller: "InviteGroupCtrl"
+	});
+})
+
+
 .run(function($rootScope, User, $state, $location) {
 	//console.log("app run");
 	
@@ -88,51 +140,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	}
 })
 
-.config(function ($stateProvider, $urlRouterProvider) {
-	$urlRouterProvider.otherwise("/");
 
-	$stateProvider
-	.state('home', {
-		url: "/",
-		templateUrl: "public/partials/home.temp",
-		controller: "MainCtrl"
-	})
-	.state('createGroup', {
-		url: "/createGroup",
-		templateUrl: "public/partials/create-group.temp",
-		controller: "CreateGroupCtrl"
-	})
-	.state('joinGroup', {
-		url: "/joinGroup",
-		templateUrl: "public/partials/join-group.temp",
-		controller: "JoinGroupCtrl"
-	})
-	.state('groupChat', {
-		url: "/groupChat/{group}",
-		templateUrl: "public/partials/group-chat.temp",
-		controller: "FirebaseController"
-	})
-	.state('group', {
-		url: "/group/{group}",
-		templateUrl: "public/partials/group.temp",
-		controller: "GroupCtrl"
-	})
-	.state('sendAlert', {
-		url: "/sendAlert/{group}",
-		templateUrl: "public/partials/send-alert.temp",
-		controller: "SendAlertCtrl"
-	})
-	.state('respondAlert', {
-		url: "/respondAlert/{group}/{user}/{code}",
-		templateUrl: "public/partials/respond-alert.temp",
-		controller: "RespondAlertCtrl"
-	})
-	.state('confirmAlert', {
-		url: "/confirmAlert/{group}/{code}",
-		templateUrl: "public/partials/confirm-alert.temp",
-		controller: "ConfirmAlertCtrl"
-	});
-})
 
 .controller('HeaderController', function ($scope, $window, $location, User, Group) {
 	User.setuser().then(function(response) {
@@ -264,6 +272,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	$scope.group = {name: $stateParams.group};
 })
 
+
 .controller('ConfirmAlertCtrl', function ($scope, $window, $location, $stateParams, Twilio) {
 	$scope.alert = { group: $stateParams.group, code: $stateParams.code };
 	
@@ -274,6 +283,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	}
 })
 
+
 .controller('GroupCtrl', function ($scope, $window, $location, $stateParams, Group, $firebase) {
 	// initalize variables / references
 	$scope.group = {name: $stateParams.group};
@@ -281,6 +291,14 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	$scope.users = $firebase(new Firebase(URL + '/users'));
 
 	//console.log('scope.users = ' + $scope.users);
+})
+
+
+.controller('InviteGroupCtrl', function ($scope, $window, $location, $stateParams, Group) {
+	$scope.group = {name: $stateParams.group};
+	$scope.sendInvite = function () {
+		console.log('sending invite');
+	}
 })
 
 	
