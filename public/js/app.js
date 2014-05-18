@@ -8,6 +8,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	function(event, toState, toParams, fromState, fromParams){ 
 		// check if the interior homepage has been loaded
 		if (toState.url == "/") {
+			event.preventDefault();
 			var user = User.getuser();
 
 			if (user !== null && !isObjectEmpty(user)) {
@@ -15,14 +16,16 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 				console.log(user);
 				console.log('groups: ', groups);
 				if (groups.length == 1) {
-					event.preventDefault(); 
 					window.location = '/#/group/' + User.getgroups();
+				} else {
+					window.location = '/#/';
 				}
 			} else {
 				User.setuser().then(function(user) {
 					if (user && user.groups.length == 1) {
-						event.preventDefault(); 
 						window.location = '/#/group/' + User.getgroups();
+					} else {
+						window.location = '/#/';
 					}
 				});
 
