@@ -1,14 +1,15 @@
 var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.utils', 'ngAnimate'])
 
-.run(function($rootScope, User, $location) {
+.run(function($rootScope, User, $state, $location) {
 	//console.log("app run");
 	
 	// listen for the state start / change
 	$rootScope.$on('$stateChangeStart', 
 	function(event, toState, toParams, fromState, fromParams){ 
 		// check if the interior homepage has been loaded
+		console.log(toState.url);
+		
 		if (toState.url == "/") {
-			event.preventDefault();
 			var user = User.getuser();
 
 			if (user !== null && !isObjectEmpty(user)) {
@@ -17,15 +18,17 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 				console.log('groups: ', groups);
 				if (groups.length == 1) {
 					window.location = '/#/group/' + User.getgroups();
+					event.preventDefault();
 				} else {
-					window.location = '/#/';
+					//should just go to the state 'Default'
 				}
 			} else {
 				User.setuser().then(function(user) {
 					if (user && user.groups.length == 1) {
 						window.location = '/#/group/' + User.getgroups();
+						event.preventDefault();
 					} else {
-						window.location = '/#/';
+						//should just go to the state 'Default'
 					}
 				});
 
