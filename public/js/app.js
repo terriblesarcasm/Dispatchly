@@ -46,7 +46,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	})
 	.state('inviteGroup', {
 		url: "/inviteGroup/{group}",
-		templateUrl: "public/partials/inviteGroup.temp",
+		templateUrl: "public/partials/invite-group.temp",
 		controller: "InviteGroupCtrl"
 	});
 })

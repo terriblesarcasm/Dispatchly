@@ -1,7 +1,7 @@
 	<center>
 		<h4>Invite to {{group.name}}</h4>
 
-		<input placeholder='User email' class='input'></input>
+		<input placeholder='User email' class='form-control'></input><br>
 		
 		<button type='button' class='btn btn-primary' onClick="sendInvite()">Send Invite</button>
 
