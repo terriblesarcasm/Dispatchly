@@ -313,7 +313,10 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	  	});	
 	  		console.log('responding: ' + $scope.countResponders);
 	  		console.log('not responding: ' + $scope.countNonResponders);
-	});
+
+		$scope.stacked = [{value: $scope.countResponders, type: 'success'},
+						  {value: $scope.countNonResponders, type: 'danger'}]	  		
+		});
 
 	$scope.users = $firebase(new Firebase(URL + '/users'));
 	$scope.order = {predicate: "availability"};
