@@ -319,8 +319,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			$scope.countTotal = $scope.countResponders + $scope.countNonResponders + $scope.countNonResponded;
 	  	});	
 
-		$scope.stacked = [{value: ($scope.countResponders / $scope.countTotal) * 100, type: 'success'},
-						  {value: ($scope.countNonResponders / $scope.countTotal) * 100, type: 'danger'}]	  		
+		$scope.stacked = [{value: Math.floor(($scope.countResponders / $scope.countTotal) * 100), type: 'success'},
+						  {value: Math.floor(($scope.countNonResponders / $scope.countTotal) * 100), type: 'danger'}]	  		
 		});
 
 
@@ -341,8 +341,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			$scope.countTotal = $scope.countResponders + $scope.countNonResponders + $scope.countNonResponded;
 	  	});	
 
-		$scope.stacked = [{value: ($scope.countResponders / $scope.countTotal) * 100, type: 'success'},
-						  {value: ($scope.countNonResponders / $scope.countTotal) * 100, type: 'danger'}]	  		
+		$scope.stacked = [{value: Math.floor(($scope.countResponders / $scope.countTotal) * 100), type: 'success'},
+						  {value: Math.floor($scope.countNonResponders / $scope.countTotal) * 100), type: 'danger'}]	  		
 		});
 
 
