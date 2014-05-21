@@ -296,6 +296,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	var firebaseusers = $firebase(new Firebase(URL + '/users'));
 	$scope.users = firebaseusers;
 
+	keys = $scope.users.$getIndex();
+
 	  // utilizing Angular's helpers
 	  angular.forEach(keys, function(key) {
 	     console.log(key, $scope.users[key]);
