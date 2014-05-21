@@ -323,6 +323,30 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 						  {value: ($scope.countNonResponders / $scope.countTotal) * 100, type: 'danger'}]	  		
 		});
 
+
+	$scope.users.$on("change", function() {
+		keys = $scope.users.$getIndex();
+		// utilizing Angular's helpers
+		angular.forEach(keys, function(key) {
+			if ($scope.users[key].availability == 'responding') {
+				$scope.countResponders += 1;
+			}
+			if ($scope.users[key].availability == 'not-responding') {
+				$scope.countNonResponders += 1;
+			}
+			if ($scope.users[key].availability == null) { 
+				$scope.countNonResponded += 1;
+			}
+
+			$scope.countTotal = $scope.countResponders + $scope.countNonResponders + $scope.countNonResponded;
+	  	});	
+
+		$scope.stacked = [{value: ($scope.countResponders / $scope.countTotal) * 100, type: 'success'},
+						  {value: ($scope.countNonResponders / $scope.countTotal) * 100, type: 'danger'}]	  		
+		});
+
+
+
 	$scope.users = $firebase(new Firebase(URL + '/users'));
 	$scope.order = {predicate: "availability"};
 	//console.log('scope.users = ' + $scope.users);
