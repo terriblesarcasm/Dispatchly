@@ -293,9 +293,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	// initalize variables / references
 	$scope.group = {name: $stateParams.group};
 	var URL = "https://dispatchninja.firebaseIO.com/groups/" + $stateParams.group;
-	var firebaseusers = $firebase(new Firebase(URL + '/users'));
-	$scope.users = firebaseusers;
-
+	$scope.users = $firebase(new Firebase(URL + '/users'));
+	$scope.order = {predicate: "availability"};
 	//console.log('scope.users = ' + $scope.users);
 })
 
