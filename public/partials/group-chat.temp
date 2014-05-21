@@ -1,8 +1,15 @@
-<center>
-<div class="chat-container" style="margin-left:5%; margin-right:5%;">
-	<input class="form-control pull-left chatform" ng-model="message" ui-keypress="{13:'addMessage(message)'}">
-	<button type='button' class='btn btn-primary chatbutton' ng-click='addMessage(message)'>Send</button>
-	</center>
-	<br>
-	<p class="animate" ng-repeat="item in items" style="margin-left:5%; margin-right:5%;"><strong>{{item.username}}:</strong> {{item.mes}}</p>
-</div>
+<div class="template_container">
+
+	<div id="users_synced" class="chat_container" ng-if="users_synced">
+		<div id="chat_messages">
+			<div class="each_message" ng-repeat="item in items">
+				<b>{{item.username}}</b><br>
+				{{item.mes}}
+			</div>
+		</div>
+
+		<input id="input_textbox" class="form-control pull-left chatform" ng-model="message" ui-keypress="{13:'addMessage()'}" placeholder="Message...">
+		<button type='button' class='btn btn-default chatbutton' ng-click='addMessage(message)'>Send</button>
+	</div> <!-- /users_synced -->
+
+</div> <!-- /template_container -->

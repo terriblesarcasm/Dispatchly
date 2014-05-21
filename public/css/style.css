@@ -1,3 +1,32 @@
+/* styles for the chatroom user interface */
+#chat_messages {
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 400px;
+  vertical-align: text-bottom;
+}
+
+#chat_messages::-webkit-scrollbar { 
+    display: none; 
+}
+
+
+.input_container {
+  position: absolute;
+  bottom: 0;
+}
+
+.each_message {
+  background-color: #FFFFFF;
+  padding-left: 15px;
+  margin-bottom: 10px;
+  padding-top: 5px; 
+  padding-bottom: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
 /* styles for the group page responding / not responding */
 .responding {
   background-color: #dff0d8;
