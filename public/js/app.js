@@ -304,13 +304,11 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		keys = $scope.users.$getIndex();
 		// utilizing Angular's helpers
 		angular.forEach(keys, function(key) {
-			console.log($scope.users[key].availability);
-
 			if ($scope.users[key].availability == 'responding') {
-				$scope.countResponders = +1;
+				$scope.countResponders += 1;
 			}
 			if ($scope.users[key].availability == 'not-responding') {
-				$scope.countNonResponders = +1;
+				$scope.countNonResponders += 1;
 			}
 	  	});	
 	  		console.log('responding: ' + $scope.countResponders);
