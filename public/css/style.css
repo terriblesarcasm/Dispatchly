@@ -130,6 +130,8 @@ h3 {
 .chatform {
   width:67%;
   max-width: 67%;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 .loginform {
@@ -143,6 +145,8 @@ h3 {
 .btn.btn-primary.chatbutton {
   width: 33%;
   max-width: 33%;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
 .btn.btn-primary {
