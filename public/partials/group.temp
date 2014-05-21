@@ -4,7 +4,9 @@
 		<table class="table">
 			<tbody>
 				<tr ng-repeat="member in users">
-					<td ng-class="member.availability">{{member.name}} - {{member.availability}}</td>
+					<td ng-if="member.availability=='responding'" class="responding">{{member.name}} - {{member.availability}}</td>
+					<td ng-if="member.availability=='not-responding'" class="not-responding">{{member.name}} - {{member.availability}}</td>
+					<td ng-if="member.availability!='responding' && member.availability!='not-responding'">{{member.name}} - {{member.availability}}</td>
 				</tr>
 			</tbody>
 		</table>
