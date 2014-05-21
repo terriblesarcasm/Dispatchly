@@ -3,7 +3,7 @@
 		
 		<table class="table">
 			<tbody>
-				<tr ng-repeat="member in users | orderBy:'availability':true">
+				<tr ng-repeat="member in users | orderBy:order.predicate:true">
 					<td ng-if="member.availability=='responding'" class="responding">{{member.name}}</td>
 					<td ng-if="member.availability=='not-responding'" class="not-responding">{{member.name}}</td>
 					<td ng-if="member.availability!='responding' && member.availability!='not-responding'">{{member.name}}</td>
@@ -15,5 +15,6 @@
 		<a ui-sref="sendAlert({group:group.name})"><button type='button' class='btn btn-primary groupbutton'>Send Alert </button></a>
 		<br>
 		<a ui-sref="inviteGroup({group:group.name})"><button type='button' class='btn btn-primary'>Invite to Group</button></a>
-
+		<button type='button' class='btn btn-primary' ng-click='order.predicate="name"'>order by name</button>
+		<button type='button' class='btn btn-primary' ng-click='order.predicate="availability"'>order by availability</button>
 	</center>
