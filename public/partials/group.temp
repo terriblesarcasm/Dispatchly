@@ -1,5 +1,8 @@
 	<center>
 		<h3>{{group.name}}</h3>
+
+		<progress><bar ng-repeat="bar in stacked track by $index" value="bar.value" type="{{bar.type}}"><span>{{bar.value}}%</span></bar></progress>
+
 		<table class="table">
 			<tbody>
 				<tr ng-repeat="member in users | orderByPriority | orderBy:'availability':true">
