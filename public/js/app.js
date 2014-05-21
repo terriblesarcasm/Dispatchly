@@ -316,22 +316,28 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 .controller('GroupCtrl', function ($scope, $window, $location, $stateParams, Group, $firebase) {
 	// initalize variables / references
 	$scope.group = {name: $stateParams.group};
+	$scope.countResponders = 0;
+	$scope.countNonResponders = 0;
 	var URL = "https://dispatchninja.firebaseIO.com/groups/" + $stateParams.group;
 	var firebaseusers = $firebase(new Firebase(URL + '/users'));
 	$scope.users = firebaseusers;
 
 
 	$scope.users.$on("loaded", function() {
-	  console.log("Initial data received!");
+		keys = $scope.users.$getIndex();
+		// utilizing Angular's helpers
+		angular.forEach(keys, function(key) {
+			console.log($scope.users[key].availability);
 
-	keys = $scope.users.$getIndex();
-
-	  // utilizing Angular's helpers
-	  angular.forEach(keys, function(key) {
-	     console.log(key, $scope.users[key]);
-	  });	
-
-
+			if ($scope.users[key].availability == 'responding') {
+				$scope.countResponders = +1;
+			}
+			if ($scope.users[key].availability == 'not-responding') {
+				$scope.countNonResponders = +1;
+			}
+	  	});	
+	  		console.log('responding: ' + $scope.countResponders);
+	  		console.log('not responding: ' + $scope.countNonResponders);
 	});
 
 	$scope.users = $firebase(new Firebase(URL + '/users'));
