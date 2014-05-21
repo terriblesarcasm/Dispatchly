@@ -3,7 +3,7 @@
 		
 		<table class="table">
 			<tbody>
-				<tr ng-repeat="member in users | orderBy:availability">
+				<tr ng-repeat="member in users | orderBy:'availability':true">
 					<td ng-if="member.availability=='responding'" class="responding">{{member.name}}</td>
 					<td ng-if="member.availability=='not-responding'" class="not-responding">{{member.name}}</td>
 					<td ng-if="member.availability!='responding' && member.availability!='not-responding'">{{member.name}}</td>
