@@ -10,7 +10,7 @@
 
 		<div class="input_container">
 			<input id="input_textbox" class="form-control pull-left chatform" ng-model="message" ui-keypress="{13:'addMessage(message)'}" placeholder="Message...">
-			<button type='button' class='btn btn-default chatbutton' ng-click='addMessage(message)'>Send</button>
+			<button type='button' class='btn btn-primary chatbutton' ng-click='addMessage(message)'>Send</button>
 		</div>
 
 	</div> <!-- /users_synced -->

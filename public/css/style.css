@@ -13,12 +13,11 @@
 
 
 .input_container {
-  position: absolute;
-  bottom: 0;
+  padding-right: 15px;
 }
 
 .each_message {
-  background-color: #FFFFFF;
+  background-color: #eeeeee;
   padding-left: 15px;
   margin-bottom: 10px;
   padding-top: 5px; 
@@ -30,7 +29,6 @@
 .input_container {
   padding-left: 15px;
   width: 100%;
-  max-width: 1060px;
 }
 
 /* styles for the group page responding / not responding */
