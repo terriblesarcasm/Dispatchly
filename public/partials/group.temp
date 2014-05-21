@@ -1,11 +1,9 @@
 	<center>
 		<h3>{{group.name}}</h3>
-		
+		{{ order.predicate }}
 		<table class="table">
 			<tbody>
-				{{ order.predicate }}
-				<tr ng-repeat="member in users | orderBy:order.predicate:true">
-
+				<tr ng-repeat="member in users | orderObjectBy:'availability'">
 					<td ng-if="member.availability=='responding'" class="responding">{{member.name}}</td>
 					<td ng-if="member.availability=='not-responding'" class="not-responding">{{member.name}}</td>
 					<td ng-if="member.availability!='responding' && member.availability!='not-responding'">{{member.name}}</td>
