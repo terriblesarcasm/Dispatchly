@@ -68,7 +68,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 				var groups = user.groups;
 				console.log(user.groups);
 				if (groups.length == 1) {
-					window.location = '/#/group/' + User.getgroups();
+					//window.location = '/#/group/' + User.getgroups();
+					$state.go('group', [User.getgroups()]);
 					console.log('right before prevent default');
 					event.preventDefault();
 				} else {
@@ -78,7 +79,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			} else {
 				User.setuser().then(function(user) {
 					if (user && user.groups.length == 1) {
-						window.location = '/#/group/' + User.getgroups();
+						//window.location = '/#/group/' + User.getgroups();
+						$state.go('group', [User.getgroups()]);
 						console.log('right before prevent default 2');
 						event.preventDefault();
 					} else {
