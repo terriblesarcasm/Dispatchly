@@ -322,6 +322,11 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 		$scope.message = '';
 	};
 
+    /* listen for new messages and scroll the chat window down */
+    $scope.items.$on("change", function() {
+	    $("#chat_messages").animate({ scrollTop: $('#chat_messages')[0].scrollHeight}, 1000);	
+	});
+
   }
 );
 
