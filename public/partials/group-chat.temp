@@ -1,6 +1,6 @@
 <div class="template_container">
 
-	<div id="users_synced" class="chat_container" ng-if="users_synced">
+	<div id="users_synced" class="chat_container">
 		<div id="chat_messages">
 			<div class="each_message" ng-repeat="item in items">
 				<b>{{item.username}}</b><br>
