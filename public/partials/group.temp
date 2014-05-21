@@ -17,5 +17,5 @@
 		<br>
 		<a ui-sref="groupChat({group:group.name})"><button type='button' class='btn btn-default groupbutton'>Group Chat</button></a>
 		<br>
-		<a ui-sref="inviteGroup({group:group.name})"><button type='button' class='btn btn-default'>Invite to Group</button></a>
+		<a ui-sref="inviteGroup({group:group.name})"><button type='button' class='btn btn-default groupbutton'>Invite to Group</button></a>
 	</center>
