@@ -319,8 +319,11 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 	/* write data to Firebase */	
 	$scope.addMessage = function(message) {
-		$scope.items.$add({username: $scope.user.name, mes: message});
-		$scope.message = '';
+		if (message.trim() != "") {
+			$scope.items.$add({username: $scope.user.name, mes: message});
+			$scope.message = '';
+		}
+
 	};
 
     /* listen for new messages and scroll the chat window down */
