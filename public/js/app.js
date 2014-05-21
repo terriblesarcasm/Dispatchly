@@ -295,6 +295,8 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	$scope.group = {name: $stateParams.group};
 	$scope.countResponders = 0;
 	$scope.countNonResponders = 0;
+	$scope.countNonResponded = 0;
+	$scope.countTotal = 0;
 	var URL = "https://dispatchninja.firebaseIO.com/groups/" + $stateParams.group;
 	var firebaseusers = $firebase(new Firebase(URL + '/users'));
 	$scope.users = firebaseusers;
@@ -310,10 +312,15 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			if ($scope.users[key].availability == 'not-responding') {
 				$scope.countNonResponders += 1;
 			}
+			else { 
+				$scope.countNonResponded += 1;
+			}
+
+			$scope.countTotal = $scope.countResponders + $scope.countNonResponders + $scope.countNonResponded;
 	  	});	
 
-		$scope.stacked = [{value: $scope.countResponders, type: 'success'},
-						  {value: $scope.countNonResponders, type: 'danger'}]	  		
+		$scope.stacked = [{value: $scope.countResponders / $scope.countTotal, type: 'success'},
+						  {value: $scope.countNonResponders / $scope.countTotal, type: 'danger'}]	  		
 		});
 
 	$scope.users = $firebase(new Firebase(URL + '/users'));
