@@ -4,7 +4,7 @@
 		<table class="table">
 			<tbody>
 				<tr ng-repeat="member in users">
-					<td ng-class="{{member.availability}}">{{member.name}}</td>
+					<td ng-class="member.availability">{{member.name}}</td>
 				</tr>
 			</tbody>
 		</table>
