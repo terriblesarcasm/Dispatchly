@@ -30,6 +30,7 @@
 .input_container {
   padding-left: 15px;
   width: 100%;
+  max-width: 1060px;
 }
 
 /* styles for the group page responding / not responding */
