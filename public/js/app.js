@@ -319,7 +319,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 
 	/* write data to Firebase */	
 	$scope.addMessage = function(message) {
-		if (message.trim() != "") {
+		if (message != null && message.trim() != "") {
 			$scope.items.$add({username: $scope.user.name, mes: message});
 			$scope.message = '';
 		}
