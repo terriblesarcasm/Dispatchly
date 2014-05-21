@@ -27,6 +27,10 @@
   border-radius: 5px;
 }
 
+.input_container {
+  padding-left: 15px;
+}
+
 /* styles for the group page responding / not responding */
 .responding {
   background-color: #dff0d8;
