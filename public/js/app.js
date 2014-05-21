@@ -342,7 +342,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	  	});	
 
 		$scope.stacked = [{value: Math.floor(($scope.countResponders / $scope.countTotal) * 100), type: 'success'},
-						  {value: Math.floor($scope.countNonResponders / $scope.countTotal) * 100), type: 'danger'}]	  		
+						  {value: Math.floor(($scope.countNonResponders / $scope.countTotal) * 100), type: 'danger'}]	  		
 		});
 
 
