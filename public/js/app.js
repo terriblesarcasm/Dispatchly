@@ -59,16 +59,20 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	$rootScope.$on('$stateChangeStart', 
 	function(event, toState, toParams, fromState, fromParams){ 
 		// check if the interior homepage has been loaded
+		console.log(toState.url);
+
 		if (toState.url == "/") {
 			var user = User.getuser();
 
 			if (user !== null && !isObjectEmpty(user)) {
 				var groups = user.groups;
+				console.log(user.groups);
 				if (groups.length == 1) {
 					window.location = '/#/group/' + User.getgroups();
 					console.log('right before prevent default');
 					event.preventDefault();
 				} else {
+					console.log('else');
 					//should just go to the state 'Default'
 				}
 			} else {
@@ -78,6 +82,7 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 						console.log('right before prevent default 2');
 						event.preventDefault();
 					} else {
+						console.log('else2');
 						//should just go to the state 'Default'
 					}
 				});
