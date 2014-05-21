@@ -296,6 +296,12 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	var firebaseusers = $firebase(new Firebase(URL + '/users'));
 	$scope.users = firebaseusers;
 
+
+	var keys = $scope.users.$getIndex();
+	keys.forEach(function(key, i) {
+	  console.log(i, $scope.users[key]); // Prints items in order they appear in Firebase.
+	});
+
 	//console.log('scope.users = ' + $scope.users);
 })
 
