@@ -17,3 +17,8 @@
 		<a ui-sref="inviteGroup({group:group.name})"><button type='button' class='btn btn-primary'>Invite to Group</button></a>
 
 	</center>
+
+
+	<div ng-repeat="member in users | orderBy:'availability':true">
+		<p ng-if="member.availability=='responding'" class="responding">{{member.name}}</p>
+	</div>
