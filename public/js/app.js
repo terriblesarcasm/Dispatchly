@@ -311,8 +311,6 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 				$scope.countNonResponders += 1;
 			}
 	  	});	
-	  		console.log('responding: ' + $scope.countResponders);
-	  		console.log('not responding: ' + $scope.countNonResponders);
 
 		$scope.stacked = [{value: $scope.countResponders, type: 'success'},
 						  {value: $scope.countNonResponders, type: 'danger'}]	  		
