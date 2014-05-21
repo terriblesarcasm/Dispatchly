@@ -1,6 +1,5 @@
 	<center>
 		<h3>{{group.name}}</h3>
-		{{ order.predicate }}
 		<table class="table">
 			<tbody>
 				<tr ng-repeat="member in users | orderObjectBy:'availability'">
@@ -15,6 +14,4 @@
 		<a ui-sref="sendAlert({group:group.name})"><button type='button' class='btn btn-primary groupbutton'>Send Alert </button></a>
 		<br>
 		<a ui-sref="inviteGroup({group:group.name})"><button type='button' class='btn btn-primary'>Invite to Group</button></a>
-		<button type='button' class='btn btn-primary' ng-click='order.predicate="name"'>order by name</button>
-		<button type='button' class='btn btn-primary' ng-click='order.predicate="availability"'>order by availability</button>
 	</center>
