@@ -296,7 +296,10 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 	var firebaseusers = $firebase(new Firebase(URL + '/users'));
 	$scope.users = firebaseusers;
 
-	console.log($scope.users.$getIndex(0));
+	  // utilizing Angular's helpers
+	  angular.forEach(keys, function(key) {
+	     console.log(key, $scope.users[key]);
+	  });	
 
 	$scope.users = $firebase(new Firebase(URL + '/users'));
 	$scope.order = {predicate: "availability"};
