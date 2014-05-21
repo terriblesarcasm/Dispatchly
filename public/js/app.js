@@ -312,15 +312,15 @@ var app = angular.module('myApp', ['ui.router','ui.bootstrap','firebase', 'ui.ut
 			if ($scope.users[key].availability == 'not-responding') {
 				$scope.countNonResponders += 1;
 			}
-			else { 
+			if ($scope.users[key].availability == null) { 
 				$scope.countNonResponded += 1;
 			}
 
 			$scope.countTotal = $scope.countResponders + $scope.countNonResponders + $scope.countNonResponded;
 	  	});	
 
-		$scope.stacked = [{value: $scope.countResponders / $scope.countTotal, type: 'success'},
-						  {value: $scope.countNonResponders / $scope.countTotal, type: 'danger'}]	  		
+		$scope.stacked = [{value: ($scope.countResponders / $scope.countTotal) * 100, type: 'success'},
+						  {value: ($scope.countNonResponders / $scope.countTotal) * 100, type: 'danger'}]	  		
 		});
 
 	$scope.users = $firebase(new Firebase(URL + '/users'));
