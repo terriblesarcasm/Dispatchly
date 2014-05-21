@@ -175,6 +175,10 @@ h3 {
   margin-bottom: 10px;
 }
 
+.btn.btn-default.groupbutton {
+  margin-bottom: 10px;
+}
+
 .btn.btn-primary.chatbutton {
   width: 33%;
   max-width: 33%;
